@@ -14,6 +14,15 @@
   border-color: rgba(var(--color-foreground), 0.9);
 }
 
+.tejesta-collection-card,
+.tejesta-collection-card .card,
+.tejesta-collection-card .card__inner,
+.tejesta-collection-card .card__media,
+.tejesta-collection-card .media {
+  background: rgb(var(--color-background));
+  background-color: rgb(var(--color-background));
+}
+
 .tejesta-collection-card__variants {
   display: flex;
   align-items: center;
