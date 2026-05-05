@@ -83,6 +83,14 @@
   outline-offset: -0.4rem;
 }
 
+.tejesta-collection-card__type {
+  margin-bottom: 0.4rem;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
 @media screen and (min-width: 990px) {
   .tejesta-collection-card {
     overflow: hidden;
@@ -116,8 +124,9 @@
 
   .tejesta-collection-card .card__heading {
     margin: 0;
-    font-size: 1.2rem;
-    line-height: 1.2;
+    font-size: clamp(3.8rem, 4.4vw, 5.6rem);
+    font-weight: 700;
+    line-height: 0.95;
     letter-spacing: 0;
     text-transform: uppercase;
   }
@@ -167,10 +176,15 @@
 
   .tejesta-collection-card .card__heading {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 2.6rem;
+    font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0;
     text-transform: uppercase;
+  }
+
+  .tejesta-collection-card__type {
+    font-size: 1.1rem;
   }
 
   .tejesta-collection-card .card-information,

@@ -153,6 +153,19 @@
       </div>
       <div class="card__content">
         <div class="card__information">
+          {%- liquid
+            assign tejesta_collection_type_label = ''
+            if card_product.type == 'Sunglasses'
+              assign tejesta_collection_type_label = 'Sunglasses'
+            elsif card_product.type == 'RX'
+              assign tejesta_collection_type_label = 'Optical'
+            endif
+          -%}
+          {%- if tejesta_collection_type_label != blank -%}
+            <div class="tejesta-collection-card__type">
+              {{ tejesta_collection_type_label }}
+            </div>
+          {%- endif -%}
           <h3
             class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
             {% if card_product.featured_media or settings.card_style == 'card' %}
