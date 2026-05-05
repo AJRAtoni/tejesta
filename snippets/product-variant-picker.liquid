@@ -26,8 +26,22 @@
             assign picker_type = 'swatch'
           endif
         endif
+
+        if option.name == 'Colorway'
+          assign picker_type = 'tejesta_colorway'
+        endif
       -%}
-      {%- if picker_type == 'swatch' -%}
+      {%- if picker_type == 'tejesta_colorway' -%}
+        <fieldset class="js product-form__input tejesta-product-colorway-swatches">
+          <legend class="form__label">Select Color</legend>
+          {% render 'product-variant-options',
+            product: product,
+            option: option,
+            block: block,
+            picker_type: picker_type
+          %}
+        </fieldset>
+      {%- elsif picker_type == 'swatch' -%}
         <fieldset class="js product-form__input product-form__input--swatch">
           <legend class="form__label">
             {{ option.name }}:

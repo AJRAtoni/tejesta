@@ -60,7 +60,77 @@
 
   {% assign escaped_value = value | escape %}
 
-  {%- if picker_type == 'swatch' -%}
+  {%- if picker_type == 'tejesta_colorway' -%}
+    {%- liquid
+      assign matched_variant = null
+      assign variant_image = ''
+      assign value_handle = value | handleize
+
+      for variant in product.variants
+        case option.position
+          when 1
+            assign variant_option_value = variant.option1
+          when 2
+            assign variant_option_value = variant.option2
+          when 3
+            assign variant_option_value = variant.option3
+        endcase
+
+        assign variant_option_handle = variant_option_value | handleize
+        if variant_option_handle == value_handle
+          assign matched_variant = variant
+          break
+        endif
+      endfor
+
+      if matched_variant.featured_media and matched_variant.featured_media.preview_image
+        assign variant_image = matched_variant.featured_media.preview_image
+      elsif matched_variant.image
+        assign variant_image = matched_variant.image
+      endif
+
+      if variant_image == blank
+        for media in product.media
+          assign media_alt_downcase = media.alt | downcase
+          assign value_downcase = value | downcase
+          if media_alt_downcase contains value_downcase
+            assign variant_image = media.preview_image
+            break
+          endif
+        endfor
+      endif
+    -%}
+    <input
+      type="radio"
+      id="{{ input_id }}"
+      name="{{ input_name | escape }}"
+      value="{{ escaped_value }}"
+      form="{{ product_form_id }}"
+      {% if value.selected %}
+        checked
+      {% endif %}
+      {% if option_disabled %}
+        class="disabled"
+      {% endif %}
+      {{ input_dataset }}
+    >
+    <label class="tejesta-product-colorway-swatches__label" for="{{ input_id }}">
+      {%- if variant_image != blank -%}
+        {{
+          variant_image
+          | image_url: width: 220
+          | image_tag:
+            loading: 'lazy',
+            class: 'tejesta-product-colorway-swatches__image',
+            alt: value
+        }}
+      {%- else -%}
+        <span class="tejesta-product-colorway-swatches__fallback">{{ value }}</span>
+      {%- endif -%}
+      <span class="visually-hidden">{{ escaped_value }}</span>
+      {{ label_unavailable }}
+    </label>
+  {%- elsif picker_type == 'swatch' -%}
     {%- capture help_text -%}
       <span class="visually-hidden">{{ escaped_value }}</span>
       {{ label_unavailable }}
