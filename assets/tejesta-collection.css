@@ -1,0 +1,182 @@
+.tejesta-collection-grid__item {
+  position: relative;
+}
+
+.tejesta-collection-card {
+  position: relative;
+  height: 100%;
+  border: 1px solid transparent;
+  transition: border-color 180ms ease;
+}
+
+.tejesta-collection-card:hover,
+.tejesta-collection-card:focus-within {
+  border-color: rgba(var(--color-foreground), 0.9);
+}
+
+.tejesta-collection-card__variants {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 0;
+}
+
+.tejesta-collection-card__variant {
+  width: 4.6rem;
+  height: 4.6rem;
+  padding: 0;
+  border: 1px solid rgba(var(--color-foreground), 0.18);
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+  appearance: none;
+  transition: border-color 160ms ease, opacity 160ms ease;
+}
+
+.tejesta-collection-card__variant:hover,
+.tejesta-collection-card__variant:focus-visible,
+.tejesta-collection-card__variant.is-active {
+  border-color: rgb(var(--color-foreground));
+}
+
+.tejesta-collection-card__variant.is-unavailable {
+  opacity: 0.42;
+}
+
+.tejesta-collection-card__variant-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tejesta-collection-card__fallback {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(var(--color-foreground), 0.08);
+}
+
+@media screen and (min-width: 990px) {
+  .tejesta-collection-card {
+    overflow: hidden;
+  }
+
+  .tejesta-collection-card .card__inner .card__content {
+    display: none;
+  }
+
+  .tejesta-collection-card .card > .card__content {
+    position: absolute;
+    top: 1.4rem;
+    left: 1.6rem;
+    z-index: 3;
+    width: calc(100% - 3.2rem);
+    padding: 0;
+    opacity: 0;
+    transition: opacity 180ms ease;
+  }
+
+  .tejesta-collection-card:hover .card > .card__content,
+  .tejesta-collection-card:focus-within .card > .card__content {
+    opacity: 1;
+  }
+
+  .tejesta-collection-card .card > .card__content .card-information,
+  .tejesta-collection-card .card > .card__content .quick-add,
+  .tejesta-collection-card .card > .card__content .card__badge {
+    display: none;
+  }
+
+  .tejesta-collection-card .card__heading {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .tejesta-collection-card__variants {
+    position: absolute;
+    right: 1.6rem;
+    bottom: 1.6rem;
+    left: 1.6rem;
+    z-index: 4;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 180ms ease, visibility 180ms ease;
+  }
+
+  .tejesta-collection-card:hover .tejesta-collection-card__variants,
+  .tejesta-collection-card:focus-within .tejesta-collection-card__variants {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .tejesta-collection-card {
+    padding-bottom: 1rem;
+    height: auto;
+    border: 0;
+  }
+
+  .tejesta-collection-card:hover,
+  .tejesta-collection-card:focus-within {
+    border-color: transparent;
+  }
+
+  .tejesta-collection-card .card > .card__content {
+    display: block;
+    flex-grow: 0;
+    padding: 1.2rem 1rem 0.8rem;
+  }
+
+  .tejesta-collection-card .card__information {
+    padding: 0;
+  }
+
+  .tejesta-collection-card .card__heading {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .tejesta-collection-card .card-information,
+  .tejesta-collection-card .quick-add,
+  .tejesta-collection-card .card__badge {
+    display: none;
+  }
+
+  .tejesta-collection-card__variants {
+    padding: 0 1rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tejesta-collection-card__variants::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .tejesta-collection-grid {
+    row-gap: 2.4rem;
+  }
+
+  .tejesta-collection-grid.grid--1-col-tablet-down .grid__item,
+  .tejesta-collection-grid.grid--2-col-tablet-down .grid__item {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .tejesta-collection-card__variant {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+}
