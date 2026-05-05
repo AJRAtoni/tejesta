@@ -91,6 +91,11 @@
   text-transform: uppercase;
 }
 
+.tejesta-collection-card .card__heading a,
+.tejesta-collection-card:hover .card__heading a {
+  text-decoration: none;
+}
+
 @media screen and (min-width: 990px) {
   .tejesta-collection-card {
     overflow: hidden;
