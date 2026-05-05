@@ -74,6 +74,7 @@
 }
 
 .tejesta-collection-card .card .card__inner .card__media {
+  cursor: pointer;
   z-index: 2;
 }
 

@@ -57,3 +57,21 @@ class TejestaCollectionVariants extends HTMLElement {
 if (!customElements.get('tejesta-collection-variants')) {
   customElements.define('tejesta-collection-variants', TejestaCollectionVariants);
 }
+
+document.addEventListener('click', (event) => {
+  const media = event.target.closest('.tejesta-collection-card .card__media');
+
+  if (!media || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+    return;
+  }
+
+  const card = media.closest('[data-tejesta-product-card]');
+  const link = card && card.querySelector('.tejesta-collection-card__media-link');
+
+  if (!link || !link.href) {
+    return;
+  }
+
+  event.preventDefault();
+  window.location.href = link.href;
+});
