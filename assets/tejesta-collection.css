@@ -92,8 +92,11 @@
 }
 
 .tejesta-collection-card .card__heading a,
+.tejesta-collection-card .card__heading a:hover,
+.tejesta-collection-card .card__heading a:focus,
+.tejesta-collection-card .card__heading a:focus-visible,
 .tejesta-collection-card:hover .card__heading a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 @media screen and (min-width: 990px) {
