@@ -16,6 +16,7 @@
   - horizontal_class: {Boolean} Add a card--horizontal class if set to true. Default: false (optional)
   - horizontal_quick_add: {Boolean} Changes the quick add button styles when set to true. Default: false (optional)
   - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-2' (optional)
+  - show_colorway_thumbnails: {Boolean} Shows TEJESTA collection colorway thumbnails. Default: false (optional)
 
   Usage:
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
@@ -588,7 +589,7 @@
         </div>
       </div>
     </div>
-    {%- if card_product.variants_count > 1 -%}
+    {%- if show_colorway_thumbnails and card_product.variants_count > 1 -%}
       <tejesta-collection-variants
         class="tejesta-collection-card__variants"
         aria-label="{{ card_product.title | escape }} colorways"
