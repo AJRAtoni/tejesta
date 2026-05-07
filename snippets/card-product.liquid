@@ -665,12 +665,13 @@
           {%- endif -%}
         {%- endfor -%}
         {%- if overflow_variant_count > 0 -%}
-          <span
-            class="tejesta-collection-card__variant-overflow"
+          <a
+            href="{{ card_url }}"
+            class="tejesta-collection-card__variant-overflow tejesta-collection-card__link"
             aria-label="{{ overflow_variant_count }} more colorways available"
           >
             +
-          </span>
+          </a>
         {%- endif -%}
       </tejesta-collection-variants>
     {%- endif -%}
