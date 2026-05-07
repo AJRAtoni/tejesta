@@ -606,7 +606,11 @@
       >
         {%- liquid
           assign selected_variant = card_product.selected_or_first_available_variant
-          assign visible_variant_limit = 6
+          assign max_collection_icons = 6
+          assign visible_variant_limit = max_collection_icons
+          if card_product.variants_count > max_collection_icons
+            assign visible_variant_limit = max_collection_icons | minus: 1
+          endif
           assign overflow_variant_count = card_product.variants_count | minus: visible_variant_limit
         -%}
         {%- for variant in card_product.variants -%}
