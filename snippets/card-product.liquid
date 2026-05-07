@@ -604,56 +604,70 @@
         class="tejesta-collection-card__variants"
         aria-label="{{ card_product.title | escape }} colorways"
       >
-        {%- assign selected_variant = card_product.selected_or_first_available_variant -%}
+        {%- liquid
+          assign selected_variant = card_product.selected_or_first_available_variant
+          assign visible_variant_limit = 6
+          assign overflow_variant_count = card_product.variants_count | minus: visible_variant_limit
+        -%}
         {%- for variant in card_product.variants -%}
-          {%- liquid
-            assign variant_image = ''
-            if variant.featured_media and variant.featured_media.preview_image
-              assign variant_image = variant.featured_media.preview_image
-            elsif variant.image
-              assign variant_image = variant.image
-            endif
+          {%- if forloop.index <= visible_variant_limit -%}
+            {%- liquid
+              assign variant_image = ''
+              if variant.featured_media and variant.featured_media.preview_image
+                assign variant_image = variant.featured_media.preview_image
+              elsif variant.image
+                assign variant_image = variant.image
+              endif
 
-            assign variant_label = variant.option1 | default: variant.title
-            assign variant_alt = card_product.title | append: ' - ' | append: variant_label
-            assign variant_label_downcase = variant_label | downcase
+              assign variant_label = variant.option1 | default: variant.title
+              assign variant_alt = card_product.title | append: ' - ' | append: variant_label
+              assign variant_label_downcase = variant_label | downcase
 
-            if variant_image == blank
-              for media in card_product.media
-                assign media_alt_downcase = media.alt | downcase
-                if media_alt_downcase contains variant_label_downcase
-                  assign variant_image = media.preview_image
-                  break
-                endif
-              endfor
-            endif
-          -%}
-          <button
-            type="button"
-            class="tejesta-collection-card__variant{% if variant.id == selected_variant.id %} is-active{% endif %}{% unless variant.available %} is-unavailable{% endunless %}"
-            data-tejesta-collection-variant
-            data-variant-url="{{ card_product.url }}?variant={{ variant.id }}"
-            {% if variant_image != blank %}
-              data-variant-image="{{ variant_image | image_url: width: 1066 }}"
-            {% endif %}
-            data-variant-label="{{ variant_alt | escape }}"
-            aria-label="{{ variant_alt | escape }}"
-            aria-pressed="{% if variant.id == selected_variant.id %}true{% else %}false{% endif %}"
-          >
-            {%- if variant_image != blank -%}
-              {{
-                variant_image
-                | image_url: width: 120
-                | image_tag:
-                  loading: 'lazy',
-                  class: 'tejesta-collection-card__variant-image',
-                  alt: variant_alt
-              }}
-            {%- else -%}
-              <span class="tejesta-collection-card__fallback" aria-hidden="true"></span>
-            {%- endif -%}
-          </button>
+              if variant_image == blank
+                for media in card_product.media
+                  assign media_alt_downcase = media.alt | downcase
+                  if media_alt_downcase contains variant_label_downcase
+                    assign variant_image = media.preview_image
+                    break
+                  endif
+                endfor
+              endif
+            -%}
+            <button
+              type="button"
+              class="tejesta-collection-card__variant{% if variant.id == selected_variant.id %} is-active{% endif %}{% unless variant.available %} is-unavailable{% endunless %}"
+              data-tejesta-collection-variant
+              data-variant-url="{{ card_product.url }}?variant={{ variant.id }}"
+              {% if variant_image != blank %}
+                data-variant-image="{{ variant_image | image_url: width: 1066 }}"
+              {% endif %}
+              data-variant-label="{{ variant_alt | escape }}"
+              aria-label="{{ variant_alt | escape }}"
+              aria-pressed="{% if variant.id == selected_variant.id %}true{% else %}false{% endif %}"
+            >
+              {%- if variant_image != blank -%}
+                {{
+                  variant_image
+                  | image_url: width: 120
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'tejesta-collection-card__variant-image',
+                    alt: variant_alt
+                }}
+              {%- else -%}
+                <span class="tejesta-collection-card__fallback" aria-hidden="true"></span>
+              {%- endif -%}
+            </button>
+          {%- endif -%}
         {%- endfor -%}
+        {%- if overflow_variant_count > 0 -%}
+          <span
+            class="tejesta-collection-card__variant-overflow"
+            aria-label="{{ overflow_variant_count }} more colorways available"
+          >
+            +
+          </span>
+        {%- endif -%}
       </tejesta-collection-variants>
     {%- endif -%}
   </div>

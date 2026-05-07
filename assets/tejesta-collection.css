@@ -33,6 +33,7 @@
 .tejesta-collection-card__variant {
   width: 4.6rem;
   height: 4.6rem;
+  flex: 0 0 4.6rem;
   padding: 0;
   border: 1px solid rgba(var(--color-foreground), 0.18);
   background: rgb(var(--color-background));
@@ -64,6 +65,20 @@
   width: 100%;
   height: 100%;
   background: rgba(var(--color-foreground), 0.08);
+}
+
+.tejesta-collection-card__variant-overflow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.6rem;
+  height: 4.6rem;
+  flex: 0 0 4.6rem;
+  border: 1px solid rgba(var(--color-foreground), 0.32);
+  color: rgb(var(--color-foreground));
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .tejesta-collection-card__media-link {

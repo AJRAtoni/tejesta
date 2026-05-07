@@ -175,6 +175,7 @@ if (!customElements.get('product-info')) {
             return;
           }
 
+          this.updateProductTitle(variant);
           this.updateMedia(html, variant?.featured_media?.id);
 
           const updateSourceFromDestination = (id, shouldHide = (source) => false) => {
@@ -209,6 +210,21 @@ if (!customElements.get('product-info')) {
             },
           });
         };
+      }
+
+      updateProductTitle(variant) {
+        const colorway = variant?.option1 && variant.option1 !== 'Default Title' ? variant.option1 : '';
+
+        this.querySelectorAll('[data-tejesta-product-title]').forEach((title) => {
+          const colorwayElement = title.querySelector('[data-tejesta-product-title-colorway]');
+
+          if (!colorwayElement) {
+            return;
+          }
+
+          colorwayElement.textContent = colorway;
+          colorwayElement.classList.toggle('hidden', !colorway);
+        });
       }
 
       updateVariantInputs(variantId) {

@@ -33,7 +33,10 @@
       -%}
       {%- if picker_type == 'tejesta_colorway' -%}
         <fieldset class="js product-form__input tejesta-product-colorway-swatches">
-          <legend class="form__label">Select Color</legend>
+          <legend class="form__label">
+            Colorway:
+            <span data-selected-value>{{ option.selected_value }}</span>
+          </legend>
           {% render 'product-variant-options',
             product: product,
             option: option,

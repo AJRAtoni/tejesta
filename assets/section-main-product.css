@@ -254,6 +254,10 @@ a.product__text {
   margin: 0;
 }
 
+.tejesta-product-title__colorway::before {
+  content: ' - ';
+}
+
 .product__title > a {
   display: none;
 }
