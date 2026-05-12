@@ -255,7 +255,7 @@ a.product__text {
 }
 
 .tejesta-product-title__colorway::before {
-  content: ' - ';
+  content: ' ';
 }
 
 .product__title > a {
