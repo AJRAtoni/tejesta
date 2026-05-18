@@ -19,6 +19,13 @@
             "heading_size": "h0"
           }
         },
+        "text_eHtHBW": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
         "button": {
           "type": "buttons",
           "settings": {
@@ -33,6 +40,7 @@
       },
       "block_order": [
         "heading",
+        "text_eHtHBW",
         "button"
       ],
       "settings": {
