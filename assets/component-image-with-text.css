@@ -363,6 +363,19 @@
   margin-top: 3rem;
 }
 
+.image-with-text__content .button {
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+}
+
+.image-with-text__content .button:after {
+  box-shadow: 0 0 0 var(--buttons-border-width) rgb(0, 0, 0);
+}
+
+.image-with-text__content .button:not([disabled]):hover::after {
+  box-shadow: 0 0 0 calc(var(--buttons-border-width) + 1px) rgb(0, 0, 0);
+}
+
 .image-with-text__heading {
   margin-bottom: 0;
 }
