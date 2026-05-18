@@ -171,6 +171,17 @@
                 preload: true
             }}
           </div>
+        {%- elsif request.page_type == 'index' -%}
+          <span class="header__heading-logo-wrapper header__heading-logo-wrapper--fallback-logo">
+            <img
+              src="{{ 'tejesta-logo-white.svg' | asset_url }}"
+              alt="{{ shop.name | escape }}"
+              class="header__heading-logo"
+              width="150"
+              height="36"
+              loading="eager"
+            >
+          </span>
         {%- else -%}
           <span class="h2">{{ shop.name }}</span>
         {%- endif -%}
@@ -214,6 +225,17 @@
                 preload: true
             }}
           </div>
+        {%- elsif request.page_type == 'index' -%}
+          <span class="header__heading-logo-wrapper header__heading-logo-wrapper--fallback-logo">
+            <img
+              src="{{ 'tejesta-logo-white.svg' | asset_url }}"
+              alt="{{ shop.name | escape }}"
+              class="header__heading-logo"
+              width="150"
+              height="36"
+              loading="eager"
+            >
+          </span>
         {%- else -%}
           <span class="h2">{{ shop.name }}</span>
         {%- endif -%}
