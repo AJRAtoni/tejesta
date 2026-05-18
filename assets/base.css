@@ -2360,6 +2360,46 @@ input[type='checkbox'] {
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
 }
 
+.section-header:has(.header-wrapper--homepage-overlay) {
+  position: absolute;
+  top: 5.8rem;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  margin-bottom: 0;
+}
+
+.header-wrapper.header-wrapper--homepage-overlay,
+.header-wrapper.header-wrapper--homepage-overlay.gradient {
+  background: transparent;
+  background-color: transparent;
+  color: #fff;
+}
+
+.header-wrapper--homepage-overlay.header-wrapper--border-bottom {
+  border-bottom: 0;
+}
+
+.header-wrapper--homepage-overlay .header {
+  color: #fff;
+}
+
+.header-wrapper--homepage-overlay .header__heading-link,
+.header-wrapper--homepage-overlay .header__heading-link .h2,
+.header-wrapper--homepage-overlay .header__menu-item,
+.header-wrapper--homepage-overlay .header__active-menu-item,
+.header-wrapper--homepage-overlay .header__icon,
+.header-wrapper--homepage-overlay .header__search,
+.header-wrapper--homepage-overlay .localization-form__select {
+  color: #fff;
+}
+
+.header-wrapper--homepage-overlay .header__heading-link:hover .h2,
+.header-wrapper--homepage-overlay .header__menu-item:hover,
+.header-wrapper--homepage-overlay .header__menu-item:hover span {
+  color: #fff;
+}
+
 .header {
   display: grid;
   grid-template-areas: 'left-icons heading icons';
