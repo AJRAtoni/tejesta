@@ -156,7 +156,7 @@
           "settings": {
             "button_label_1": "SHOP THE COLLECTION",
             "button_link_1": "",
-            "button_style_secondary_1": false,
+            "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
@@ -176,7 +176,7 @@
         "desktop_content_position": "middle-left",
         "desktop_content_alignment": "left",
         "show_text_box": false,
-        "color_scheme": "",
+        "color_scheme": "scheme-3",
         "stack_images_on_mobile": true,
         "mobile_content_alignment": "center",
         "show_text_below": true
