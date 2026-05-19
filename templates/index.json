@@ -76,7 +76,7 @@
           "type": "heading",
           "settings": {
             "heading": "SUN COLLECTION",
-            "heading_size": "h1"
+            "heading_size": "h0"
           }
         },
         "button_bGwwtG": {
@@ -116,7 +116,7 @@
           "type": "heading",
           "settings": {
             "heading": "OPTICAL COLLECTION",
-            "heading_size": "h1"
+            "heading_size": "h0"
           }
         },
         "button_LHT8Rm": {
@@ -156,7 +156,7 @@
           "type": "heading",
           "settings": {
             "heading": "Artesanía",
-            "heading_size": "h1"
+            "heading_size": "h0"
           }
         },
         "text_PiTKQD": {
