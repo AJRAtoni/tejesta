@@ -2379,6 +2379,10 @@ input[type='checkbox'] {
   z-index: 5;
 }
 
+.section-header:has(.header-wrapper--homepage-overlay) {
+  margin-bottom: calc(-1 * var(--header-height, 7.6rem));
+}
+
 .header-wrapper.header-wrapper--transparent,
 .header-wrapper.header-wrapper--transparent.gradient {
   --tejesta-header-color: #121212;
