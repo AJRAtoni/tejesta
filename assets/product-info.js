@@ -256,9 +256,8 @@ if (!customElements.get('product-info')) {
       }
 
       updateMedia(html, variantFeaturedMediaId) {
-        if (!variantFeaturedMediaId) return;
-
-        const mediaGallerySource = this.querySelector('media-gallery ul');
+        const mediaGallery = this.querySelector(`media-gallery`);
+        const mediaGallerySource = mediaGallery?.querySelector('ul');
         const mediaGalleryDestination = html.querySelector(`media-gallery ul`);
 
         const refreshSourceData = () => {
@@ -314,11 +313,20 @@ if (!customElements.get('product-info')) {
           });
         }
 
+        const counterTotal = mediaGallery?.querySelector('.slider-counter--total');
+        const newCounterTotal = html.querySelector('media-gallery .slider-counter--total');
+        if (counterTotal && newCounterTotal) counterTotal.textContent = newCounterTotal.textContent;
+
+        const sliderButtons = mediaGallery?.querySelector('.slider-buttons');
+        const newSliderButtons = html.querySelector('media-gallery .slider-buttons');
+        if (sliderButtons && newSliderButtons) sliderButtons.className = newSliderButtons.className;
+
         // set featured media as active in the media gallery
-        this.querySelector(`media-gallery`)?.setActiveMedia?.(
-          `${this.dataset.section}-${variantFeaturedMediaId}`,
-          true
-        );
+        const activeMediaId = variantFeaturedMediaId
+          ? `${this.dataset.section}-${variantFeaturedMediaId}`
+          : mediaGalleryDestination?.querySelector('li[data-media-id]')?.dataset.mediaId;
+
+        if (activeMediaId) mediaGallery?.setActiveMedia?.(activeMediaId, true);
 
         // update media modal
         const modalContent = this.productModal?.querySelector(`.product-media-modal__content`);

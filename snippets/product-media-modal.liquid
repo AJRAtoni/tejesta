@@ -32,26 +32,38 @@
       aria-label="{{ 'products.modal.label' | t }}"
       tabindex="0"
     >
-      {%- liquid
-        if product.selected_or_first_available_variant.featured_media != null
-          assign media = product.selected_or_first_available_variant.featured_media
-          render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: section.settings.hide_variants
-        endif
-      -%}
-
-      {%- for media in product.media -%}
+      {%- if variant_media_items != blank or variant_media_item != blank -%}
+        {%- if variant_media_item != blank -%}
+          {%- assign media_id = section.id | append: '-variant-' | append: current_variant.id | append: '-1' -%}
+          {%- render 'tejesta-variant-media-modal-image', media: variant_media_item, media_id: media_id -%}
+        {%- else -%}
+          {%- for variant_media in variant_media_items -%}
+            {%- assign media_id = section.id | append: '-variant-' | append: current_variant.id | append: '-' | append: forloop.index -%}
+            {%- render 'tejesta-variant-media-modal-image', media: variant_media, media_id: media_id -%}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- else -%}
         {%- liquid
-          if section.settings.hide_variants and variant_images contains media.src or variant_images contains media.id
-            assign variant_image = true
-          else
-            assign variant_image = false
+          if product.selected_or_first_available_variant.featured_media != null
+            assign media = product.selected_or_first_available_variant.featured_media
+            render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: section.settings.hide_variants
           endif
-
-          unless media.id == product.selected_or_first_available_variant.featured_media.id
-            render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: variant_image
-          endunless
         -%}
-      {%- endfor -%}
+
+        {%- for media in product.media -%}
+          {%- liquid
+            if section.settings.hide_variants and variant_images contains media.src or variant_images contains media.id
+              assign variant_image = true
+            else
+              assign variant_image = false
+            endif
+
+            unless media.id == product.selected_or_first_available_variant.featured_media.id
+              render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: variant_image
+            endunless
+          -%}
+        {%- endfor -%}
+      {%- endif -%}
     </div>
   </div>
 </product-modal>

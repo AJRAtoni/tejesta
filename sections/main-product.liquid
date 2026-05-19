@@ -72,11 +72,35 @@
     >
   {%- endif -%}
 
-  {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
+  {%- liquid
+    assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src'
+    assign current_variant = product.selected_or_first_available_variant
+    assign variant_media_metafield_namespace = section.settings.variant_media_metafield_namespace | default: 'custom'
+    assign variant_media_metafield_key = section.settings.variant_media_metafield_key | default: 'colorway_gallery'
+    assign variant_media_metafield = current_variant.metafields[variant_media_metafield_namespace][variant_media_metafield_key]
+    assign variant_media_items = blank
+    assign variant_media_item = blank
+    assign has_variant_media_items = false
+
+    if variant_media_metafield.list?
+      assign variant_media_items = variant_media_metafield.value
+    elsif variant_media_metafield.value != blank
+      assign variant_media_item = variant_media_metafield.value
+    endif
+
+    if variant_media_items != blank or variant_media_item != blank
+      assign has_variant_media_items = true
+    endif
+  -%}
   <div class="page-width">
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 or has_variant_media_items %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
-        {% render 'product-media-gallery', variant_images: variant_images %}
+        {% render 'product-media-gallery',
+          variant_images: variant_images,
+          variant_media_items: variant_media_items,
+          variant_media_item: variant_media_item,
+          current_variant: current_variant
+        %}
       </div>
       <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <section
@@ -704,7 +728,12 @@
       </div>
     </div>
 
-    {% render 'product-media-modal', variant_images: variant_images %}
+    {% render 'product-media-modal',
+      variant_images: variant_images,
+      variant_media_items: variant_media_items,
+      variant_media_item: variant_media_item,
+      current_variant: current_variant
+    %}
 
     {% assign popups = section.blocks | where: 'type', 'popup' %}
     {%- for block in popups -%}
@@ -2252,6 +2281,22 @@
       "id": "hide_variants",
       "default": false,
       "label": "t:sections.main-product.settings.hide_variants.label"
+    },
+    {
+      "type": "header",
+      "content": "Variant metafield media"
+    },
+    {
+      "type": "text",
+      "id": "variant_media_metafield_namespace",
+      "default": "custom",
+      "label": "Metafield namespace"
+    },
+    {
+      "type": "text",
+      "id": "variant_media_metafield_key",
+      "default": "colorway_gallery",
+      "label": "Metafield key"
     },
     {
       "type": "checkbox",
