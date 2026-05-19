@@ -21,6 +21,18 @@
     assign target = product
   endif
 
+  assign hide_tejesta_rx_price = false
+  if product.type == 'RX'
+    assign hide_tejesta_rx_price = true
+  endif
+
+  assign should_render_price = true
+  if hide_tejesta_rx_price
+    assign should_render_price = false
+  elsif target == null and placeholder == null
+    assign should_render_price = false
+  endif
+
   assign compare_at_price = target.compare_at_price
   assign price = target.price | default: 1999
   assign price_min = product.price_min
@@ -40,7 +52,7 @@
   endif
 -%}
 
-{%- unless target == null and placeholder == null -%}
+{%- if should_render_price -%}
   <div
     class="
       price
@@ -122,4 +134,4 @@
       </span>
     {%- endif -%}
   </div>
-{% endunless %}
+{% endif %}
