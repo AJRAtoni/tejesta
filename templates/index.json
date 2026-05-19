@@ -12,6 +12,19 @@
     "image_banner": {
       "type": "tejesta-random-image-banner",
       "blocks": {
+        "hero_option_CKN7xG": {
+          "type": "hero_option",
+          "settings": {
+            "image": "shopify://shop_images/artesania-banner.jpg",
+            "heading": "Artesanía",
+            "heading_size": "h0",
+            "text": "A word that echoes with the essence of craft and heritage.",
+            "text_style": "body",
+            "button_label": "SHOP THE COLLECTION",
+            "button_link": "shopify://collections/sun",
+            "button_style_secondary": true
+          }
+        },
         "hero_option_current": {
           "type": "hero_option",
           "settings": {
@@ -27,6 +40,7 @@
         }
       },
       "block_order": [
+        "hero_option_CKN7xG",
         "hero_option_current"
       ],
       "settings": {
