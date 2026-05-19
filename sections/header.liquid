@@ -178,14 +178,33 @@
           </div>
         {%- else -%}
           <span class="header__heading-logo-wrapper header__heading-logo-wrapper--fallback-logo">
-            <img
-              src="{{ fallback_logo_asset | asset_url }}"
-              alt="{{ shop.name | escape }}"
-              class="header__heading-logo"
-              width="150"
-              height="36"
-              loading="eager"
-            >
+            {%- if request.page_type == 'index' -%}
+              <img
+                src="{{ 'tejesta-logo-white.svg' | asset_url }}"
+                alt="{{ shop.name | escape }}"
+                class="header__heading-logo header__heading-logo--fallback-white"
+                width="150"
+                height="36"
+                loading="eager"
+              >
+              <img
+                src="{{ 'tejesta-logo-black.svg' | asset_url }}"
+                alt="{{ shop.name | escape }}"
+                class="header__heading-logo header__heading-logo--fallback-black"
+                width="150"
+                height="36"
+                loading="eager"
+              >
+            {%- else -%}
+              <img
+                src="{{ fallback_logo_asset | asset_url }}"
+                alt="{{ shop.name | escape }}"
+                class="header__heading-logo"
+                width="150"
+                height="36"
+                loading="eager"
+              >
+            {%- endif -%}
           </span>
         {%- endif -%}
       </a>
@@ -230,14 +249,33 @@
           </div>
         {%- else -%}
           <span class="header__heading-logo-wrapper header__heading-logo-wrapper--fallback-logo">
-            <img
-              src="{{ fallback_logo_asset | asset_url }}"
-              alt="{{ shop.name | escape }}"
-              class="header__heading-logo"
-              width="150"
-              height="36"
-              loading="eager"
-            >
+            {%- if request.page_type == 'index' -%}
+              <img
+                src="{{ 'tejesta-logo-white.svg' | asset_url }}"
+                alt="{{ shop.name | escape }}"
+                class="header__heading-logo header__heading-logo--fallback-white"
+                width="150"
+                height="36"
+                loading="eager"
+              >
+              <img
+                src="{{ 'tejesta-logo-black.svg' | asset_url }}"
+                alt="{{ shop.name | escape }}"
+                class="header__heading-logo header__heading-logo--fallback-black"
+                width="150"
+                height="36"
+                loading="eager"
+              >
+            {%- else -%}
+              <img
+                src="{{ fallback_logo_asset | asset_url }}"
+                alt="{{ shop.name | escape }}"
+                class="header__heading-logo"
+                width="150"
+                height="36"
+                loading="eager"
+              >
+            {%- endif -%}
           </span>
         {%- endif -%}
       </a>

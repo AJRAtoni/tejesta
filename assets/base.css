@@ -2372,12 +2372,12 @@ input[type='checkbox'] {
 }
 
 .section-header:has(.header-wrapper--homepage-overlay) {
-  position: absolute;
-  top: 5.8rem;
+  position: sticky;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 5;
-  margin-bottom: 0;
+  margin-bottom: calc(-1 * var(--header-height, 7.6rem));
 }
 
 .header-wrapper.header-wrapper--homepage-overlay,
@@ -2409,6 +2409,34 @@ input[type='checkbox'] {
 .header-wrapper--homepage-overlay .header__menu-item:hover,
 .header-wrapper--homepage-overlay .header__menu-item:hover span {
   color: #fff;
+}
+
+.section-header.scrolled-past-header .header-wrapper--homepage-overlay,
+.section-header.scrolled-past-header .header-wrapper--homepage-overlay.gradient {
+  background: rgb(var(--color-background));
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+
+.section-header.scrolled-past-header .header-wrapper--homepage-overlay.header-wrapper--border-bottom {
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+}
+
+.section-header.scrolled-past-header .header-wrapper--homepage-overlay .header,
+.section-header.scrolled-past-header .header-wrapper--homepage-overlay .header__heading-link,
+.section-header.scrolled-past-header .header-wrapper--homepage-overlay .header__heading-link .h2,
+.section-header.scrolled-past-header .header-wrapper--homepage-overlay .header__menu-item,
+.section-header.scrolled-past-header .header-wrapper--homepage-overlay .header__active-menu-item,
+.section-header.scrolled-past-header .header-wrapper--homepage-overlay .header__icon,
+.section-header.scrolled-past-header .header-wrapper--homepage-overlay .header__search,
+.section-header.scrolled-past-header .header-wrapper--homepage-overlay .localization-form__select {
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.section-header.scrolled-past-header .header-wrapper--homepage-overlay .header__heading-link:hover .h2,
+.section-header.scrolled-past-header .header-wrapper--homepage-overlay .header__menu-item:hover,
+.section-header.scrolled-past-header .header-wrapper--homepage-overlay .header__menu-item:hover span {
+  color: rgb(var(--color-foreground));
 }
 
 .header {
@@ -2530,6 +2558,18 @@ input[type='checkbox'] {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.header__heading-logo--fallback-black {
+  display: none;
+}
+
+.section-header.scrolled-past-header .header-wrapper--homepage-overlay .header__heading-logo--fallback-white {
+  display: none;
+}
+
+.section-header.scrolled-past-header .header-wrapper--homepage-overlay .header__heading-logo--fallback-black {
+  display: block;
 }
 
 @media screen and (max-width: 989px) {
