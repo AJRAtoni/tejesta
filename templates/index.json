@@ -197,12 +197,62 @@
         "mobile_content_alignment": "center",
         "show_text_below": true
       }
+    },
+    "image_banner_bfRDpN": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_PRpGJh": {
+          "type": "heading",
+          "settings": {
+            "heading": "Artesanía",
+            "heading_size": "h0"
+          }
+        },
+        "text_x8tYp7": {
+          "type": "text",
+          "settings": {
+            "text": "A word that echoes with the essence of craft and heritage.",
+            "text_style": "body"
+          }
+        },
+        "buttons_WDDytk": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "SHOP THE COLLECTION",
+            "button_link_1": "shopify://collections/sun",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_PRpGJh",
+        "text_x8tYp7",
+        "buttons_WDDytk"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/artesania-banner.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-right",
+        "desktop_content_alignment": "right",
+        "show_text_box": false,
+        "color_scheme": "scheme-1",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
     }
   },
   "order": [
     "image_banner",
     "image_with_text_kWB7VV",
     "image_with_text_cKXnKF",
-    "image_banner_VtR9UH"
+    "image_banner_VtR9UH",
+    "image_banner_bfRDpN"
   ]
 }
