@@ -44,6 +44,7 @@
         "button"
       ],
       "settings": {
+        "image": "shopify://shop_images/hero.jpg",
         "image_overlay_opacity": 0,
         "image_height": "large",
         "image_behavior": "none",
@@ -172,6 +173,7 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
+        "image": "shopify://shop_images/artesania-banner.jpg",
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "image_behavior": "none",
