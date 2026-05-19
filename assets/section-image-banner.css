@@ -492,13 +492,13 @@
 }
 
 @media screen and (min-width: 750px) {
-  .banner--homepage-hero.banner--desktop-transparent .banner__heading,
-  .banner--homepage-hero.banner--desktop-transparent .banner__text,
-  .banner--homepage-hero.banner--desktop-transparent .banner__text p {
+  .banner--homepage-image-banner.banner--desktop-transparent .banner__heading,
+  .banner--homepage-image-banner.banner--desktop-transparent .banner__text,
+  .banner--homepage-image-banner.banner--desktop-transparent .banner__text p {
     color: #ffffff;
   }
 
-  .banner--homepage-hero.banner--desktop-transparent .button--secondary {
+  .banner--homepage-image-banner.banner--desktop-transparent .button--secondary {
     --alpha-button-background: 0;
     --color-button: 255, 255, 255;
     --color-button-text: 255, 255, 255;
