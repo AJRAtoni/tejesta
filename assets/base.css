@@ -2377,7 +2377,6 @@ input[type='checkbox'] {
   left: 0;
   right: 0;
   z-index: 5;
-  margin-bottom: calc(-1 * var(--header-height, 7.6rem));
 }
 
 .header-wrapper.header-wrapper--transparent,
