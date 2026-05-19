@@ -8,6 +8,7 @@
   - variant_media_items: {Array} Variant metafield media list
   - variant_media_item: {Object} Variant metafield single media
   - current_variant: {Object} Selected product variant
+  - use_variant_scoped_media: {Boolean} Render only variant media + variant metafield media
   - limit: {Number} (optional) When passed, limits the number of media items to render
 
   Usage:
@@ -15,12 +16,17 @@
 {% endcomment %}
 
 {%- liquid
-  assign use_variant_metafield_media = false
-  if variant_media_items != blank or variant_media_item != blank
-    assign use_variant_metafield_media = true
+  assign selected_variant = current_variant
+  if selected_variant == blank
+    assign selected_variant = product.selected_or_first_available_variant
   endif
 
-  if section.settings.hide_variants and variant_images.size == product.media.size and use_variant_metafield_media == false
+  assign show_variant_scoped_media = false
+  if use_variant_scoped_media == true
+    assign show_variant_scoped_media = true
+  endif
+
+  if section.settings.hide_variants and variant_images.size == product.media.size and show_variant_scoped_media == false
     assign single_media_visible = true
   endif
 
@@ -28,10 +34,13 @@
     assign single_media_visible = true
   endif
 
-  if use_variant_metafield_media
+  if show_variant_scoped_media
     assign media_count = 0
+    if selected_variant.featured_media != blank
+      assign media_count = media_count | plus: 1
+    endif
     if variant_media_item != blank
-      assign media_count = 1
+      assign media_count = media_count | plus: 1
     else
       for variant_media in variant_media_items
         assign media_count = media_count | plus: 1
@@ -80,15 +89,44 @@
       class="product__media-list contains-media grid grid--peek list-unstyled slider slider--mobile"
       role="list"
     >
-      {%- if use_variant_metafield_media -%}
+      {%- if show_variant_scoped_media -%}
+        {%- if selected_variant.featured_media != blank -%}
+          {%- assign featured_media = selected_variant.featured_media -%}
+          <li
+            id="Slide-{{ section.id }}-{{ featured_media.id }}"
+            class="product__media-item grid__item slider__slide is-active{% if single_media_visible %} product__media-item--single{% endif %}{% if featured_media.media_type != 'image' %} product__media-item--full{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+            data-media-id="{{ section.id }}-{{ featured_media.id }}"
+          >
+            {%- assign media_position = 1 -%}
+            {% render 'product-thumbnail',
+              media: featured_media,
+              media_count: media_count,
+              position: media_position,
+              desktop_layout: section.settings.gallery_layout,
+              mobile_layout: section.settings.mobile_thumbnails,
+              loop: section.settings.enable_video_looping,
+              modal_id: section.id,
+              xr_button: true,
+              media_width: media_width,
+              media_fit: section.settings.media_fit,
+              constrain_to_viewport: section.settings.constrain_to_viewport,
+              lazy_load: false
+            %}
+          </li>
+        {%- endif -%}
+
         {%- if variant_media_item != blank -%}
           {%- liquid
-            assign media_position = 1
-            assign media_id = section.id | append: '-variant-' | append: current_variant.id | append: '-1'
+            assign media_position = media_position | default: 0 | plus: 1
+            assign media_id = section.id | append: '-variant-' | append: selected_variant.id | append: '-1'
+            assign lazy_load = true
+            if media_position == 1
+              assign lazy_load = false
+            endif
           -%}
           <li
             id="Slide-{{ media_id }}"
-            class="product__media-item grid__item slider__slide is-active{% if single_media_visible %} product__media-item--single{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+            class="product__media-item grid__item slider__slide{% if media_position == 1 %} is-active{% endif %}{% if single_media_visible %} product__media-item--single{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
             data-media-id="{{ media_id }}"
           >
             {% render 'tejesta-variant-media-thumbnail',
@@ -102,22 +140,22 @@
               media_width: media_width,
               media_fit: section.settings.media_fit,
               constrain_to_viewport: section.settings.constrain_to_viewport,
-              lazy_load: false
+              lazy_load: lazy_load
             %}
           </li>
         {%- else -%}
           {%- for variant_media in variant_media_items -%}
             {%- liquid
-              assign media_position = forloop.index
-              assign media_id = section.id | append: '-variant-' | append: current_variant.id | append: '-' | append: forloop.index
-              assign lazy_load = false
-              if forloop.index > 1
-                assign lazy_load = true
+              assign media_position = media_position | default: 0 | plus: 1
+              assign media_id = section.id | append: '-variant-' | append: selected_variant.id | append: '-' | append: forloop.index
+              assign lazy_load = true
+              if media_position == 1
+                assign lazy_load = false
               endif
             -%}
             <li
               id="Slide-{{ media_id }}"
-              class="product__media-item grid__item slider__slide{% if forloop.first %} is-active{% endif %}{% if single_media_visible %} product__media-item--single{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+              class="product__media-item grid__item slider__slide{% if media_position == 1 %} is-active{% endif %}{% if single_media_visible %} product__media-item--single{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
               data-media-id="{{ media_id }}"
             >
               {% render 'tejesta-variant-media-thumbnail',
@@ -161,7 +199,7 @@
         </li>
       {%- endif -%}
 
-      {%- unless use_variant_metafield_media -%}
+      {%- unless show_variant_scoped_media -%}
         {%- for media in product.media -%}
           {% if media_position >= limit
             or media_position >= 1
@@ -232,7 +270,7 @@
       </button>
     </div>
   </slider-component>
-  {%- if first_3d_model -%}
+  {%- if first_3d_model and show_variant_scoped_media == false -%}
     <button
       class="button button--full-width product__xr-button"
       type="button"
@@ -286,11 +324,47 @@
           calc((100vw - 8rem) / 3)
         {%- endcapture -%}
 
-        {%- if use_variant_metafield_media -%}
+        {%- if show_variant_scoped_media -%}
+          {%- if selected_variant.featured_media != blank -%}
+            {%- liquid
+              assign featured_media = selected_variant.featured_media
+              assign media_index = 1
+            -%}
+            <li
+              id="Slide-Thumbnails-{{ section.id }}-0"
+              class="thumbnail-list__item slider__slide"
+              data-target="{{ section.id }}-{{ featured_media.id }}"
+              data-media-position="{{ media_index }}"
+            >
+              {%- capture thumbnail_id -%}
+                Thumbnail-{{ section.id }}-0
+              {%- endcapture -%}
+              <button
+                class="thumbnail global-media-settings global-media-settings--no-shadow"
+                aria-label="{%- if featured_media.media_type == 'image' -%}{{ 'products.product.media.load_image' | t: index: media_index }}{%- elsif featured_media.media_type == 'model' -%}{{ 'products.product.media.load_model' | t: index: media_index }}{%- elsif featured_media.media_type == 'video' or featured_media.media_type == 'external_video' -%}{{ 'products.product.media.load_video' | t: index: media_index }}{%- endif -%}"
+                aria-current="true"
+                aria-controls="GalleryViewer-{{ section.id }}"
+                aria-describedby="{{ thumbnail_id }}"
+              >
+                {{
+                  featured_media.preview_image
+                  | image_url: width: 416
+                  | image_tag:
+                    loading: 'lazy',
+                    sizes: sizes,
+                    widths: '54, 74, 104, 162, 208, 324, 416',
+                    id: thumbnail_id,
+                    alt: featured_media.alt
+                  | escape
+                }}
+              </button>
+            </li>
+          {%- endif -%}
+
           {%- if variant_media_item != blank -%}
             {%- liquid
-              assign media_index = 1
-              assign media_id = section.id | append: '-variant-' | append: current_variant.id | append: '-1'
+              assign media_index = media_index | default: 0 | plus: 1
+              assign media_id = section.id | append: '-variant-' | append: selected_variant.id | append: '-1'
               assign image = variant_media_item.preview_image | default: variant_media_item.image | default: variant_media_item
               assign image_alt = variant_media_item.alt | default: product.title
             -%}
@@ -306,7 +380,9 @@
               <button
                 class="thumbnail global-media-settings global-media-settings--no-shadow"
                 aria-label="{{ 'products.product.media.load_image' | t: index: media_index }}"
-                aria-current="true"
+                {% if media_index == 1 %}
+                  aria-current="true"
+                {% endif %}
                 aria-controls="GalleryViewer-{{ section.id }}"
                 aria-describedby="{{ thumbnail_id }}"
               >
@@ -326,8 +402,8 @@
           {%- else -%}
             {%- for variant_media in variant_media_items -%}
               {%- liquid
-                assign media_index = forloop.index
-                assign media_id = section.id | append: '-variant-' | append: current_variant.id | append: '-' | append: forloop.index
+                assign media_index = media_index | default: 0 | plus: 1
+                assign media_id = section.id | append: '-variant-' | append: selected_variant.id | append: '-' | append: forloop.index
                 assign image = variant_media.preview_image | default: variant_media.image | default: variant_media
                 assign image_alt = variant_media.alt | default: product.title
               -%}
@@ -343,7 +419,7 @@
                 <button
                   class="thumbnail global-media-settings global-media-settings--no-shadow"
                   aria-label="{{ 'products.product.media.load_image' | t: index: media_index }}"
-                  {% if forloop.first %}
+                  {% if media_index == 1 %}
                     aria-current="true"
                   {% endif %}
                   aria-controls="GalleryViewer-{{ section.id }}"
@@ -408,7 +484,7 @@
           </li>
         {%- endif -%}
 
-        {%- unless use_variant_metafield_media -%}
+        {%- unless show_variant_scoped_media -%}
           {%- for media in product.media -%}
             {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
               {%- liquid

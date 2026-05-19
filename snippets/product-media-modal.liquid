@@ -32,13 +32,30 @@
       aria-label="{{ 'products.modal.label' | t }}"
       tabindex="0"
     >
-      {%- if variant_media_items != blank or variant_media_item != blank -%}
+      {%- liquid
+        assign selected_variant = current_variant
+        if selected_variant == blank
+          assign selected_variant = product.selected_or_first_available_variant
+        endif
+
+        assign show_variant_scoped_media = false
+        if use_variant_scoped_media == true
+          assign show_variant_scoped_media = true
+        endif
+      -%}
+
+      {%- if show_variant_scoped_media -%}
+        {%- if selected_variant.featured_media != null -%}
+          {%- assign media = selected_variant.featured_media -%}
+          {%- render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: section.settings.hide_variants -%}
+        {%- endif -%}
+
         {%- if variant_media_item != blank -%}
-          {%- assign media_id = section.id | append: '-variant-' | append: current_variant.id | append: '-1' -%}
+          {%- assign media_id = section.id | append: '-variant-' | append: selected_variant.id | append: '-1' -%}
           {%- render 'tejesta-variant-media-modal-image', media: variant_media_item, media_id: media_id -%}
         {%- else -%}
           {%- for variant_media in variant_media_items -%}
-            {%- assign media_id = section.id | append: '-variant-' | append: current_variant.id | append: '-' | append: forloop.index -%}
+            {%- assign media_id = section.id | append: '-variant-' | append: selected_variant.id | append: '-' | append: forloop.index -%}
             {%- render 'tejesta-variant-media-modal-image', media: variant_media, media_id: media_id -%}
           {%- endfor -%}
         {%- endif -%}
