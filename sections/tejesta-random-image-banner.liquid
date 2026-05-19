@@ -1,0 +1,458 @@
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign full_width = '100vw'
+  assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+
+  if section.settings.image_behavior == 'ambient'
+    assign full_width = '120vw'
+    assign widths = '450, 660, 900, 1320, 1800, 2136, 2400, 3600, 7680'
+  endif
+
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
+
+{%- style -%}
+  #TejestaRandomBanner-{{ section.id }} {
+    visibility: hidden;
+  }
+
+  #TejestaRandomBanner-{{ section.id }}.is-ready {
+    visibility: visible;
+  }
+
+  #TejestaRandomBanner-{{ section.id }} .tejesta-random-banner__option {
+    display: none;
+  }
+
+  #TejestaRandomBanner-{{ section.id }} .tejesta-random-banner__option.is-active {
+    display: block;
+  }
+
+  {%- for block in section.blocks -%}
+    #Banner-{{ section.id }}-{{ block.id }}::after {
+      opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+    }
+
+    {%- if section.settings.image_height == 'adapt' and block.settings.image != blank -%}
+      @media screen and (max-width: 749px) {
+        #Banner-{{ section.id }}-{{ block.id }}::before,
+        #Banner-{{ section.id }}-{{ block.id }} .banner__media::before,
+        #Banner-{{ section.id }}-{{ block.id }}:not(.banner--mobile-bottom) .banner__content::before {
+          padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;
+          content: '';
+          display: block;
+        }
+      }
+
+      @media screen and (min-width: 750px) {
+        #Banner-{{ section.id }}-{{ block.id }}::before,
+        #Banner-{{ section.id }}-{{ block.id }} .banner__media::before {
+          padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;
+          content: '';
+          display: block;
+        }
+      }
+    {%- endif -%}
+  {%- endfor -%}
+{%- endstyle -%}
+
+<noscript>
+  <style>
+    #TejestaRandomBanner-{{ section.id }} {
+      visibility: visible;
+    }
+  </style>
+</noscript>
+
+<div
+  id="TejestaRandomBanner-{{ section.id }}"
+  class="tejesta-random-banner{% if section.settings.show_text_box == false %} section-color--white{% endif %}"
+  data-tejesta-random-banner
+>
+  {%- for block in section.blocks -%}
+    <div
+      class="tejesta-random-banner__option{% if forloop.first %} is-active{% endif %}"
+      data-random-banner-option
+      {{ block.shopify_attributes }}
+    >
+      <div
+        id="Banner-{{ section.id }}-{{ block.id }}"
+        class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }} banner--homepage-image-banner{% if section.settings.show_text_box == false and block.settings.image != blank %} section-color--white{% endif %}{% if section.settings.image_height == 'adapt' and block.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+      >
+        {%- if block.settings.image != blank -%}
+          <div class="banner__media media{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+            {%- assign image_height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio -%}
+            {{
+              block.settings.image
+              | image_url: width: 3840
+              | image_tag:
+                width: block.settings.image.width,
+                height: image_height,
+                sizes: full_width,
+                widths: widths,
+                fetchpriority: fetch_priority
+            }}
+          </div>
+        {%- else -%}
+          <div class="banner__media media placeholder{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+            {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {%- endif -%}
+
+        <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          <div class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
+            {%- if block.settings.heading != blank -%}
+              <h2 class="banner__heading inline-richtext {{ block.settings.heading_size }}">
+                {{ block.settings.heading }}
+              </h2>
+            {%- endif -%}
+
+            {%- if block.settings.text != blank -%}
+              <div class="banner__text rte {{ block.settings.text_style }}">
+                <p>{{ block.settings.text }}</p>
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.button_label != blank -%}
+              <div class="banner__buttons">
+                <a
+                  {% if block.settings.button_link == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.button_link }}"
+                  {% endif %}
+                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                >
+                  {{- block.settings.button_label | escape -}}
+                </a>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- else -%}
+    <div class="tejesta-random-banner__option is-active">
+      <div class="banner banner--large banner--homepage-image-banner banner--desktop-transparent">
+        <div class="banner__media media placeholder">
+          {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      </div>
+    </div>
+  {%- endfor -%}
+</div>
+
+<script>
+  (() => {
+    const section = document.getElementById('TejestaRandomBanner-{{ section.id }}');
+    if (!section) return;
+
+    const options = Array.from(section.querySelectorAll('[data-random-banner-option]'));
+    if (!options.length) return;
+
+    const showOption = (selectedOption) => {
+      options.forEach((option) => {
+        option.classList.toggle('is-active', option === selectedOption);
+      });
+    };
+
+    if (!window.Shopify || !window.Shopify.designMode) {
+      showOption(options[Math.floor(Math.random() * options.length)]);
+      section.classList.add('is-ready');
+      return;
+    }
+
+    section.classList.add('is-ready');
+
+    section.addEventListener('shopify:block:select', (event) => {
+      const selectedOption = event.target.closest('[data-random-banner-option]');
+      if (selectedOption) showOption(selectedOption);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "TEJESTA random hero",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "Image overlay opacity",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Adapt to image"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "large",
+      "label": "Image height"
+    },
+    {
+      "type": "select",
+      "id": "image_behavior",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "ambient",
+          "label": "Ambient movement"
+        },
+        {
+          "value": "fixed",
+          "label": "Fixed background"
+        },
+        {
+          "value": "zoom-in",
+          "label": "Zoom in"
+        }
+      ],
+      "default": "none",
+      "label": "Image behavior"
+    },
+    {
+      "type": "header",
+      "content": "Content layout"
+    },
+    {
+      "type": "select",
+      "id": "desktop_content_position",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "Top left"
+        },
+        {
+          "value": "top-center",
+          "label": "Top center"
+        },
+        {
+          "value": "top-right",
+          "label": "Top right"
+        },
+        {
+          "value": "middle-left",
+          "label": "Middle left"
+        },
+        {
+          "value": "middle-center",
+          "label": "Middle center"
+        },
+        {
+          "value": "middle-right",
+          "label": "Middle right"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom left"
+        },
+        {
+          "value": "bottom-center",
+          "label": "Bottom center"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom right"
+        }
+      ],
+      "default": "bottom-left",
+      "label": "Desktop content position"
+    },
+    {
+      "type": "select",
+      "id": "desktop_content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left",
+      "label": "Desktop content alignment"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text_box",
+      "default": false,
+      "label": "Show content box"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "select",
+      "id": "mobile_content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Mobile content alignment"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text_below",
+      "default": true,
+      "label": "Show text below image on mobile"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hero_option",
+      "name": "Hero option",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "New Releases",
+          "label": "Heading"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "Small"
+            },
+            {
+              "value": "h1",
+              "label": "Medium"
+            },
+            {
+              "value": "h0",
+              "label": "Large"
+            },
+            {
+              "value": "hxl",
+              "label": "Extra large"
+            },
+            {
+              "value": "hxxl",
+              "label": "Extra extra large"
+            }
+          ],
+          "default": "h0",
+          "label": "Heading size"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "default": "The Hopper - low, lean, and unscripted",
+          "label": "Text"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            {
+              "value": "body",
+              "label": "Body"
+            },
+            {
+              "value": "subtitle",
+              "label": "Subtitle"
+            },
+            {
+              "value": "caption-with-letter-spacing",
+              "label": "Caption"
+            }
+          ],
+          "default": "body",
+          "label": "Text style"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "SEE FOR YOURSELF",
+          "label": "Button label",
+          "info": "Leave blank to hide the button."
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary",
+          "default": true,
+          "label": "Use outline button"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "TEJESTA random hero",
+      "blocks": [
+        {
+          "type": "hero_option"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

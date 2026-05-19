@@ -10,41 +10,26 @@
 {
   "sections": {
     "image_banner": {
-      "type": "image-banner",
+      "type": "tejesta-random-image-banner",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "hero_option_current": {
+          "type": "hero_option",
           "settings": {
+            "image": "shopify://shop_images/hero.jpg",
             "heading": "New Releases",
-            "heading_size": "h0"
-          }
-        },
-        "text_eHtHBW": {
-          "type": "text",
-          "settings": {
+            "heading_size": "h0",
             "text": "The Hopper - low, lean, and unscripted",
-            "text_style": "body"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "SEE FOR YOURSELF",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "text_style": "body",
+            "button_label": "SEE FOR YOURSELF",
+            "button_link": "shopify://collections/all",
+            "button_style_secondary": true
           }
         }
       },
       "block_order": [
-        "heading",
-        "text_eHtHBW",
-        "button"
+        "hero_option_current"
       ],
       "settings": {
-        "image": "shopify://shop_images/hero.jpg",
         "image_overlay_opacity": 0,
         "image_height": "large",
         "image_behavior": "none",
@@ -52,7 +37,6 @@
         "desktop_content_alignment": "left",
         "show_text_box": false,
         "color_scheme": "scheme-1",
-        "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": true
       }
