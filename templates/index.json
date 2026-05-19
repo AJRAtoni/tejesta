@@ -46,7 +46,7 @@
       "settings": {
         "image": "shopify://shop_images/hero.jpg",
         "image_overlay_opacity": 0,
-        "image_height": "large",
+        "image_height": "adapt",
         "image_behavior": "none",
         "desktop_content_position": "bottom-left",
         "desktop_content_alignment": "left",
@@ -175,7 +175,7 @@
       "settings": {
         "image": "shopify://shop_images/artesania-banner.jpg",
         "image_overlay_opacity": 0,
-        "image_height": "large",
+        "image_height": "adapt",
         "image_behavior": "none",
         "desktop_content_position": "middle-left",
         "desktop_content_alignment": "left",
