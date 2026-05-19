@@ -12,6 +12,19 @@
     "image_banner": {
       "type": "tejesta-random-image-banner",
       "blocks": {
+        "hero_option_rJWXCi": {
+          "type": "hero_option",
+          "settings": {
+            "image": "shopify://shop_images/sun_collection.webp",
+            "heading": "New Releases",
+            "heading_size": "h0",
+            "text": "The Hopper - low, lean, and unscripted",
+            "text_style": "body",
+            "button_label": "SEE FOR YOURSELF",
+            "button_link": "",
+            "button_style_secondary": true
+          }
+        },
         "hero_option_CKN7xG": {
           "type": "hero_option",
           "settings": {
@@ -40,6 +53,7 @@
         }
       },
       "block_order": [
+        "hero_option_rJWXCi",
         "hero_option_CKN7xG",
         "hero_option_current"
       ],
