@@ -2371,7 +2371,7 @@ input[type='checkbox'] {
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
 }
 
-.section-header:has(.header-wrapper--homepage-overlay) {
+.section-header:has(.header-wrapper--transparent) {
   position: sticky;
   top: 0;
   left: 0;
@@ -2380,35 +2380,35 @@ input[type='checkbox'] {
   margin-bottom: calc(-1 * var(--header-height, 7.6rem));
 }
 
-.header-wrapper.header-wrapper--homepage-overlay,
-.header-wrapper.header-wrapper--homepage-overlay.gradient {
-  --tejesta-header-color: #fff;
+.header-wrapper.header-wrapper--transparent,
+.header-wrapper.header-wrapper--transparent.gradient {
+  --tejesta-header-color: #121212;
   background: transparent;
   background-color: transparent;
   color: var(--tejesta-header-color);
 }
 
-.header-wrapper--homepage-overlay.header-wrapper--border-bottom {
+.header-wrapper--transparent.header-wrapper--border-bottom {
   border-bottom: 0;
 }
 
-.header-wrapper--homepage-overlay .header {
+.header-wrapper--transparent .header {
   color: var(--tejesta-header-color);
 }
 
-.header-wrapper--homepage-overlay .header__heading-link,
-.header-wrapper--homepage-overlay .header__heading-link .h2,
-.header-wrapper--homepage-overlay .header__menu-item,
-.header-wrapper--homepage-overlay .header__active-menu-item,
-.header-wrapper--homepage-overlay .header__icon,
-.header-wrapper--homepage-overlay .header__search,
-.header-wrapper--homepage-overlay .localization-form__select {
+.header-wrapper--transparent .header__heading-link,
+.header-wrapper--transparent .header__heading-link .h2,
+.header-wrapper--transparent .header__menu-item,
+.header-wrapper--transparent .header__active-menu-item,
+.header-wrapper--transparent .header__icon,
+.header-wrapper--transparent .header__search,
+.header-wrapper--transparent .localization-form__select {
   color: var(--tejesta-header-color);
 }
 
-.header-wrapper--homepage-overlay .header__heading-link:hover .h2,
-.header-wrapper--homepage-overlay .header__menu-item:hover,
-.header-wrapper--homepage-overlay .header__menu-item:hover span {
+.header-wrapper--transparent .header__heading-link:hover .h2,
+.header-wrapper--transparent .header__menu-item:hover,
+.header-wrapper--transparent .header__menu-item:hover span {
   color: var(--tejesta-header-color);
 }
 
