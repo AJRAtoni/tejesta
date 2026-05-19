@@ -526,10 +526,10 @@
 }
 
 .tejesta-footer__heading {
-  margin: 0 0 1rem;
+  margin: 0 0 1.2rem;
   color: rgb(var(--color-foreground));
   font-family: var(--font-body-family);
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.3;
@@ -538,7 +538,7 @@
 
 .tejesta-footer__list {
   display: grid;
-  gap: 0.45rem;
+  gap: 0.55rem;
   margin: 0;
   padding: 0;
 }
@@ -551,7 +551,7 @@
 
 .tejesta-footer__list a {
   display: inline-block;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   line-height: 1.45;
 }
 
@@ -568,7 +568,7 @@
 .tejesta-footer__field {
   display: grid;
   grid-template-columns: 1fr auto;
-  min-height: 3.2rem;
+  min-height: 4.2rem;
   border: 0.1rem solid rgba(var(--color-foreground), 0.62);
   background: transparent;
 }
@@ -581,14 +581,14 @@
   background: transparent;
   color: rgb(var(--color-foreground));
   font: inherit;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   line-height: 1.2;
   appearance: none;
 }
 
 .tejesta-footer__input {
   width: 100%;
-  padding: 0.8rem 1rem;
+  padding: 1rem 1.2rem;
 }
 
 .tejesta-footer__input::placeholder {
@@ -604,7 +604,7 @@
 }
 
 .tejesta-footer__submit {
-  padding: 0.8rem 1.1rem;
+  padding: 1rem 1.3rem;
   cursor: pointer;
   text-align: center;
 }
@@ -617,7 +617,7 @@
   display: block;
   margin: 1rem 0 0;
   color: rgb(var(--color-foreground));
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   line-height: 1.4;
 }
 
