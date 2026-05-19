@@ -112,8 +112,8 @@
 
 {% liquid
   assign header_tag = 'div'
-  assign fallback_logo_asset = 'tejesta-logo-black.svg'
 
+  assign fallback_logo_asset = 'tejesta-logo-black.svg'
   if request.page_type == 'index'
     assign fallback_logo_asset = 'tejesta-logo-white.svg'
   endif
@@ -156,8 +156,19 @@
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
-      <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-        {%- if settings.logo != blank -%}
+      <a
+        href="{{ routes.root_url }}"
+        aria-label="{{ shop.name | escape }}"
+        class="header__heading-link link link--text focus-inset"
+        data-tejesta-dynamic-logo
+        data-logo-primary="#121212"
+        data-logo-secondary="#ffffff"
+      >
+        {%- if request.page_type == 'index' -%}
+          <span class="header__heading-logo-wrapper header__heading-logo-wrapper--fallback-logo">
+            {% render 'tejesta-logo-gradient' %}
+          </span>
+        {%- elsif settings.logo != blank -%}
           <div class="header__heading-logo-wrapper">
             {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
             {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
@@ -208,8 +219,19 @@
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
-      <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-        {%- if settings.logo != blank -%}
+      <a
+        href="{{ routes.root_url }}"
+        aria-label="{{ shop.name | escape }}"
+        class="header__heading-link link link--text focus-inset"
+        data-tejesta-dynamic-logo
+        data-logo-primary="#121212"
+        data-logo-secondary="#ffffff"
+      >
+        {%- if request.page_type == 'index' -%}
+          <span class="header__heading-logo-wrapper header__heading-logo-wrapper--fallback-logo">
+            {% render 'tejesta-logo-gradient' %}
+          </span>
+        {%- elsif settings.logo != blank -%}
           <div class="header__heading-logo-wrapper">
             {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
             {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
@@ -367,6 +389,17 @@
       window.addEventListener('scroll', this.onScrollHandler, false);
 
       this.createObserver();
+      this.logo = this.querySelector('[data-tejesta-dynamic-logo]');
+      this.logoGradient = this.logo?.querySelector('#tejesta-logo-gradient');
+      this.logoGradientStops = this.logoGradient ? Array.from(this.logoGradient.querySelectorAll('stop')) : [];
+      this.sections = Array.from(document.querySelector('#MainContent')?.querySelectorAll('.shopify-section') || []);
+      this.updateLogoColorHandler = this.updateLogoColor.bind(this);
+
+      if (this.logo && this.logoGradientStops.length === 4 && this.sections.length > 0) {
+        window.addEventListener('scroll', this.updateLogoColorHandler, { passive: true });
+        window.addEventListener('resize', this.updateLogoColorHandler);
+        requestAnimationFrame(this.updateLogoColorHandler);
+      }
     }
 
     setHeaderHeight() {
@@ -376,6 +409,8 @@
     disconnectedCallback() {
       this.removeEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
       window.removeEventListener('scroll', this.onScrollHandler);
+      window.removeEventListener('scroll', this.updateLogoColorHandler);
+      window.removeEventListener('resize', this.updateLogoColorHandler);
     }
 
     createObserver() {
@@ -385,6 +420,60 @@
       });
 
       observer.observe(this.header);
+    }
+
+    sectionUsesLightHeader(section) {
+      return section.classList.contains('section-color--white') || section.querySelector('.section-color--white') !== null;
+    }
+
+    setLogoGradient(primaryColor, secondaryColor = primaryColor, splitOffset = '50%') {
+      this.logoGradientStops[0].setAttribute('stop-color', primaryColor);
+      this.logoGradientStops[1].setAttribute('stop-color', primaryColor);
+      this.logoGradientStops[2].setAttribute('stop-color', secondaryColor);
+      this.logoGradientStops[3].setAttribute('stop-color', secondaryColor);
+      this.logoGradientStops[1].setAttribute('offset', splitOffset);
+      this.logoGradientStops[2].setAttribute('offset', splitOffset);
+      this.style.setProperty('--tejesta-header-color', primaryColor);
+    }
+
+    getSectionLogoColor(section) {
+      return this.sectionUsesLightHeader(section) ? this.logo.dataset.logoSecondary : this.logo.dataset.logoPrimary;
+    }
+
+    updateLogoColor() {
+      const primaryColor = this.logo.dataset.logoPrimary;
+      const logoRect = this.logo.getBoundingClientRect();
+      const logoStart = logoRect.top + window.scrollY;
+      const logoEnd = logoStart + this.logo.offsetHeight;
+      const logoCenter = logoStart + this.logo.offsetHeight / 2;
+
+      for (let index = 0; index < this.sections.length; index++) {
+        const section = this.sections[index];
+        const sectionStart = section.getBoundingClientRect().top + window.scrollY;
+        const sectionEnd = sectionStart + section.offsetHeight;
+
+        if (logoEnd < sectionStart || logoStart > sectionEnd) {
+          continue;
+        }
+
+        const currentColor = this.getSectionLogoColor(section);
+        const nextSection = this.sections[index + 1];
+
+        if (sectionEnd >= logoEnd || !nextSection) {
+          this.setLogoGradient(currentColor);
+          return;
+        }
+
+        const nextColor = this.getSectionLogoColor(nextSection);
+        const splitOffset = `${Math.max(0, Math.min(100, 100 - ((logoEnd - sectionEnd) / this.logo.offsetHeight) * 100))}%`;
+        const headerColor = logoCenter <= sectionEnd ? currentColor : nextColor;
+
+        this.setLogoGradient(currentColor, nextColor, splitOffset);
+        this.style.setProperty('--tejesta-header-color', headerColor);
+        return;
+      }
+
+      this.setLogoGradient(primaryColor);
     }
 
     onScroll() {
