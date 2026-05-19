@@ -2684,7 +2684,7 @@ menu-drawer + .header__search {
   grid-area: left-icons;
 }
 
-.header:not(.header--has-menu) * > .header__search {
+.header:not(.header--has-menu) > .header__search {
   display: none;
 }
 
@@ -2702,13 +2702,11 @@ menu-drawer + .header__search {
 }
 
 @media screen and (min-width: 990px) {
-  .header:not(.header--top-center) * > .header__search,
-  .header--top-center > .header__search {
+  .header__icons > .header__search {
     display: inline-flex;
   }
 
-  .header:not(.header--top-center) > .header__search,
-  .header--top-center * > .header__search {
+  .header > .header__search {
     display: none;
   }
 }
