@@ -21,7 +21,7 @@
             "text": "The Hopper - low, lean, and unscripted",
             "text_style": "body",
             "button_label": "SEE FOR YOURSELF",
-            "button_link": "",
+            "button_link": "shopify://collections",
             "button_style_secondary": true
           }
         },
