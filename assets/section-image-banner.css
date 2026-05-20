@@ -466,6 +466,11 @@
   word-break: break-word;
 }
 
+.banner__buttons--homepage-cta {
+  box-sizing: border-box;
+  inline-size: min(35rem,100%);
+}
+
 @media screen and (max-width: 749px) {
   .banner--content-align-mobile-right .banner__buttons--multiple {
     justify-content: flex-end;

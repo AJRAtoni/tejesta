@@ -1316,7 +1316,7 @@ button.shopify-payment-button__button--unbranded {
 
 .button--homepage-cta {
   box-sizing: border-box;
-  inline-size: min(29rem, 100%);
+  inline-size: min(35rem,100%);
   min-height: calc(5.2rem + var(--buttons-border-width) * 2);
   padding-inline: 4rem;
   white-space: nowrap;
