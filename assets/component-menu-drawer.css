@@ -264,3 +264,7 @@ header-drawer .menu-drawer__navigation {
 details[open] > .header__icon--menu .icon-close {
   z-index: 4;
 }
+
+.header-wrapper--homepage-overlay details[open] > .header__icon--menu .icon-close {
+  color: #121212;
+}
