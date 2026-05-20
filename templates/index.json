@@ -186,6 +186,7 @@
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "image": "shopify://shop_images/artesania-banner.jpg",
+        "section_width": "full_width",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "image_behavior": "none",
@@ -234,7 +235,6 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/materials-banner.jpg",
         "section_width": "page_width",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
