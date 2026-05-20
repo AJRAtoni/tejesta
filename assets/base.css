@@ -1314,6 +1314,12 @@ button.shopify-payment-button__button--unbranded {
   padding: 1.2rem 2.6rem;
 }
 
+.button--homepage-cta {
+  box-sizing: border-box;
+  inline-size: min(22rem, 100%);
+  white-space: nowrap;
+}
+
 /* Shopify Accelerated Checkout */
 
 shopify-accelerated-checkout {
