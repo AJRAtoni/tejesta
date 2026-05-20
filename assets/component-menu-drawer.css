@@ -255,32 +255,6 @@ header-drawer .menu-drawer {
   position: fixed;
   top: 0;
   height: calc(var(--viewport-height, 100vh));
-  background-color: #000000;
-  color: #ffffff;
-}
-
-header-drawer .menu-drawer__submenu {
-  background-color: #000000;
-}
-
-header-drawer .menu-drawer__menu-item,
-header-drawer .menu-drawer__close-button,
-header-drawer .menu-drawer__account,
-header-drawer .menu-drawer .list-social__link {
-  color: #ffffff;
-}
-
-header-drawer .menu-drawer__menu-item--active,
-header-drawer .menu-drawer__menu-item:focus,
-header-drawer .menu-drawer__close-button:focus,
-header-drawer .menu-drawer__menu-item:hover,
-header-drawer .menu-drawer__close-button:hover {
-  color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.08);
-}
-
-header-drawer .menu-drawer__menu-item--active:hover {
-  background-color: rgba(255, 255, 255, 0.12);
 }
 
 header-drawer .menu-drawer__navigation {
