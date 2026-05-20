@@ -241,3 +241,28 @@ details[open].menu-opening > .menu-drawer__submenu {
     transition: none !important;
   }
 }
+
+.js header-drawer > details > summary::before,
+.js header-drawer > details[open]:not(.menu-opening) > summary::before,
+header-drawer .header__icon--menu[aria-expanded='true']::before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  height: var(--viewport-height, 100vh);
+}
+
+header-drawer .menu-drawer {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  height: var(--viewport-height, 100vh);
+}
+
+header-drawer .menu-drawer__navigation {
+  padding-top: calc(var(--header-height, 7.6rem) + 3rem);
+}
+
+details[open] > .header__icon--menu .icon-close {
+  z-index: 4;
+}
