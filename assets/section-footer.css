@@ -644,6 +644,7 @@
 .tejesta-footer__instagram .icon {
   width: 3.6rem;
   height: 3.6rem;
+  transform: translateX(0.36rem);
 }
 
 @media screen and (max-width: 749px) {
