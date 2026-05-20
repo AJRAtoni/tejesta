@@ -298,6 +298,12 @@
     padding-inline: 5rem;
   }
 
+  .banner--page-width.banner--homepage-image-banner .banner__box {
+    width: min(43rem, 100%);
+    min-width: 0;
+    max-width: 43rem;
+  }
+
   .banner__content--top-left {
     align-items: flex-start;
     justify-content: flex-start;
