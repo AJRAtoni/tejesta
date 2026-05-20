@@ -6,7 +6,19 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Akkurat';
+  src: url('Akkurat.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
+  --font-body-family: 'Akkurat', Arial, sans-serif;
+  --font-body-style: normal;
+  --font-body-weight: 400;
+  --font-body-weight-bold: 700;
   --font-heading-family: 'Moret Book', Georgia, serif;
   --font-heading-style: normal;
   --font-heading-weight: 400;
