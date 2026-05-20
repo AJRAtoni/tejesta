@@ -276,6 +276,11 @@
   z-index: 2;
 }
 
+.banner--homepage-image-banner .banner__content.page-width {
+  width: calc(100% - 13rem);
+  margin-inline: auto;
+}
+
 .banner--page-width .banner__content.page-width {
   width: 100%;
 }
