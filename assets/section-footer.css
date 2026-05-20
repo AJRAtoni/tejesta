@@ -629,20 +629,20 @@
 .tejesta-footer__bottom {
   display: flex;
   justify-content: flex-end;
-  margin-top: 4.2rem;
+  margin-top: 5rem;
 }
 
 .tejesta-footer__instagram {
   display: inline-flex;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 4.8rem;
+  height: 4.8rem;
   align-items: center;
   justify-content: center;
 }
 
 .tejesta-footer__instagram .icon {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 3.6rem;
+  height: 3.6rem;
 }
 
 @media screen and (max-width: 749px) {

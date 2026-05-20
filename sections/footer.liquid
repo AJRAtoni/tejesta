@@ -46,7 +46,7 @@
       </nav>
 
       <div class="tejesta-footer__newsletter">
-        <h2 class="tejesta-footer__heading">Stay Connected</h2>
+        <h2 class="tejesta-footer__heading">STAY CONNECTED</h2>
         {%- form 'customer', id: 'ContactFooter', class: 'tejesta-footer__form' -%}
           <input type="hidden" name="contact[tags]" value="newsletter">
           <div class="tejesta-footer__field">
@@ -89,19 +89,19 @@
             </h3>
           {%- endif -%}
         {%- endform -%}
-      </div>
-    </div>
 
-    <div class="tejesta-footer__bottom">
-      <a
-        class="tejesta-footer__instagram"
-        href="{{ settings.social_instagram_link | default: 'https://www.instagram.com/tejesta/' }}"
-        aria-label="{{ 'general.social.links.instagram' | t }}"
-        target="_blank"
-        rel="noopener"
-      >
-        {{- 'icon-instagram.svg' | inline_asset_content -}}
-      </a>
+        <div class="tejesta-footer__bottom">
+          <a
+            class="tejesta-footer__instagram"
+            href="{{ settings.social_instagram_link | default: 'https://www.instagram.com/tejesta/' }}"
+            aria-label="{{ 'general.social.links.instagram' | t }}"
+            target="_blank"
+            rel="noopener"
+          >
+            {{- 'icon-instagram.svg' | inline_asset_content -}}
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
