@@ -276,9 +276,17 @@
   z-index: 2;
 }
 
+.banner--page-width .banner__content.page-width {
+  width: 100%;
+}
+
 @media screen and (min-width: 750px) {
   .banner__content {
     padding: 5rem;
+  }
+
+  .banner--homepage-image-banner .banner__content.page-width {
+    padding-inline: 0;
   }
 
   .banner__content--top-left {
