@@ -204,22 +204,22 @@
         "heading_PRpGJh": {
           "type": "heading",
           "settings": {
-            "heading": "Artesanía",
+            "heading": "Materials",
             "heading_size": "h0"
           }
         },
         "text_x8tYp7": {
           "type": "text",
           "settings": {
-            "text": "A word that echoes with the essence of craft and heritage.",
+            "text": "Every element has been meticulously selected and decisively sourced, ensuring each material becomes a spectacle in itself.",
             "text_style": "body"
           }
         },
         "buttons_WDDytk": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "SHOP THE COLLECTION",
-            "button_link_1": "shopify://collections/sun",
+            "button_label_1": "LEARN MORE",
+            "button_link_1": "shopify://pages/materials",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -234,7 +234,8 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/artesania-banner.jpg",
+        "image": "shopify://shop_images/materials-banner.jpg",
+        "section_width": "page_width",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "image_behavior": "none",

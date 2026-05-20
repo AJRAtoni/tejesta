@@ -30,6 +30,11 @@
 {%- endstyle -%}
 
 {%- liquid
+  assign is_page_width = false
+  if section.settings.section_width == 'page_width'
+    assign is_page_width = true
+  endif
+
   assign full_width = '100vw'
   assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
 
@@ -50,6 +55,10 @@
     assign fetch_priority = 'high'
   endif
 -%}
+
+{%- if is_page_width -%}
+  <div class="image-banner-page-width page-width">
+{%- endif -%}
 
 <div
   id="Banner-{{ section.id }}"
@@ -166,6 +175,10 @@
   </div>
 </div>
 
+{%- if is_page_width -%}
+  </div>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "t:sections.image-banner.name",
@@ -184,6 +197,22 @@
       "type": "image_picker",
       "id": "image_2",
       "label": "t:sections.image-banner.settings.image_2.label"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "options": [
+        {
+          "value": "full_width",
+          "label": "Full width"
+        },
+        {
+          "value": "page_width",
+          "label": "Page width"
+        }
+      ],
+      "default": "full_width"
     },
     {
       "type": "range",
