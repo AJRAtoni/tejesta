@@ -294,6 +294,10 @@
     padding-inline: 0;
   }
 
+  .banner--page-width.banner--homepage-image-banner .banner__content.page-width {
+    padding-inline: 5rem;
+  }
+
   .banner__content--top-left {
     align-items: flex-start;
     justify-content: flex-start;
