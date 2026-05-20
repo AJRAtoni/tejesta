@@ -248,15 +248,13 @@ header-drawer .header__icon--menu[aria-expanded='true']::before {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
-  height: var(--viewport-height, 100vh);
+  height: calc(var(--viewport-height, 100vh));
 }
 
 header-drawer .menu-drawer {
   position: fixed;
   top: 0;
-  height: 100vh;
-  height: var(--viewport-height, 100vh);
+  height: calc(var(--viewport-height, 100vh));
   background-color: #000000;
   color: #ffffff;
 }
