@@ -59,17 +59,10 @@
 {%- if is_page_width -%}
   {%- style -%}
     #Banner-{{ section.id }}.banner--page-width {
-      width: calc(100% - 3rem);
-      max-width: calc(var(--page-width) - 3rem);
+      width: calc(100% - 5rem);
+      max-width: calc(var(--page-width) - 5rem);
       margin-inline: auto;
       margin-block-start: 52px;
-    }
-
-    @media screen and (min-width: 750px) {
-      #Banner-{{ section.id }}.banner--page-width {
-        width: calc(100% - 10rem);
-        max-width: calc(var(--page-width) - 10rem);
-      }
     }
   {%- endstyle -%}
 {%- endif -%}
