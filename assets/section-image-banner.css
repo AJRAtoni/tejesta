@@ -188,6 +188,11 @@
   width: 100%;
 }
 
+.banner__media--video video {
+  object-fit: cover;
+  object-position: center center;
+}
+
 .banner__media-half {
   width: 50%;
 }
