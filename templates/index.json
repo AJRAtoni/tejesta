@@ -59,14 +59,14 @@
       ],
       "settings": {
         "image_overlay_opacity": 0,
-        "image_height": "large",
+        "image_height": "full-screen",
         "image_behavior": "none",
         "desktop_content_position": "bottom-left",
         "desktop_content_alignment": "left",
         "show_text_box": false,
         "color_scheme": "scheme-1",
         "mobile_content_alignment": "center",
-        "show_text_below": true
+        "show_text_below": false
       }
     },
     "image_with_text_kWB7VV": {
