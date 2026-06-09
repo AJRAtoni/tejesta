@@ -3,6 +3,7 @@
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'tejesta-collection.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'tejesta-collection-variants.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'tejesta-collection-filters.js' | asset_url }}" defer="defer"></script>
 
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
@@ -100,22 +101,14 @@
     {%- endif -%}
 
     <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
-      {{ 'component-facets.css' | asset_url | stylesheet_tag }}
-      <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
-      {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+      {%- if section.settings.enable_filtering -%}
         <aside
-          aria-labelledby="verticalTitle"
-          class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
+          aria-label="Collection filters"
+          class="tejesta-filters-wrapper"
           id="main-collection-filters"
           data-id="{{ section.id }}"
         >
-          {% render 'facets',
-            results: collection,
-            enable_filtering: section.settings.enable_filtering,
-            enable_sorting: section.settings.enable_sorting,
-            filter_type: section.settings.filter_type,
-            paginate: paginate
-          %}
+          {% render 'tejesta-collection-filters', results: collection %}
         </aside>
       {%- endif -%}
 
@@ -160,8 +153,144 @@
                 {%- if forloop.index > 2 -%}
                   {%- assign lazy_load = true -%}
                 {%- endif -%}
+                {%- liquid
+                  assign tejesta_filter_style = product.title | upcase | strip
+                  assign tejesta_filter_collection = 'other'
+                  assign tejesta_filter_material = 'all'
+                  assign tejesta_filter_size = 'all'
+                  assign tejesta_filter_shape = 'all'
+
+                  case tejesta_filter_style
+                    when 'DIXON'
+                      assign tejesta_filter_collection = 'vaquero'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'small'
+                      assign tejesta_filter_shape = 'geometric'
+                    when 'RAY'
+                      assign tejesta_filter_collection = 'raygeraki'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'medium'
+                      assign tejesta_filter_shape = 'cat-eye'
+                    when 'GERONIMO'
+                      assign tejesta_filter_collection = 'raygeraki'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'medium'
+                      assign tejesta_filter_shape = 'square'
+                    when 'COMANCHE'
+                      assign tejesta_filter_collection = 'vaquero'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'medium'
+                      assign tejesta_filter_shape = 'rectangular'
+                    when 'ARAKI'
+                      assign tejesta_filter_collection = 'raygeraki'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'small'
+                      assign tejesta_filter_shape = 'geometric'
+                    when 'PARKER'
+                      assign tejesta_filter_collection = 'vaquero'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'medium'
+                      assign tejesta_filter_shape = 'rectangular'
+                    when 'CRAZY HORSE'
+                      assign tejesta_filter_collection = 'vaquero'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'small'
+                      assign tejesta_filter_shape = 'circular'
+                    when 'JPG'
+                      assign tejesta_filter_collection = 'other'
+                      assign tejesta_filter_material = 'metal'
+                      assign tejesta_filter_size = 'small'
+                      assign tejesta_filter_shape = 'oval'
+                    when 'CHACON'
+                      assign tejesta_filter_collection = 'artesania'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'medium'
+                      assign tejesta_filter_shape = 'round'
+                    when 'SEMINOLE'
+                      assign tejesta_filter_collection = 'artesania'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'large'
+                      assign tejesta_filter_shape = 'rectangular'
+                    when 'CURTIS'
+                      assign tejesta_filter_collection = 'artesania'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'medium'
+                      assign tejesta_filter_shape = 'rectangular'
+                    when 'TUTTLE'
+                      assign tejesta_filter_collection = 'artesania'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'small'
+                      assign tejesta_filter_shape = 'cat-eye'
+                    when 'KEEFFE'
+                      assign tejesta_filter_collection = 'artesania'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'medium'
+                      assign tejesta_filter_shape = 'square'
+                    when 'OSCEOLA'
+                      assign tejesta_filter_collection = 'artesania'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'large'
+                      assign tejesta_filter_shape = 'square'
+                    when 'HOPPER'
+                      assign tejesta_filter_collection = 'winter-2025'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'medium'
+                      assign tejesta_filter_shape = 'wrap'
+                    when 'NOKONI'
+                      assign tejesta_filter_collection = 'winter-2025'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'medium'
+                      assign tejesta_filter_shape = 'rectangular'
+                    when 'LENNON'
+                      assign tejesta_filter_collection = 'artesania'
+                      assign tejesta_filter_material = 'metal'
+                      assign tejesta_filter_size = 'small'
+                      assign tejesta_filter_shape = 'round'
+                    when 'ANNIE-O'
+                      assign tejesta_filter_collection = 'artesania'
+                      assign tejesta_filter_material = 'metal'
+                      assign tejesta_filter_size = 'medium'
+                      assign tejesta_filter_shape = 'circular'
+                    when 'SIXTO'
+                      assign tejesta_filter_collection = 'artesania'
+                      assign tejesta_filter_material = 'metal'
+                      assign tejesta_filter_size = 'medium'
+                      assign tejesta_filter_shape = 'square'
+                    when 'SHIPROCK'
+                      assign tejesta_filter_collection = 'other'
+                      assign tejesta_filter_material = 'metal'
+                      assign tejesta_filter_size = 'small'
+                      assign tejesta_filter_shape = 'aviator'
+                    when 'TAIGA'
+                      assign tejesta_filter_collection = 'collection-7'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'large'
+                      assign tejesta_filter_shape = 'rectangular'
+                    when 'ERTE'
+                      assign tejesta_filter_collection = 'collection-7'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'medium'
+                      assign tejesta_filter_shape = 'rectangular'
+                    when 'NINETY'
+                      assign tejesta_filter_collection = 'collection-7'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'small'
+                      assign tejesta_filter_shape = 'oval'
+                    when 'HOPKINS'
+                      assign tejesta_filter_collection = 'collection-7'
+                      assign tejesta_filter_material = 'acetate'
+                      assign tejesta_filter_size = 'medium'
+                      assign tejesta_filter_shape = 'cat-eye'
+                  endcase
+                -%}
                 <li
                   class="grid__item tejesta-collection-grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                  data-tejesta-filter-card
+                  data-tejesta-filter-style="{{ tejesta_filter_style | handleize }}"
+                  data-tejesta-filter-collection="{{ tejesta_filter_collection }}"
+                  data-tejesta-filter-material="{{ tejesta_filter_material }}"
+                  data-tejesta-filter-size="{{ tejesta_filter_size }}"
+                  data-tejesta-filter-shape="{{ tejesta_filter_shape }}"
                   {% if settings.animations_reveal_on_scroll %}
                     data-cascade
                     style="--animation-order: {{ forloop.index }};"

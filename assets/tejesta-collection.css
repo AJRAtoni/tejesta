@@ -2,6 +2,111 @@
   position: relative;
 }
 
+.tejesta-filters-wrapper {
+  margin-bottom: 2.4rem;
+}
+
+.tejesta-filter-shell {
+  --tejesta-filter-border: rgba(var(--color-foreground), 0.88);
+  margin-bottom: 1.6rem;
+}
+
+.tejesta-filter-mobile-bar,
+.tejesta-filter-panel__header,
+.tejesta-filter-apply {
+  display: none;
+}
+
+.tejesta-filter-controls {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2.4rem;
+}
+
+.tejesta-filter {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 1.2rem;
+  border-bottom: 1px solid var(--tejesta-filter-border);
+}
+
+.tejesta-filter__label {
+  margin: 0;
+  padding-bottom: 0.7rem;
+  flex: 0 0 auto;
+  color: rgb(var(--color-foreground));
+  font-size: 1.1rem;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tejesta-filter__select {
+  width: 100%;
+  min-height: 3.4rem;
+  padding: 0 2.2rem 0.7rem 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  appearance: auto;
+}
+
+.tejesta-filter__select:focus-visible {
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.45);
+  outline-offset: 0.2rem;
+}
+
+.tejesta-filter-result-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.6rem;
+  min-height: 2.7rem;
+  margin-top: 1.4rem;
+  color: rgb(var(--color-foreground));
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tejesta-filter-reset,
+.tejesta-filter-tag {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+  cursor: pointer;
+}
+
+.tejesta-filter-tags {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.8rem 1.8rem;
+}
+
+.tejesta-filter-tag::before {
+  content: "×";
+  margin-right: 0.55rem;
+}
+
+.tejesta-filter-card--hidden {
+  display: none !important;
+}
+
 .tejesta-collection-card {
   position: relative;
   height: 100%;
@@ -177,6 +282,96 @@
 }
 
 @media screen and (max-width: 989px) {
+  .tejesta-filter-open {
+    overflow: hidden;
+  }
+
+  .tejesta-filter-mobile-bar {
+    display: block;
+  }
+
+  .tejesta-filter-refine {
+    width: 100%;
+    min-height: 5.6rem;
+    border-color: rgb(var(--color-foreground));
+    text-transform: uppercase;
+  }
+
+  .tejesta-filter-tags {
+    margin-top: 1.2rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .tejesta-filter-panel {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    padding: 2.4rem;
+    background: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(1.2rem);
+    pointer-events: none;
+    transition: opacity 180ms ease, visibility 180ms ease, transform 180ms ease;
+  }
+
+  .tejesta-filter-panel.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .tejesta-filter-panel__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.4rem;
+  }
+
+  .tejesta-filter-panel__title {
+    margin: 0;
+    font-size: 2.2rem;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .tejesta-filter-panel__close {
+    width: 4rem;
+    height: 4rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: rgb(var(--color-foreground));
+    font-size: 3rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .tejesta-filter-controls {
+    display: block;
+  }
+
+  .tejesta-filter {
+    margin-bottom: 1.8rem;
+  }
+
+  .tejesta-filter-apply {
+    display: block;
+    width: 100%;
+    margin-top: auto;
+    text-transform: uppercase;
+  }
+
+  .tejesta-filter-result-info {
+    justify-content: flex-start;
+  }
+
   .tejesta-collection-card {
     padding-bottom: 1rem;
     height: auto;
