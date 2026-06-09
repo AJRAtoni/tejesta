@@ -154,7 +154,7 @@
                   {%- assign lazy_load = true -%}
                 {%- endif -%}
                 {%- liquid
-                  assign tejesta_filter_style = product.title | upcase | strip
+                  assign tejesta_filter_style = product.title | upcase | remove: ' RX' | strip
                   assign tejesta_filter_collection = 'other'
                   assign tejesta_filter_material = 'all'
                   assign tejesta_filter_size = 'all'
@@ -336,7 +336,7 @@
       "type": "range",
       "id": "products_per_page",
       "min": 8,
-      "max": 36,
+      "max": 60,
       "step": 4,
       "default": 16,
       "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
