@@ -11,19 +11,38 @@
   {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
 {% endcomment %}
 <div {{ block.shopify_attributes }}>
+  {%- liquid
+    assign is_rx_product = false
+    if product != blank and product.type == 'RX'
+      assign is_rx_product = true
+    endif
+  -%}
+
   {%- if product != blank -%}
     {%- liquid
       assign gift_card_recipient_feature_active = false
-      if block.settings.show_gift_card_recipient and product.gift_card?
+      if block.settings.show_gift_card_recipient and product.gift_card? and is_rx_product == false
         assign gift_card_recipient_feature_active = true
       endif
 
       assign show_dynamic_checkout = false
-      if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
+      if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false and is_rx_product == false
         assign show_dynamic_checkout = true
       endif
     -%}
 
+    {%- if is_rx_product -%}
+      <div class="product-form">
+        <div class="product-form__buttons form">
+          <a
+            href="/pages/store-locator"
+            class="product-form__submit button button--full-width button--primary"
+          >
+            FIND A RETAILER
+          </a>
+        </div>
+      </div>
+    {%- else -%}
     <product-form
       class="product-form"
       data-hide-errors="{{ gift_card_recipient_feature_active }}"
@@ -99,6 +118,7 @@
         </div>
       {%- endform -%}
     </product-form>
+    {%- endif -%}
   {%- else -%}
     <div class="product-form">
       <div class="product-form__buttons form">
@@ -114,7 +134,7 @@
     </div>
   {%- endif -%}
 
-  {%- if show_pickup_availability -%}
+  {%- if show_pickup_availability and is_rx_product == false -%}
     {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
 
     {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities
