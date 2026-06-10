@@ -16,11 +16,11 @@
           "type": "hero_option",
           "settings": {
             "image": "shopify://shop_images/sun_collection.webp",
-            "heading": "New Releases",
+            "heading": "",
             "heading_size": "h0",
-            "text": "The Hopper - low, lean, and unscripted",
+            "text": "",
             "text_style": "body",
-            "button_label": "SEE FOR YOURSELF",
+            "button_label": "",
             "button_link": "shopify://collections",
             "button_style_secondary": true
           }
@@ -29,11 +29,11 @@
           "type": "hero_option",
           "settings": {
             "image": "shopify://shop_images/artesania-banner.jpg",
-            "heading": "Artesanía",
+            "heading": "",
             "heading_size": "h0",
-            "text": "A word that echoes with the essence of craft and heritage.",
+            "text": "",
             "text_style": "body",
-            "button_label": "SHOP THE COLLECTION",
+            "button_label": "",
             "button_link": "shopify://collections/sun",
             "button_style_secondary": true
           }
@@ -42,11 +42,11 @@
           "type": "hero_option",
           "settings": {
             "image": "shopify://shop_images/hero.jpg",
-            "heading": "New Releases",
+            "heading": "",
             "heading_size": "h0",
-            "text": "The Hopper - low, lean, and unscripted",
+            "text": "",
             "text_style": "body",
-            "button_label": "SEE FOR YOURSELF",
+            "button_label": "",
             "button_link": "shopify://collections/all",
             "button_style_secondary": true
           }
