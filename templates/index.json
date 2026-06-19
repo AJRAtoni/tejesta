@@ -186,21 +186,21 @@
         "heading_hjqR69": {
           "type": "heading",
           "settings": {
-            "heading": "Artesanía",
+            "heading": "Optical Collection",
             "heading_size": "h0"
           }
         },
         "text_Bk4tQB": {
           "type": "text",
           "settings": {
-            "text": "A word that echoes with the essence of craft and heritage.",
+            "text": "Made with the same intention, now inser vice of clarity.",
             "text_style": "body"
           }
         },
         "buttons_CTbBjG": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "SHOP THE COLLECTION",
+            "button_label_1": "SHOP OPTICAL",
             "button_link_1": "shopify://collections/sun",
             "button_style_secondary_1": true,
             "button_label_2": "",
