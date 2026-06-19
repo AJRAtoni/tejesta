@@ -2543,6 +2543,84 @@ input[type='checkbox'] {
   height: auto;
 }
 
+.tejesta-scroll-logo {
+  --tejesta-crest-size: 4.2rem;
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  min-height: var(--tejesta-crest-size);
+  perspective: 80rem;
+}
+
+.tejesta-scroll-logo__mark {
+  grid-area: 1 / 1;
+  display: block;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition:
+    opacity 0.22s ease,
+    transform 0.42s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.tejesta-scroll-logo__wordmark {
+  width: 100%;
+  opacity: 1;
+  transform: rotateX(0deg);
+}
+
+.tejesta-scroll-logo__wordmark .header__heading-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.header__heading-logo-wrapper--fallback-logo .tejesta-scroll-logo__crest {
+  width: var(--tejesta-crest-size);
+  height: var(--tejesta-crest-size);
+  max-width: none;
+  object-fit: contain;
+  opacity: 0;
+  transform: rotateX(-90deg);
+}
+
+.header-wrapper--homepage-overlay.is-tejesta-logo-flipped,
+.header-wrapper--homepage-overlay.is-tejesta-logo-flipped.gradient {
+  background: transparent;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.header-wrapper--homepage-overlay.is-tejesta-logo-flipped .tejesta-scroll-logo__wordmark {
+  opacity: 0;
+  transform: rotateX(90deg);
+}
+
+.header-wrapper--homepage-overlay.is-tejesta-logo-flipped .tejesta-scroll-logo__crest {
+  opacity: 1;
+  transform: rotateX(0deg);
+}
+
+@media screen and (max-width: 749px) {
+  .tejesta-scroll-logo {
+    --tejesta-crest-size: 3.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tejesta-scroll-logo__mark {
+    transition: opacity 0.2s ease;
+    transform: none;
+  }
+
+  .header-wrapper--homepage-overlay.is-tejesta-logo-flipped .tejesta-scroll-logo__wordmark {
+    transform: none;
+  }
+
+  .header-wrapper--homepage-overlay.is-tejesta-logo-flipped .tejesta-scroll-logo__crest {
+    transform: none;
+  }
+}
+
 @media screen and (max-width: 989px) {
   .header__heading,
   .header__heading-link {

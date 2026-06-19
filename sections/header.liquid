@@ -155,8 +155,18 @@
         data-logo-primary="#121212"
         data-logo-secondary="#ffffff"
       >
-        <span class="header__heading-logo-wrapper header__heading-logo-wrapper--fallback-logo">
-          {% render 'tejesta-logo-gradient' %}
+        <span class="header__heading-logo-wrapper header__heading-logo-wrapper--fallback-logo tejesta-scroll-logo">
+          <span class="tejesta-scroll-logo__mark tejesta-scroll-logo__wordmark" aria-hidden="true">
+            {% render 'tejesta-logo-gradient' %}
+          </span>
+          <img
+            src="{{ 'tejesta-crest-logo.png' | asset_url }}"
+            alt=""
+            class="header__heading-logo tejesta-scroll-logo__mark tejesta-scroll-logo__crest"
+            width="99"
+            height="99"
+            loading="eager"
+          >
         </span>
       </a>
       {%- if request.page_type == 'index' -%}
@@ -186,8 +196,18 @@
         data-logo-primary="#121212"
         data-logo-secondary="#ffffff"
       >
-        <span class="header__heading-logo-wrapper header__heading-logo-wrapper--fallback-logo">
-          {% render 'tejesta-logo-gradient' %}
+        <span class="header__heading-logo-wrapper header__heading-logo-wrapper--fallback-logo tejesta-scroll-logo">
+          <span class="tejesta-scroll-logo__mark tejesta-scroll-logo__wordmark" aria-hidden="true">
+            {% render 'tejesta-logo-gradient' %}
+          </span>
+          <img
+            src="{{ 'tejesta-crest-logo.png' | asset_url }}"
+            alt=""
+            class="header__heading-logo tejesta-scroll-logo__mark tejesta-scroll-logo__crest"
+            width="99"
+            height="99"
+            loading="eager"
+          >
         </span>
       </a>
       {%- if request.page_type == 'index' -%}
@@ -292,6 +312,12 @@
       this.logoGradientStops = this.logoGradient ? Array.from(this.logoGradient.querySelectorAll('stop')) : [];
       this.sections = Array.from(document.querySelector('#MainContent')?.querySelectorAll('.shopify-section') || []);
       this.updateLogoColorHandler = this.updateLogoColor.bind(this);
+      this.updateScrolledLogoHandler = this.updateScrolledLogoState.bind(this);
+
+      if (this.logo && this.classList.contains('header-wrapper--homepage-overlay')) {
+        window.addEventListener('scroll', this.updateScrolledLogoHandler, { passive: true });
+        requestAnimationFrame(this.updateScrolledLogoHandler);
+      }
 
       if (this.logo && this.logoGradientStops.length === 4 && this.sections.length > 0) {
         window.addEventListener('scroll', this.updateLogoColorHandler, { passive: true });
@@ -308,6 +334,7 @@
       this.removeEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
       window.removeEventListener('scroll', this.onScrollHandler);
       window.removeEventListener('scroll', this.updateLogoColorHandler);
+      window.removeEventListener('scroll', this.updateScrolledLogoHandler);
       window.removeEventListener('resize', this.updateLogoColorHandler);
     }
 
@@ -372,6 +399,10 @@
       }
 
       this.setLogoGradient(primaryColor);
+    }
+
+    updateScrolledLogoState() {
+      this.classList.toggle('is-tejesta-logo-flipped', window.scrollY > 8);
     }
 
     onScroll() {
