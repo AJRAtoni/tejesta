@@ -69,83 +69,54 @@
         "show_text_below": false
       }
     },
-    "image_with_text_kWB7VV": {
-      "type": "image-with-text",
+    "rich_text_bmiMeL": {
+      "type": "rich-text",
       "blocks": {
-        "heading_RibnUe": {
+        "heading_3bqpwX": {
           "type": "heading",
           "settings": {
-            "heading": "Sun Collection",
-            "heading_size": "h0"
+            "heading": "Collection",
+            "heading_size": "h1"
           }
         },
-        "button_bGwwtG": {
+        "heading_PKUbb8": {
+          "type": "heading",
+          "settings": {
+            "heading": "SEVEN",
+            "heading_size": "h1"
+          }
+        },
+        "text_kdCgYX": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our newest work , and our most considered. New silhouettes, new color ways,</p><p>the same intention moving through it all like wind across the desert.</p>"
+          }
+        },
+        "button_f3aYTg": {
           "type": "button",
           "settings": {
             "button_label": "SHOP NOW",
             "button_link": "shopify://collections/sun",
-            "button_style_secondary": false
+            "button_style_secondary": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "heading_RibnUe",
-        "button_bGwwtG"
+        "heading_3bqpwX",
+        "heading_PKUbb8",
+        "text_kdCgYX",
+        "button_f3aYTg"
       ],
-      "name": "t:sections.image-with-text.presets.name",
+      "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "image": "shopify://shop_images/sun.jpg",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-1",
-        "padding_top": 52,
-        "padding_bottom": 12
-      }
-    },
-    "image_with_text_cKXnKF": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_AbwqrQ": {
-          "type": "heading",
-          "settings": {
-            "heading": "Optical Collection",
-            "heading_size": "h0"
-          }
-        },
-        "button_LHT8Rm": {
-          "type": "button",
-          "settings": {
-            "button_label": "SHOP NOW",
-            "button_link": "shopify://collections/optical",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_AbwqrQ",
-        "button_LHT8Rm"
-      ],
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/optical.jpg",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
         "color_scheme": "",
-        "padding_top": 12,
+        "full_width": true,
+        "padding_top": 40,
         "padding_bottom": 52
       }
     },
@@ -190,6 +161,66 @@
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "image_behavior": "none",
+        "desktop_content_position": "middle-right",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-1",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "custom_liquid_gRkLHK": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "image_banner_gdWexg": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_hjqR69": {
+          "type": "heading",
+          "settings": {
+            "heading": "Artesanía",
+            "heading_size": "h0"
+          }
+        },
+        "text_Bk4tQB": {
+          "type": "text",
+          "settings": {
+            "text": "A word that echoes with the essence of craft and heritage.",
+            "text_style": "body"
+          }
+        },
+        "buttons_CTbBjG": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "SHOP THE COLLECTION",
+            "button_link_1": "shopify://collections/sun",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_hjqR69",
+        "text_Bk4tQB",
+        "buttons_CTbBjG"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/artesania-banner.jpg",
+        "section_width": "full_width",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
         "desktop_content_position": "middle-left",
         "desktop_content_alignment": "left",
         "show_text_box": false,
@@ -199,28 +230,38 @@
         "show_text_below": true
       }
     },
-    "image_banner_bfRDpN": {
+    "custom_liquid_rUx3eF": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "image_banner_YtLCfF": {
       "type": "image-banner",
       "blocks": {
-        "heading_PRpGJh": {
+        "heading_XKEUBU": {
           "type": "heading",
           "settings": {
-            "heading": "Materials",
+            "heading": "Artesanía",
             "heading_size": "h0"
           }
         },
-        "text_x8tYp7": {
+        "text_RX9633": {
           "type": "text",
           "settings": {
-            "text": "Every element has been meticulously selected and decisively sourced, ensuring each material becomes a spectacle in itself.",
+            "text": "A word that echoes with the essence of craft and heritage.",
             "text_style": "body"
           }
         },
-        "buttons_WDDytk": {
+        "buttons_xgtAe4": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "LEARN MORE",
-            "button_link_1": "shopify://pages/materials",
+            "button_label_1": "SHOP THE COLLECTION",
+            "button_link_1": "shopify://collections/sun",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -229,19 +270,19 @@
         }
       },
       "block_order": [
-        "heading_PRpGJh",
-        "text_x8tYp7",
-        "buttons_WDDytk"
+        "heading_XKEUBU",
+        "text_RX9633",
+        "buttons_xgtAe4"
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/materials-banner.jpg",
-        "section_width": "page_width",
+        "image": "shopify://shop_images/artesania-banner.jpg",
+        "section_width": "full_width",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "image_behavior": "none",
-        "desktop_content_position": "middle-right",
-        "desktop_content_alignment": "right",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
         "show_text_box": false,
         "color_scheme": "scheme-1",
         "stack_images_on_mobile": true,
@@ -252,9 +293,11 @@
   },
   "order": [
     "image_banner",
-    "image_with_text_kWB7VV",
-    "image_with_text_cKXnKF",
+    "rich_text_bmiMeL",
     "image_banner_VtR9UH",
-    "image_banner_bfRDpN"
+    "custom_liquid_gRkLHK",
+    "image_banner_gdWexg",
+    "custom_liquid_rUx3eF",
+    "image_banner_YtLCfF"
   ]
 }
