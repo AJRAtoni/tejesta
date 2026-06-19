@@ -159,14 +159,11 @@
           <span class="tejesta-scroll-logo__mark tejesta-scroll-logo__wordmark" aria-hidden="true">
             {% render 'tejesta-logo-gradient' %}
           </span>
-          <img
-            src="{{ 'tejesta-crest-logo.png' | asset_url }}"
-            alt=""
+          <span
             class="header__heading-logo tejesta-scroll-logo__mark tejesta-scroll-logo__crest"
-            width="99"
-            height="99"
-            loading="eager"
-          >
+            style="--tejesta-crest-mask: url('{{ 'tejesta-crest-logo.png' | asset_url }}');"
+            aria-hidden="true"
+          ></span>
         </span>
       </a>
       {%- if request.page_type == 'index' -%}
@@ -200,14 +197,11 @@
           <span class="tejesta-scroll-logo__mark tejesta-scroll-logo__wordmark" aria-hidden="true">
             {% render 'tejesta-logo-gradient' %}
           </span>
-          <img
-            src="{{ 'tejesta-crest-logo.png' | asset_url }}"
-            alt=""
+          <span
             class="header__heading-logo tejesta-scroll-logo__mark tejesta-scroll-logo__crest"
-            width="99"
-            height="99"
-            loading="eager"
-          >
+            style="--tejesta-crest-mask: url('{{ 'tejesta-crest-logo.png' | asset_url }}');"
+            aria-hidden="true"
+          ></span>
         </span>
       </a>
       {%- if request.page_type == 'index' -%}

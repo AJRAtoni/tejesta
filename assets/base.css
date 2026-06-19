@@ -2558,6 +2558,7 @@ input[type='checkbox'] {
   backface-visibility: hidden;
   transform-style: preserve-3d;
   transition:
+    background-color 0.22s ease,
     opacity 0.22s ease,
     transform 0.42s cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -2578,9 +2579,17 @@ input[type='checkbox'] {
   width: var(--tejesta-crest-size);
   height: var(--tejesta-crest-size);
   max-width: none;
-  object-fit: contain;
+  background-color: var(--tejesta-header-color, #121212);
   opacity: 0;
   transform: rotateX(-90deg);
+  -webkit-mask-image: var(--tejesta-crest-mask);
+  mask-image: var(--tejesta-crest-mask);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 
 .header-wrapper--homepage-overlay.is-tejesta-logo-flipped,
