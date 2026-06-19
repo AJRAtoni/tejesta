@@ -253,14 +253,14 @@
         "text_RX9633": {
           "type": "text",
           "settings": {
-            "text": "A word that echoes with the essence of craft and heritage.",
+            "text": "Revisit the collection.",
             "text_style": "body"
           }
         },
         "buttons_xgtAe4": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "SHOP THE COLLECTION",
+            "button_label_1": "SHOP NOW",
             "button_link_1": "shopify://collections/sun",
             "button_style_secondary_1": true,
             "button_label_2": "",
