@@ -2592,19 +2592,19 @@ input[type='checkbox'] {
   mask-size: contain;
 }
 
-.header-wrapper--homepage-overlay.is-tejesta-logo-flipped,
-.header-wrapper--homepage-overlay.is-tejesta-logo-flipped.gradient {
+.header-wrapper--transparent.is-tejesta-logo-flipped,
+.header-wrapper--transparent.is-tejesta-logo-flipped.gradient {
   background: transparent;
   background-color: transparent;
   box-shadow: none;
 }
 
-.header-wrapper--homepage-overlay.is-tejesta-logo-flipped .tejesta-scroll-logo__wordmark {
+.header-wrapper--transparent.is-tejesta-logo-flipped .tejesta-scroll-logo__wordmark {
   opacity: 0;
   transform: rotateX(90deg);
 }
 
-.header-wrapper--homepage-overlay.is-tejesta-logo-flipped .tejesta-scroll-logo__crest {
+.header-wrapper--transparent.is-tejesta-logo-flipped .tejesta-scroll-logo__crest {
   opacity: 1;
   transform: rotateX(0deg);
 }
@@ -2621,11 +2621,11 @@ input[type='checkbox'] {
     transform: none;
   }
 
-  .header-wrapper--homepage-overlay.is-tejesta-logo-flipped .tejesta-scroll-logo__wordmark {
+  .header-wrapper--transparent.is-tejesta-logo-flipped .tejesta-scroll-logo__wordmark {
     transform: none;
   }
 
-  .header-wrapper--homepage-overlay.is-tejesta-logo-flipped .tejesta-scroll-logo__crest {
+  .header-wrapper--transparent.is-tejesta-logo-flipped .tejesta-scroll-logo__crest {
     transform: none;
   }
 }

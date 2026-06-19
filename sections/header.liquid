@@ -308,7 +308,7 @@
       this.updateLogoColorHandler = this.updateLogoColor.bind(this);
       this.updateScrolledLogoHandler = this.updateScrolledLogoState.bind(this);
 
-      if (this.logo && this.classList.contains('header-wrapper--homepage-overlay')) {
+      if (this.logo) {
         window.addEventListener('scroll', this.updateScrolledLogoHandler, { passive: true });
         requestAnimationFrame(this.updateScrolledLogoHandler);
       }
