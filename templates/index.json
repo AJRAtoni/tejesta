@@ -216,7 +216,7 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/artesania-banner.jpg",
+        "image": "shopify://shop_images/OPTICAL_COLLECTION_PHOTO.webp",
         "section_width": "full_width",
         "image_overlay_opacity": 0,
         "image_height": "medium",
@@ -276,7 +276,7 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/artesania-banner.jpg",
+        "image": "shopify://shop_images/OPTICAL_COLLECTION_PHOTO.webp",
         "section_width": "full_width",
         "image_overlay_opacity": 0,
         "image_height": "medium",
