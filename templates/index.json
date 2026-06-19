@@ -15,7 +15,7 @@
         "hero_option_rJWXCi": {
           "type": "hero_option",
           "settings": {
-            "image": "shopify://shop_images/sun_collection.webp",
+            "image": "shopify://shop_images/HERO_PHOTO.webp",
             "heading": "",
             "heading_size": "h0",
             "text": "",
@@ -24,38 +24,10 @@
             "button_link": "shopify://collections",
             "button_style_secondary": true
           }
-        },
-        "hero_option_CKN7xG": {
-          "type": "hero_option",
-          "settings": {
-            "image": "shopify://shop_images/artesania-banner.jpg",
-            "heading": "",
-            "heading_size": "h0",
-            "text": "",
-            "text_style": "body",
-            "button_label": "",
-            "button_link": "shopify://collections/sun",
-            "button_style_secondary": true
-          }
-        },
-        "hero_option_current": {
-          "type": "hero_option",
-          "settings": {
-            "image": "shopify://shop_images/hero.jpg",
-            "heading": "",
-            "heading_size": "h0",
-            "text": "",
-            "text_style": "body",
-            "button_label": "",
-            "button_link": "shopify://collections/all",
-            "button_style_secondary": true
-          }
         }
       },
       "block_order": [
-        "hero_option_rJWXCi",
-        "hero_option_CKN7xG",
-        "hero_option_current"
+        "hero_option_rJWXCi"
       ],
       "settings": {
         "image_overlay_opacity": 0,
