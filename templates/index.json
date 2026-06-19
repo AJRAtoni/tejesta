@@ -126,21 +126,21 @@
         "heading_g4QcUX": {
           "type": "heading",
           "settings": {
-            "heading": "Artesanía",
+            "heading": "Sun Collection",
             "heading_size": "h0"
           }
         },
         "text_PiTKQD": {
           "type": "text",
           "settings": {
-            "text": "A word that echoes with the essence of craft and heritage.",
+            "text": "Frames shaped for light, consideredin ever y detail.",
             "text_style": "body"
           }
         },
         "buttons_PgTphH": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "SHOP THE COLLECTION",
+            "button_label_1": "SHOP SUNGLASSES",
             "button_link_1": "shopify://collections/sun",
             "button_style_secondary_1": true,
             "button_label_2": "",
