@@ -568,14 +568,27 @@
 }
 
 .tejesta-footer__field {
-  --tejesta-footer-field-frame: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1063 284' preserveAspectRatio='none'%3E%3Cpath d='M48 6H1016L1057 47V237L1016 278H48L7 237V47Z' fill='none' stroke='%23000' stroke-width='8' stroke-linejoin='miter' stroke-linecap='butt'/%3E%3Cpath d='M56 24H1008L1039 55V229L1008 260H56L24 229V55Z' fill='none' stroke='%23000' stroke-width='4' stroke-linejoin='miter' stroke-linecap='butt'/%3E%3C/svg%3E");
+  --tejesta-frame-button-width: 32rem;
+  --tejesta-frame-button-height: 4.3rem;
+  --tejesta-frame-button-padding: 0 1.6rem;
+  --tejesta-frame-button-font-size: 1.4rem;
+  --tejesta-frame-button-line-height: 1;
+  --tejesta-frame-button-image: var(--tejesta-frame-button-image-dark);
 
   display: grid;
   grid-template-columns: 1fr auto;
-  min-height: 4.3rem;
+  align-items: center;
+  box-sizing: border-box;
+  inline-size: min(var(--tejesta-frame-button-width), 100%);
+  block-size: var(--tejesta-frame-button-height);
+  min-inline-size: min(var(--tejesta-frame-button-width), 100%);
+  min-height: var(--tejesta-frame-button-height);
+  min-block-size: var(--tejesta-frame-button-height);
+  padding: var(--tejesta-frame-button-padding);
   border: 0;
+  border-radius: 0;
   background-color: transparent;
-  background-image: var(--tejesta-footer-field-frame);
+  background-image: var(--tejesta-frame-button-image);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -589,16 +602,16 @@
   background: transparent;
   color: rgb(var(--color-foreground));
   font-family: 'TEJESTA Jost', var(--font-body-family);
-  font-size: 1.8rem;
+  font-size: var(--tejesta-frame-button-font-size);
   font-weight: 400;
   letter-spacing: 0;
-  line-height: 1;
+  line-height: var(--tejesta-frame-button-line-height);
   appearance: none;
 }
 
 .tejesta-footer__input {
   width: 100%;
-  padding: 0 1.6rem;
+  padding: 0;
 }
 
 .tejesta-footer__input::placeholder {
@@ -614,7 +627,7 @@
 }
 
 .tejesta-footer__submit {
-  padding: 0 1.6rem 0 1rem;
+  padding: 0 0 0 1.4rem;
   cursor: pointer;
   text-align: center;
 }
