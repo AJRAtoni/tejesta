@@ -177,6 +177,7 @@
           "type": "heading",
           "settings": {
             "heading": "Artesanía",
+            "heading_logo_asset": "artesania",
             "heading_size": "h0"
           }
         },
