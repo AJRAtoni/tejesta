@@ -65,14 +65,14 @@
         "text_PiTKQD": {
           "type": "text",
           "settings": {
-            "text": "Frames shaped for light, consideredin ever y detail.",
+            "text": "Frames shaped for light, considered in every detail.",
             "text_style": "body"
           }
         },
         "buttons_PgTphH": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "SHOP SUNGLASSES",
+            "button_label_1": "Shop Sunglasses",
             "button_link_1": "shopify://collections/sun",
             "button_style_secondary_1": true,
             "button_label_2": "",

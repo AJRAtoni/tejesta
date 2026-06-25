@@ -502,6 +502,7 @@
 .banner__buttons--homepage-cta {
   box-sizing: border-box;
   inline-size: min(35rem,100%);
+  justify-content: center;
 }
 
 @media screen and (max-width: 749px) {
@@ -547,10 +548,50 @@
 }
 
 @media screen and (min-width: 750px) {
+  .banner--homepage-image-banner.banner--desktop-transparent .banner__box {
+    width: min(38rem, 100%);
+    min-width: 0;
+    max-width: 38rem;
+    padding: 0;
+  }
+
   .banner--homepage-image-banner.banner--desktop-transparent .banner__heading,
   .banner--homepage-image-banner.banner--desktop-transparent .banner__text,
   .banner--homepage-image-banner.banner--desktop-transparent .banner__text p {
     color: #ffffff;
+  }
+
+  .banner--homepage-image-banner.banner--desktop-transparent .banner__heading {
+    font-family: 'TEJESTA Louize Display', var(--font-heading-family);
+    font-size: clamp(3.4rem, 3.55vw, 5.2rem);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: 0;
+  }
+
+  .banner--homepage-image-banner.banner--desktop-transparent .banner__text {
+    max-width: 24rem;
+    margin-inline: auto;
+    font-family: 'TEJESTA Jost', var(--font-body-family);
+    font-size: clamp(1.2rem, 1.05vw, 1.55rem);
+    font-weight: 400;
+    line-height: 1.18;
+    letter-spacing: 0;
+  }
+
+  .banner--homepage-image-banner.banner--desktop-transparent .banner__box .banner__heading + .banner__text {
+    margin-top: 1.1rem;
+  }
+
+  .banner--homepage-image-banner.banner--desktop-transparent .banner__box > * + .banner__buttons {
+    margin-top: 1.8rem;
+  }
+
+  .banner--homepage-image-banner.banner--desktop-transparent .button--tejesta-frame {
+    --tejesta-frame-button-width: 14.6rem;
+    --tejesta-frame-button-height: 3.7rem;
+    --tejesta-frame-button-padding: 0 2.1rem;
+    --tejesta-frame-button-font-size: 1.15rem;
   }
 
   .banner--homepage-image-banner.banner--desktop-transparent .button--secondary {
@@ -558,5 +599,29 @@
     --color-button: 255, 255, 255;
     --color-button-text: 255, 255, 255;
     color: #ffffff;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .banner--homepage-image-banner .banner__heading {
+    font-family: 'TEJESTA Louize Display', var(--font-heading-family);
+    font-size: clamp(3rem, 11vw, 4.6rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .banner--homepage-image-banner .banner__text {
+    max-width: 26rem;
+    margin-inline: auto;
+    font-family: 'TEJESTA Jost', var(--font-body-family);
+    font-size: 1.35rem;
+    line-height: 1.25;
+    letter-spacing: 0;
+  }
+
+  .banner--homepage-image-banner.banner--mobile-bottom .button--tejesta-frame-light {
+    --tejesta-frame-button-image: var(--tejesta-frame-button-image-dark);
+    color: rgb(var(--color-foreground));
   }
 }
