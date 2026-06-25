@@ -590,12 +590,12 @@
   }
 
   .banner--homepage-image-banner.banner--desktop-transparent .banner__text {
-    max-width: 29rem;
+    max-width: 42rem;
     margin-inline: auto;
     font-family: 'TEJESTA Jost', var(--font-body-family);
-    font-size: clamp(1.8rem, 1.45vw, 2.1rem);
+    font-size: clamp(2.3rem, 1.7vw, 3rem);
     font-weight: 400;
-    line-height: 1.22;
+    line-height: 1.16;
     letter-spacing: 0;
   }
 
