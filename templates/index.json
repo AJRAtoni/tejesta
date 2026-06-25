@@ -41,55 +41,15 @@
         "show_text_below": false
       }
     },
-    "rich_text_bmiMeL": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_3bqpwX": {
-          "type": "heading",
-          "settings": {
-            "heading": "Collection",
-            "heading_size": "h1"
-          }
-        },
-        "heading_PKUbb8": {
-          "type": "heading",
-          "settings": {
-            "heading": "SEVEN",
-            "heading_size": "h1"
-          }
-        },
-        "text_kdCgYX": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Our newest work , and our most considered. New silhouettes, new color ways,</p><p>the same intention moving through it all like wind across the desert.</p>"
-          }
-        },
-        "button_f3aYTg": {
-          "type": "button",
-          "settings": {
-            "button_label": "SHOP NOW",
-            "button_link": "shopify://collections/sun",
-            "button_style_secondary": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_3bqpwX",
-        "heading_PKUbb8",
-        "text_kdCgYX",
-        "button_f3aYTg"
-      ],
-      "name": "t:sections.rich-text.presets.name",
+    "collection_seven": {
+      "type": "tejesta-collection-seven",
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "color_scheme": "scheme-1",
+        "eyebrow": "COLLECTION",
+        "logo_alt": "SEVEN",
+        "text": "<p>Our newest work, and our most considered. New silhouettes, new colorways,<br>the same intention moving through it all like wind across the desert.</p>",
+        "button_label": "Shop Now",
+        "button_link": "shopify://collections/sun"
       }
     },
     "image_banner_VtR9UH": {
@@ -272,7 +232,7 @@
   },
   "order": [
     "image_banner",
-    "rich_text_bmiMeL",
+    "collection_seven",
     "image_banner_VtR9UH",
     "tejesta_line_divider_after_sun",
     "image_banner_gdWexg",

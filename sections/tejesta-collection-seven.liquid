@@ -1,0 +1,219 @@
+{%- style -%}
+  @font-face {
+    font-family: 'TEJESTA Louize Display';
+    src: url({{ 'LouizeDisplay.ttf' | asset_url }}) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'TEJESTA Jost';
+    src: url({{ 'Jost-Regular.ttf' | asset_url }}) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'TEJESTA Jost';
+    src: url({{ 'Jost-Medium.ttf' | asset_url }}) format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  #TejestaCollectionSeven-{{ section.id }} {
+    background: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+  }
+
+  #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 112rem;
+    margin: 0 auto;
+    padding: 6.7rem 2rem 6.9rem;
+    text-align: center;
+  }
+
+  #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__eyebrow {
+    margin: 0;
+    font-family: 'TEJESTA Jost', var(--font-body-family);
+    font-size: clamp(2.4rem, 2.65vw, 3.4rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.34em;
+    text-indent: 0.34em;
+    text-transform: uppercase;
+  }
+
+  #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__logo {
+    display: block;
+    width: clamp(16.8rem, 17.3vw, 25.2rem);
+    height: auto;
+    margin-top: 1.7rem;
+  }
+
+  #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__text {
+    max-width: 105rem;
+    margin-top: 3.3rem;
+    font-family: 'TEJESTA Jost', var(--font-body-family);
+    font-size: clamp(1.8rem, 2.08vw, 3rem);
+    font-weight: 400;
+    line-height: 1.54;
+    letter-spacing: 0;
+  }
+
+  #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__text p {
+    margin: 0;
+  }
+
+  #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16rem;
+    min-height: 4.2rem;
+    margin-top: 4.3rem;
+    padding: 0.9rem 2.8rem;
+    border: 0.2rem solid currentColor;
+    border-radius: 0.9rem;
+    color: inherit;
+    font-family: 'TEJESTA Jost', var(--font-body-family);
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1;
+    text-decoration: none;
+    text-transform: none;
+  }
+
+  #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__button::before {
+    content: '';
+    position: absolute;
+    inset: 0.3rem;
+    border: 0.1rem solid currentColor;
+    border-radius: 0.5rem;
+    pointer-events: none;
+  }
+
+  #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__button:hover {
+    background: rgb(var(--color-foreground));
+    color: rgb(var(--color-background));
+  }
+
+  @media screen and (max-width: 749px) {
+    #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__inner {
+      padding: 4.8rem 2rem 5.4rem;
+    }
+
+    #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__eyebrow {
+      letter-spacing: 0.22em;
+      text-indent: 0.22em;
+    }
+
+    #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__text {
+      max-width: 35rem;
+      margin-top: 2.6rem;
+      line-height: 1.45;
+    }
+
+    #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__button {
+      margin-top: 3.4rem;
+    }
+  }
+{%- endstyle -%}
+
+<section
+  id="TejestaCollectionSeven-{{ section.id }}"
+  class="tejesta-collection-seven color-{{ section.settings.color_scheme }} gradient"
+>
+  <div class="tejesta-collection-seven__inner">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="tejesta-collection-seven__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    {%- endif -%}
+
+    <img
+      class="tejesta-collection-seven__logo"
+      src="{{ 'tejesta-seven.png' | asset_url }}"
+      width="3201"
+      height="954"
+      loading="lazy"
+      alt="{{ section.settings.logo_alt | escape }}"
+    >
+
+    {%- if section.settings.text != blank -%}
+      <div class="tejesta-collection-seven__text rte">
+        {{ section.settings.text }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <a
+        class="tejesta-collection-seven__button"
+        {% if section.settings.button_link == blank %}
+          role="link" aria-disabled="true"
+        {% else %}
+          href="{{ section.settings.button_link }}"
+        {% endif %}
+      >
+        {{- section.settings.button_label | escape -}}
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "TEJESTA Collection Seven",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "COLLECTION"
+    },
+    {
+      "type": "text",
+      "id": "logo_alt",
+      "label": "Logo alt text",
+      "default": "SEVEN"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Our newest work, and our most considered. New silhouettes, new colorways,<br>the same intention moving through it all like wind across the desert.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "TEJESTA Collection Seven"
+    }
+  ]
+}
+{% endschema %}
