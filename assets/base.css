@@ -1356,7 +1356,7 @@ button.shopify-payment-button__button--unbranded {
   --tejesta-frame-button-padding: 0 2.8rem;
   --tejesta-frame-button-font-size: 1.4rem;
   --tejesta-frame-button-line-height: 1;
-  --tejesta-frame-button-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 531 141' preserveAspectRatio='none'%3E%3Cpath d='M25 3H506L528 25V116L506 138H25L3 116V25Z' fill='none' stroke='white' stroke-width='5' stroke-linejoin='miter'/%3E%3Cpath d='M28 13H500L518 31V110L500 128H28L13 113V28Z' fill='none' stroke='white' stroke-width='2' stroke-linejoin='miter'/%3E%3C/svg%3E");
+  --tejesta-frame-button-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1063 284' preserveAspectRatio='none'%3E%3Cpath d='M48 6H1016L1057 47V237L1016 278H48L7 237V47Z' fill='none' stroke='%23000' stroke-width='8' stroke-linejoin='miter' stroke-linecap='butt'/%3E%3Cpath d='M56 24H1008L1039 55V229L1008 260H56L24 229V55Z' fill='none' stroke='%23000' stroke-width='4' stroke-linejoin='miter' stroke-linecap='butt'/%3E%3C/svg%3E");
 
   isolation: isolate;
   position: relative;
@@ -1370,7 +1370,11 @@ button.shopify-payment-button__button--unbranded {
   padding: var(--tejesta-frame-button-padding);
   border: 0;
   border-radius: 0;
-  background: transparent;
+  background-color: transparent;
+  background-image: var(--tejesta-frame-button-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   color: rgb(var(--color-foreground));
   font-family: 'TEJESTA Jost', var(--font-body-family);
   font-size: var(--tejesta-frame-button-font-size);
@@ -1384,16 +1388,7 @@ button.shopify-payment-button__button--unbranded {
 }
 
 .button--tejesta-frame::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: currentColor;
-  border-radius: 0;
-  box-shadow: none;
-  mask: var(--tejesta-frame-button-mask) center / 100% 100% no-repeat;
-  -webkit-mask: var(--tejesta-frame-button-mask) center / 100% 100% no-repeat;
-  pointer-events: none;
+  content: none;
 }
 
 .button--tejesta-frame::after {
@@ -1402,13 +1397,29 @@ button.shopify-payment-button__button--unbranded {
 
 .button--tejesta-frame:not([disabled]):hover,
 .button--tejesta-frame[aria-disabled='true'] {
-  background: transparent;
+  background-color: transparent;
+  background-image: var(--tejesta-frame-button-image);
+}
+
+.button--tejesta-frame--light,
+.button--tejesta-frame-light {
+  --tejesta-frame-button-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1063 284' preserveAspectRatio='none'%3E%3Cpath d='M48 6H1016L1057 47V237L1016 278H48L7 237V47Z' fill='none' stroke='%23fff' stroke-width='8' stroke-linejoin='miter' stroke-linecap='butt'/%3E%3Cpath d='M56 24H1008L1039 55V229L1008 260H56L24 229V55Z' fill='none' stroke='%23fff' stroke-width='4' stroke-linejoin='miter' stroke-linecap='butt'/%3E%3C/svg%3E");
+  color: rgb(var(--color-background));
 }
 
 .button--tejesta-frame:focus-visible,
 .button--tejesta-frame:focus {
   outline: 0.2rem solid currentColor;
   outline-offset: 0.4rem;
+  box-shadow: none;
+}
+
+.button.button--tejesta-frame::before,
+.button.button--tejesta-frame::after {
+  box-shadow: none;
+}
+
+.button.button--tejesta-frame:not([disabled]):hover::after {
   box-shadow: none;
 }
 
