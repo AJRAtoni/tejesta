@@ -590,12 +590,12 @@
   }
 
   .banner--homepage-image-banner.banner--desktop-transparent .banner__text {
-    max-width: 24rem;
+    max-width: 29rem;
     margin-inline: auto;
     font-family: 'TEJESTA Jost', var(--font-body-family);
-    font-size: clamp(1.2rem, 1.05vw, 1.55rem);
+    font-size: clamp(1.8rem, 1.45vw, 2.1rem);
     font-weight: 400;
-    line-height: 1.18;
+    line-height: 1.22;
     letter-spacing: 0;
   }
 
@@ -613,13 +613,6 @@
 
   .banner--homepage-image-banner.banner--desktop-transparent .banner__box > * + .banner__buttons {
     margin-top: 1.8rem;
-  }
-
-  .banner--homepage-image-banner.banner--desktop-transparent .button--tejesta-frame {
-    --tejesta-frame-button-width: 14.6rem;
-    --tejesta-frame-button-height: 3.7rem;
-    --tejesta-frame-button-padding: 0 2.1rem;
-    --tejesta-frame-button-font-size: 1.15rem;
   }
 
   .banner--homepage-image-banner.banner--desktop-transparent .button--secondary {

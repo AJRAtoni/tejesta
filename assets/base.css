@@ -1375,7 +1375,9 @@ button.shopify-payment-button__button--unbranded {
   justify-content: center;
   box-sizing: border-box;
   inline-size: var(--tejesta-frame-button-width);
+  block-size: var(--tejesta-frame-button-height);
   min-inline-size: var(--tejesta-frame-button-width);
+  min-height: var(--tejesta-frame-button-height);
   min-block-size: var(--tejesta-frame-button-height);
   padding: var(--tejesta-frame-button-padding);
   border: 0;
