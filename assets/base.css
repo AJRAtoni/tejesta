@@ -14,6 +14,22 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'TEJESTA Jost';
+  src: url('Jost-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TEJESTA Jost';
+  src: url('Jost-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --font-body-family: 'Akkurat', Arial, sans-serif;
   --font-body-style: normal;
@@ -1332,6 +1348,68 @@ button.shopify-payment-button__button--unbranded {
   min-height: calc(5.2rem + var(--buttons-border-width) * 2);
   padding-inline: 4rem;
   white-space: nowrap;
+}
+
+.button--tejesta-frame {
+  --tejesta-frame-button-width: 16rem;
+  --tejesta-frame-button-height: 4.3rem;
+  --tejesta-frame-button-padding: 0 2.8rem;
+  --tejesta-frame-button-font-size: 1.4rem;
+  --tejesta-frame-button-line-height: 1;
+  --tejesta-frame-button-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 531 141' preserveAspectRatio='none'%3E%3Cpath d='M25 3H506L528 25V116L506 138H25L3 116V25Z' fill='none' stroke='white' stroke-width='5' stroke-linejoin='miter'/%3E%3Cpath d='M28 13H500L518 31V110L500 128H28L13 113V28Z' fill='none' stroke='white' stroke-width='2' stroke-linejoin='miter'/%3E%3C/svg%3E");
+
+  isolation: isolate;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  inline-size: var(--tejesta-frame-button-width);
+  min-inline-size: var(--tejesta-frame-button-width);
+  min-block-size: var(--tejesta-frame-button-height);
+  padding: var(--tejesta-frame-button-padding);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  font-family: 'TEJESTA Jost', var(--font-body-family);
+  font-size: var(--tejesta-frame-button-font-size);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: var(--tejesta-frame-button-line-height);
+  text-decoration: none;
+  text-transform: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button--tejesta-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: currentColor;
+  border-radius: 0;
+  box-shadow: none;
+  mask: var(--tejesta-frame-button-mask) center / 100% 100% no-repeat;
+  -webkit-mask: var(--tejesta-frame-button-mask) center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+
+.button--tejesta-frame::after {
+  content: none;
+}
+
+.button--tejesta-frame:not([disabled]):hover,
+.button--tejesta-frame[aria-disabled='true'] {
+  background: transparent;
+}
+
+.button--tejesta-frame:focus-visible,
+.button--tejesta-frame:focus {
+  outline: 0.2rem solid currentColor;
+  outline-offset: 0.4rem;
+  box-shadow: none;
 }
 
 /* Shopify Accelerated Checkout */

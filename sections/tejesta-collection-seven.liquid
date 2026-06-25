@@ -7,22 +7,6 @@
     font-display: swap;
   }
 
-  @font-face {
-    font-family: 'TEJESTA Jost';
-    src: url({{ 'Jost-Regular.ttf' | asset_url }}) format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'TEJESTA Jost';
-    src: url({{ 'Jost-Medium.ttf' | asset_url }}) format('truetype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-
   #TejestaCollectionSeven-{{ section.id }} {
     background: rgb(var(--color-background));
     color: rgb(var(--color-foreground));
@@ -71,37 +55,12 @@
   }
 
   #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__button {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 16rem;
-    min-height: 4.2rem;
+    --tejesta-frame-button-width: 16rem;
+    --tejesta-frame-button-height: 4.3rem;
+    --tejesta-frame-button-padding: 0 2.8rem;
+    --tejesta-frame-button-font-size: 1.4rem;
+
     margin-top: 4.3rem;
-    padding: 0.9rem 2.8rem;
-    border: 0.2rem solid currentColor;
-    border-radius: 0.9rem;
-    color: inherit;
-    font-family: 'TEJESTA Jost', var(--font-body-family);
-    font-size: 1.4rem;
-    font-weight: 400;
-    line-height: 1;
-    text-decoration: none;
-    text-transform: none;
-  }
-
-  #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__button::before {
-    content: '';
-    position: absolute;
-    inset: 0.3rem;
-    border: 0.1rem solid currentColor;
-    border-radius: 0.5rem;
-    pointer-events: none;
-  }
-
-  #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__button:hover {
-    background: rgb(var(--color-foreground));
-    color: rgb(var(--color-background));
   }
 
   @media screen and (max-width: 749px) {
@@ -152,7 +111,7 @@
 
     {%- if section.settings.button_label != blank -%}
       <a
-        class="tejesta-collection-seven__button"
+        class="button--tejesta-frame tejesta-collection-seven__button"
         {% if section.settings.button_link == blank %}
           role="link" aria-disabled="true"
         {% else %}
