@@ -65,7 +65,7 @@
         "text_PiTKQD": {
           "type": "text",
           "settings": {
-            "text": "Frames shaped for light, exact in every line.",
+            "text": "Frames shaped for light,<br>exact in every line.",
             "text_style": "body"
           }
         },
@@ -124,7 +124,7 @@
         "text_Bk4tQB": {
           "type": "text",
           "settings": {
-            "text": "Made by the same hand, now in service of clarity.",
+            "text": "Made by the same hand,<br>now in service of clarity.",
             "text_style": "body"
           }
         },
