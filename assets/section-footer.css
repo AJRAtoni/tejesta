@@ -573,7 +573,7 @@
   --tejesta-frame-button-padding: 0 1.6rem;
   --tejesta-frame-button-font-size: 1.4rem;
   --tejesta-frame-button-line-height: 1;
-  --tejesta-frame-button-image: var(--tejesta-frame-button-image-dark);
+  --tejesta-footer-form-frame-image: url('tejesta-footer-form-frame.svg');
 
   isolation: isolate;
   position: relative;
@@ -590,7 +590,7 @@
   border: 0;
   border-radius: 0;
   background-color: transparent;
-  background-image: var(--tejesta-frame-button-image);
+  background-image: var(--tejesta-footer-form-frame-image);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
