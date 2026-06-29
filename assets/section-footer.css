@@ -573,13 +573,10 @@
   --tejesta-frame-button-padding: 0 1.6rem;
   --tejesta-frame-button-font-size: 1.4rem;
   --tejesta-frame-button-line-height: 1;
-  --tejesta-footer-frame-color: rgb(var(--color-foreground));
-  --tejesta-footer-frame-corner: 1rem;
-  --tejesta-footer-frame-inner-corner: 0.72rem;
-  --tejesta-footer-frame-inner-inset: 0.42rem;
-  --tejesta-footer-frame-outer-stroke: 0.16rem;
-  --tejesta-footer-frame-inner-stroke: 0.09rem;
+  --tejesta-frame-button-image: var(--tejesta-frame-button-image-dark);
 
+  isolation: isolate;
+  position: relative;
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
@@ -593,23 +590,11 @@
   border: 0;
   border-radius: 0;
   background-color: transparent;
-  background:
-    linear-gradient(var(--tejesta-footer-frame-color) 0 0) left var(--tejesta-footer-frame-corner) top / calc(100% - var(--tejesta-footer-frame-corner) - var(--tejesta-footer-frame-corner)) var(--tejesta-footer-frame-outer-stroke) no-repeat,
-    linear-gradient(var(--tejesta-footer-frame-color) 0 0) left var(--tejesta-footer-frame-corner) bottom / calc(100% - var(--tejesta-footer-frame-corner) - var(--tejesta-footer-frame-corner)) var(--tejesta-footer-frame-outer-stroke) no-repeat,
-    linear-gradient(var(--tejesta-footer-frame-color) 0 0) left top var(--tejesta-footer-frame-corner) / var(--tejesta-footer-frame-outer-stroke) calc(100% - var(--tejesta-footer-frame-corner) - var(--tejesta-footer-frame-corner)) no-repeat,
-    linear-gradient(var(--tejesta-footer-frame-color) 0 0) right top var(--tejesta-footer-frame-corner) / var(--tejesta-footer-frame-outer-stroke) calc(100% - var(--tejesta-footer-frame-corner) - var(--tejesta-footer-frame-corner)) no-repeat,
-    linear-gradient(45deg, transparent calc(50% - var(--tejesta-footer-frame-outer-stroke)), var(--tejesta-footer-frame-color) 0 calc(50% + var(--tejesta-footer-frame-outer-stroke)), transparent 0) left top / var(--tejesta-footer-frame-corner) var(--tejesta-footer-frame-corner) no-repeat,
-    linear-gradient(135deg, transparent calc(50% - var(--tejesta-footer-frame-outer-stroke)), var(--tejesta-footer-frame-color) 0 calc(50% + var(--tejesta-footer-frame-outer-stroke)), transparent 0) right top / var(--tejesta-footer-frame-corner) var(--tejesta-footer-frame-corner) no-repeat,
-    linear-gradient(135deg, transparent calc(50% - var(--tejesta-footer-frame-outer-stroke)), var(--tejesta-footer-frame-color) 0 calc(50% + var(--tejesta-footer-frame-outer-stroke)), transparent 0) left bottom / var(--tejesta-footer-frame-corner) var(--tejesta-footer-frame-corner) no-repeat,
-    linear-gradient(45deg, transparent calc(50% - var(--tejesta-footer-frame-outer-stroke)), var(--tejesta-footer-frame-color) 0 calc(50% + var(--tejesta-footer-frame-outer-stroke)), transparent 0) right bottom / var(--tejesta-footer-frame-corner) var(--tejesta-footer-frame-corner) no-repeat,
-    linear-gradient(var(--tejesta-footer-frame-color) 0 0) left calc(var(--tejesta-footer-frame-inner-inset) + var(--tejesta-footer-frame-inner-corner)) top var(--tejesta-footer-frame-inner-inset) / calc(100% - var(--tejesta-footer-frame-inner-inset) - var(--tejesta-footer-frame-inner-corner) - var(--tejesta-footer-frame-inner-inset) - var(--tejesta-footer-frame-inner-corner)) var(--tejesta-footer-frame-inner-stroke) no-repeat,
-    linear-gradient(var(--tejesta-footer-frame-color) 0 0) left calc(var(--tejesta-footer-frame-inner-inset) + var(--tejesta-footer-frame-inner-corner)) bottom var(--tejesta-footer-frame-inner-inset) / calc(100% - var(--tejesta-footer-frame-inner-inset) - var(--tejesta-footer-frame-inner-corner) - var(--tejesta-footer-frame-inner-inset) - var(--tejesta-footer-frame-inner-corner)) var(--tejesta-footer-frame-inner-stroke) no-repeat,
-    linear-gradient(var(--tejesta-footer-frame-color) 0 0) left var(--tejesta-footer-frame-inner-inset) top calc(var(--tejesta-footer-frame-inner-inset) + var(--tejesta-footer-frame-inner-corner)) / var(--tejesta-footer-frame-inner-stroke) calc(100% - var(--tejesta-footer-frame-inner-inset) - var(--tejesta-footer-frame-inner-corner) - var(--tejesta-footer-frame-inner-inset) - var(--tejesta-footer-frame-inner-corner)) no-repeat,
-    linear-gradient(var(--tejesta-footer-frame-color) 0 0) right var(--tejesta-footer-frame-inner-inset) top calc(var(--tejesta-footer-frame-inner-inset) + var(--tejesta-footer-frame-inner-corner)) / var(--tejesta-footer-frame-inner-stroke) calc(100% - var(--tejesta-footer-frame-inner-inset) - var(--tejesta-footer-frame-inner-corner) - var(--tejesta-footer-frame-inner-inset) - var(--tejesta-footer-frame-inner-corner)) no-repeat,
-    linear-gradient(45deg, transparent calc(50% - var(--tejesta-footer-frame-inner-stroke)), var(--tejesta-footer-frame-color) 0 calc(50% + var(--tejesta-footer-frame-inner-stroke)), transparent 0) left var(--tejesta-footer-frame-inner-inset) top var(--tejesta-footer-frame-inner-inset) / var(--tejesta-footer-frame-inner-corner) var(--tejesta-footer-frame-inner-corner) no-repeat,
-    linear-gradient(135deg, transparent calc(50% - var(--tejesta-footer-frame-inner-stroke)), var(--tejesta-footer-frame-color) 0 calc(50% + var(--tejesta-footer-frame-inner-stroke)), transparent 0) right var(--tejesta-footer-frame-inner-inset) top var(--tejesta-footer-frame-inner-inset) / var(--tejesta-footer-frame-inner-corner) var(--tejesta-footer-frame-inner-corner) no-repeat,
-    linear-gradient(135deg, transparent calc(50% - var(--tejesta-footer-frame-inner-stroke)), var(--tejesta-footer-frame-color) 0 calc(50% + var(--tejesta-footer-frame-inner-stroke)), transparent 0) left var(--tejesta-footer-frame-inner-inset) bottom var(--tejesta-footer-frame-inner-inset) / var(--tejesta-footer-frame-inner-corner) var(--tejesta-footer-frame-inner-corner) no-repeat,
-    linear-gradient(45deg, transparent calc(50% - var(--tejesta-footer-frame-inner-stroke)), var(--tejesta-footer-frame-color) 0 calc(50% + var(--tejesta-footer-frame-inner-stroke)), transparent 0) right var(--tejesta-footer-frame-inner-inset) bottom var(--tejesta-footer-frame-inner-inset) / var(--tejesta-footer-frame-inner-corner) var(--tejesta-footer-frame-inner-corner) no-repeat;
+  background-image: var(--tejesta-frame-button-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: rgb(var(--color-foreground));
 }
 
 .tejesta-footer__input,
