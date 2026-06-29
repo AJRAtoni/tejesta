@@ -59,13 +59,14 @@
           "type": "heading",
           "settings": {
             "heading": "Sun Collection",
+            "heading_logo_asset": "none",
             "heading_size": "h0"
           }
         },
         "text_PiTKQD": {
           "type": "text",
           "settings": {
-            "text": "Frames shaped for light,<br>exact in every line.",
+            "text": "Frames shaped for light, considered in every detail.",
             "text_style": "body"
           }
         },
@@ -118,13 +119,14 @@
           "type": "heading",
           "settings": {
             "heading": "Optical Collection",
+            "heading_logo_asset": "none",
             "heading_size": "h0"
           }
         },
         "text_Bk4tQB": {
           "type": "text",
           "settings": {
-            "text": "Made with the same intention,<br>now in service of clarity.",
+            "text": "Made with the same intention, now in service of clarity.",
             "text_style": "body"
           }
         },
