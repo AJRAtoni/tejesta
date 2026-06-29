@@ -24,6 +24,14 @@
 
 @font-face {
   font-family: 'TEJESTA Jost';
+  src: url('Jost-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TEJESTA Jost';
   src: url('Jost-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;

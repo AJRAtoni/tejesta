@@ -594,7 +594,7 @@
     margin-inline: auto;
     font-family: 'TEJESTA Jost', var(--font-body-family);
     font-size: clamp(2.3rem, 1.7vw, 3rem);
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.16;
     letter-spacing: 0;
   }
@@ -637,6 +637,7 @@
     margin-inline: auto;
     font-family: 'TEJESTA Jost', var(--font-body-family);
     font-size: 1.35rem;
+    font-weight: 300;
     line-height: 1.25;
     letter-spacing: 0;
   }
