@@ -66,7 +66,7 @@
         "text_PiTKQD": {
           "type": "text",
           "settings": {
-            "text": "Frames shaped for light, considered in every detail.",
+            "text": "Frames shaped for light, considered<br />in every detail.",
             "text_style": "body"
           }
         },
@@ -126,7 +126,7 @@
         "text_Bk4tQB": {
           "type": "text",
           "settings": {
-            "text": "Made with the same intention, now in service of clarity.",
+            "text": "Made with the same intention,<br />now in service of clarity.",
             "text_style": "body"
           }
         },
