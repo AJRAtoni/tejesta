@@ -573,7 +573,7 @@
   --tejesta-frame-button-padding: 0 1.6rem;
   --tejesta-frame-button-font-size: 1.4rem;
   --tejesta-frame-button-line-height: 1;
-  --tejesta-footer-form-frame-image: url('tejesta-footer-form-frame.svg');
+  --tejesta-footer-form-frame-image: url('tejesta-cta-border-subscribeform.svg');
 
   isolation: isolate;
   position: relative;
