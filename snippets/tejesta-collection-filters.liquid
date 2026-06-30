@@ -1,14 +1,12 @@
 {% comment %}
-  TEJESTA collection filters inspired by Matsuda.
-  Static category taxonomy comes from WEBSITE CATAGORY BREAKDOWN.xlsx.
+  TEJESTA collection filters.
   Filters run client-side against product card data attributes in main-collection-product-grid.liquid.
 {% endcomment %}
 
-{%- assign tejesta_styles = 'DIXON|RAY|GERONIMO|COMANCHE|ARAKI|PARKER|CRAZY HORSE|JPG|CHACON|SEMINOLE|CURTIS|TUTTLE|KEEFFE|OSCEOLA|HOPPER|NOKONI|LENNON|ANNIE-O|SIXTO|SHIPROCK|TAIGA|ERTE|NINETY|HOPKINS' | split: '|' -%}
-{%- assign tejesta_collections = 'VAQUERO|RAYGERAKI|ARTESANIA|WINTER 2025|COLLECTION 7|OTHER' | split: '|' -%}
-{%- assign tejesta_materials = 'ACETATE|METAL' | split: '|' -%}
-{%- assign tejesta_sizes = 'SMALL|MEDIUM|LARGE' | split: '|' -%}
-{%- assign tejesta_shapes = 'Geometric|Cat-Eye|Square|Rectangular|Circular|Oval|Round|Wrap|Aviator' | split: '|' -%}
+{%- assign tejesta_types = 'Sunglasses|Optical' | split: '|' -%}
+{%- assign tejesta_collections = 'Vaquero|Raygeraki|Artesania|Winter 2025|Collection 7' | split: '|' -%}
+{%- assign tejesta_sizes = 'Small|Medium|Large' | split: '|' -%}
+{%- assign tejesta_shapes = 'Rectangular|Cat-Eye|Square|Oval|Circular|Round|Wrap|Aviator' | split: '|' -%}
 
 <div class="tejesta-filter-shell page-width" data-tejesta-collection-filters>
   <div class="tejesta-filter-mobile-bar">
@@ -27,11 +25,11 @@
     </div>
 
     <div class="tejesta-filter-controls" data-tejesta-filter-controls>
-      <div class="tejesta-filter" data-filter-id="style">
-        <label class="tejesta-filter__label" for="TejestaFilterStyle">Style</label>
-        <select class="tejesta-filter__select" id="TejestaFilterStyle" data-filter-key="style">
+      <div class="tejesta-filter" data-filter-id="type">
+        <label class="tejesta-filter__label" for="TejestaFilterType">Type</label>
+        <select class="tejesta-filter__select" id="TejestaFilterType" data-filter-key="type">
           <option value="all">All</option>
-          {%- for item in tejesta_styles -%}
+          {%- for item in tejesta_types -%}
             <option value="{{ item | handleize }}">{{ item }}</option>
           {%- endfor -%}
         </select>
@@ -42,16 +40,6 @@
         <select class="tejesta-filter__select" id="TejestaFilterCollection" data-filter-key="collection">
           <option value="all">All</option>
           {%- for item in tejesta_collections -%}
-            <option value="{{ item | handleize }}">{{ item }}</option>
-          {%- endfor -%}
-        </select>
-      </div>
-
-      <div class="tejesta-filter" data-filter-id="material">
-        <label class="tejesta-filter__label" for="TejestaFilterMaterial">Material</label>
-        <select class="tejesta-filter__select" id="TejestaFilterMaterial" data-filter-key="material">
-          <option value="all">All</option>
-          {%- for item in tejesta_materials -%}
             <option value="{{ item | handleize }}">{{ item }}</option>
           {%- endfor -%}
         </select>
