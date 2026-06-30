@@ -26,43 +26,115 @@
 
     <div class="tejesta-filter-controls" data-tejesta-filter-controls>
       <div class="tejesta-filter" data-filter-id="type">
-        <label class="tejesta-filter__label" for="TejestaFilterType">Type</label>
-        <select class="tejesta-filter__select" id="TejestaFilterType" data-filter-key="type">
+        <label class="tejesta-filter__label" id="TejestaFilterTypeLabel" for="TejestaFilterType">Type</label>
+        <select class="tejesta-filter__select" id="TejestaFilterType" data-filter-key="type" tabindex="-1" aria-hidden="true">
           <option value="all">All</option>
           {%- for item in tejesta_types -%}
             <option value="{{ item | handleize }}">{{ item }}</option>
           {%- endfor -%}
         </select>
+        <button
+          class="tejesta-filter__trigger"
+          type="button"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-labelledby="TejestaFilterTypeLabel TejestaFilterTypeCurrent"
+          data-filter-trigger
+        >
+          <span id="TejestaFilterTypeCurrent" data-filter-current>All</span>
+          <span class="tejesta-filter__caret" aria-hidden="true"></span>
+        </button>
+        <div class="tejesta-filter__dropdown" role="listbox" aria-labelledby="TejestaFilterTypeLabel">
+          {%- for item in tejesta_types -%}
+            <button class="tejesta-filter__option" type="button" role="option" data-filter-option="{{ item | handleize }}" aria-selected="false">
+              {{ item }}
+            </button>
+          {%- endfor -%}
+        </div>
       </div>
 
       <div class="tejesta-filter" data-filter-id="collection">
-        <label class="tejesta-filter__label" for="TejestaFilterCollection">Collection</label>
-        <select class="tejesta-filter__select" id="TejestaFilterCollection" data-filter-key="collection">
+        <label class="tejesta-filter__label" id="TejestaFilterCollectionLabel" for="TejestaFilterCollection">Collection</label>
+        <select class="tejesta-filter__select" id="TejestaFilterCollection" data-filter-key="collection" tabindex="-1" aria-hidden="true">
           <option value="all">All</option>
           {%- for item in tejesta_collections -%}
             <option value="{{ item | handleize }}">{{ item }}</option>
           {%- endfor -%}
         </select>
+        <button
+          class="tejesta-filter__trigger"
+          type="button"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-labelledby="TejestaFilterCollectionLabel TejestaFilterCollectionCurrent"
+          data-filter-trigger
+        >
+          <span id="TejestaFilterCollectionCurrent" data-filter-current>All</span>
+          <span class="tejesta-filter__caret" aria-hidden="true"></span>
+        </button>
+        <div class="tejesta-filter__dropdown" role="listbox" aria-labelledby="TejestaFilterCollectionLabel">
+          {%- for item in tejesta_collections -%}
+            <button class="tejesta-filter__option" type="button" role="option" data-filter-option="{{ item | handleize }}" aria-selected="false">
+              {{ item }}
+            </button>
+          {%- endfor -%}
+        </div>
       </div>
 
       <div class="tejesta-filter" data-filter-id="size">
-        <label class="tejesta-filter__label" for="TejestaFilterSize">Size</label>
-        <select class="tejesta-filter__select" id="TejestaFilterSize" data-filter-key="size">
+        <label class="tejesta-filter__label" id="TejestaFilterSizeLabel" for="TejestaFilterSize">Size</label>
+        <select class="tejesta-filter__select" id="TejestaFilterSize" data-filter-key="size" tabindex="-1" aria-hidden="true">
           <option value="all">All</option>
           {%- for item in tejesta_sizes -%}
             <option value="{{ item | handleize }}">{{ item }}</option>
           {%- endfor -%}
         </select>
+        <button
+          class="tejesta-filter__trigger"
+          type="button"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-labelledby="TejestaFilterSizeLabel TejestaFilterSizeCurrent"
+          data-filter-trigger
+        >
+          <span id="TejestaFilterSizeCurrent" data-filter-current>All</span>
+          <span class="tejesta-filter__caret" aria-hidden="true"></span>
+        </button>
+        <div class="tejesta-filter__dropdown" role="listbox" aria-labelledby="TejestaFilterSizeLabel">
+          {%- for item in tejesta_sizes -%}
+            <button class="tejesta-filter__option" type="button" role="option" data-filter-option="{{ item | handleize }}" aria-selected="false">
+              {{ item }}
+            </button>
+          {%- endfor -%}
+        </div>
       </div>
 
       <div class="tejesta-filter" data-filter-id="shape">
-        <label class="tejesta-filter__label" for="TejestaFilterShape">Shape</label>
-        <select class="tejesta-filter__select" id="TejestaFilterShape" data-filter-key="shape">
+        <label class="tejesta-filter__label" id="TejestaFilterShapeLabel" for="TejestaFilterShape">Shape</label>
+        <select class="tejesta-filter__select" id="TejestaFilterShape" data-filter-key="shape" tabindex="-1" aria-hidden="true">
           <option value="all">All</option>
           {%- for item in tejesta_shapes -%}
             <option value="{{ item | handleize }}">{{ item }}</option>
           {%- endfor -%}
         </select>
+        <button
+          class="tejesta-filter__trigger"
+          type="button"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-labelledby="TejestaFilterShapeLabel TejestaFilterShapeCurrent"
+          data-filter-trigger
+        >
+          <span id="TejestaFilterShapeCurrent" data-filter-current>All</span>
+          <span class="tejesta-filter__caret" aria-hidden="true"></span>
+        </button>
+        <div class="tejesta-filter__dropdown" role="listbox" aria-labelledby="TejestaFilterShapeLabel">
+          {%- for item in tejesta_shapes -%}
+            <button class="tejesta-filter__option" type="button" role="option" data-filter-option="{{ item | handleize }}" aria-selected="false">
+              {{ item }}
+            </button>
+          {%- endfor -%}
+        </div>
       </div>
     </div>
 

@@ -7,6 +7,7 @@
 
     const items = Array.from(grid.querySelectorAll('[data-tejesta-filter-card]'));
     const selects = Array.from(root.querySelectorAll('[data-filter-key]'));
+    const filters = Array.from(root.querySelectorAll('.tejesta-filter'));
     const openButton = root.querySelector('[data-tejesta-filter-open]');
     const closeButtons = root.querySelectorAll('[data-tejesta-filter-close]');
     const panel = root.querySelector('[data-tejesta-filter-panel]');
@@ -16,6 +17,14 @@
     const resultLabel = root.querySelector('[data-tejesta-result-label]');
 
     const normalize = (value) => (value || '').toString().trim();
+
+    const closeDropdowns = (except = null) => {
+      filters.forEach((filter) => {
+        if (filter === except) return;
+        filter.classList.remove('is-open');
+        filter.querySelector('[data-filter-trigger]')?.setAttribute('aria-expanded', 'false');
+      });
+    };
 
     const getState = () => selects.reduce((state, select) => {
       state[select.dataset.filterKey] = normalize(select.value);
@@ -27,6 +36,23 @@
     const setCount = (count) => {
       resultCounts.forEach((node) => {
         node.textContent = count;
+      });
+    };
+
+    const updateFilterUi = (select) => {
+      const filter = select.closest('.tejesta-filter');
+      if (!filter) return;
+
+      const current = filter.querySelector('[data-filter-current]');
+      const optionButtons = filter.querySelectorAll('[data-filter-option]');
+      const selectedOption = select.options[select.selectedIndex];
+      const selectedLabel = selectedOption?.textContent?.trim() || 'All';
+
+      if (current) current.textContent = selectedLabel;
+      optionButtons.forEach((button) => {
+        const isActive = button.dataset.filterOption === select.value;
+        button.classList.toggle('is-active', isActive);
+        button.setAttribute('aria-selected', isActive ? 'true' : 'false');
       });
     };
 
@@ -57,6 +83,8 @@
       const state = getState();
       let visibleCount = 0;
 
+      selects.forEach(updateFilterUi);
+
       items.forEach((item) => {
         const isVisible = Object.entries(state).every(([key, value]) => {
           if (!value || value === 'all') return true;
@@ -76,6 +104,28 @@
       setCount(visibleCount);
       renderTags(state);
     }
+
+    filters.forEach((filter) => {
+      const select = filter.querySelector('[data-filter-key]');
+      const trigger = filter.querySelector('[data-filter-trigger]');
+      const options = filter.querySelectorAll('[data-filter-option]');
+
+      trigger?.addEventListener('click', () => {
+        const willOpen = !filter.classList.contains('is-open');
+        closeDropdowns(filter);
+        filter.classList.toggle('is-open', willOpen);
+        trigger.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      });
+
+      options.forEach((option) => {
+        option.addEventListener('click', () => {
+          if (!select) return;
+          select.value = option.dataset.filterOption || 'all';
+          closeDropdowns();
+          applyFilters();
+        });
+      });
+    });
 
     selects.forEach((select) => select.addEventListener('change', applyFilters));
 
@@ -99,7 +149,16 @@
       button.addEventListener('click', () => {
         if (panel) panel.classList.remove('is-active');
         document.documentElement.classList.remove('tejesta-filter-open');
+        closeDropdowns();
       });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!root.contains(event.target)) closeDropdowns();
+    });
+
+    root.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeDropdowns();
     });
 
     applyFilters();
