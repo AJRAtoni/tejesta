@@ -15,14 +15,10 @@
   }
 
   #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__eyebrow {
+    display: block;
+    width: clamp(23.4rem, 23vw, 33.1rem);
+    height: auto;
     margin: 0;
-    font-family: 'TEJESTA Jost', var(--font-body-family);
-    font-size: clamp(2.4rem, 2.65vw, 3.4rem);
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: 0.34em;
-    text-indent: 0.34em;
-    text-transform: uppercase;
   }
 
   #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__logo {
@@ -61,8 +57,7 @@
     }
 
     #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__eyebrow {
-      letter-spacing: 0.22em;
-      text-indent: 0.22em;
+      width: min(24rem, 88vw);
     }
 
     #TejestaCollectionSeven-{{ section.id }} .tejesta-collection-seven__text {
@@ -83,7 +78,14 @@
 >
   <div class="tejesta-collection-seven__inner">
     {%- if section.settings.eyebrow != blank -%}
-      <p class="tejesta-collection-seven__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <img
+        class="tejesta-collection-seven__eyebrow"
+        src="{{ 'tejesta-collection-label.svg' | asset_url }}"
+        width="331"
+        height="24"
+        loading="lazy"
+        alt="{{ section.settings.eyebrow | escape }}"
+      >
     {%- endif -%}
 
     <img
