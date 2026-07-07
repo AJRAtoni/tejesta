@@ -1,0 +1,17 @@
+{%- liquid
+  assign link_url = url | default: ''
+  assign clean_url = link_url | split: '?' | first | split: '#' | first
+  assign all_url = routes.all_products_collection_url
+  assign sun_url = routes.collections_url | append: '/sun'
+  assign sun_url_slash = sun_url | append: '/'
+  assign optical_url = routes.collections_url | append: '/optical'
+  assign optical_url_slash = optical_url | append: '/'
+
+  if clean_url == sun_url or clean_url == sun_url_slash
+    echo all_url | append: '?type=sunglasses'
+  elsif clean_url == optical_url or clean_url == optical_url_slash
+    echo all_url | append: '?type=optical'
+  else
+    echo link_url
+  endif
+-%}

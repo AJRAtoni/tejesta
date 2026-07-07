@@ -9,6 +9,27 @@
   }
 {%- endstyle -%}
 
+{%- liquid
+  assign tejesta_redirect_type = ''
+  if collection.handle == 'sun'
+    assign tejesta_redirect_type = 'sunglasses'
+  elsif collection.handle == 'optical'
+    assign tejesta_redirect_type = 'optical'
+  endif
+-%}
+
+{%- if tejesta_redirect_type != blank -%}
+  {%- assign tejesta_redirect_url = routes.all_products_collection_url | append: '?type=' | append: tejesta_redirect_type -%}
+  <script>
+    window.location.replace({{ tejesta_redirect_url | json }});
+  </script>
+  <noscript>
+    <meta http-equiv="refresh" content="0;url={{ tejesta_redirect_url }}">
+    <p><a href="{{ tejesta_redirect_url }}">Continue to Shop All</a></p>
+  </noscript>
+{%- endif -%}
+
+{%- if tejesta_redirect_type == blank -%}
 <div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
   <div class="collection-hero__inner page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
     <div class="collection-hero__text-wrapper">
@@ -44,6 +65,7 @@
     {%- endif -%}
   </div>
 </div>
+{%- endif -%}
 
 {% schema %}
 {

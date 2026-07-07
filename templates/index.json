@@ -49,7 +49,7 @@
         "logo_alt": "SEVEN",
         "text": "<p>Our newest work, and our most considered. New silhouettes, new colorways,<br>the same intention moving through it all like wind across the desert.</p>",
         "button_label": "Shop Now",
-        "button_link": "shopify://collections/sun"
+        "button_link": "/collections/all?collection=collection-7"
       }
     },
     "image_banner_VtR9UH": {
@@ -74,7 +74,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop Sunglasses",
-            "button_link_1": "shopify://collections/sun",
+            "button_link_1": "/collections/all?type=sunglasses",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -134,7 +134,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop Optical",
-            "button_link_1": "shopify://collections/sun",
+            "button_link_1": "/collections/all?type=optical",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -194,7 +194,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop Now",
-            "button_link_1": "shopify://collections/sun",
+            "button_link_1": "/collections/all?collection=artesania",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",

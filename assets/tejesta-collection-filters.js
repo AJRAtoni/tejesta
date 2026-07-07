@@ -17,6 +17,13 @@
     const resultLabel = root.querySelector('[data-tejesta-result-label]');
 
     const normalize = (value) => (value || '').toString().trim();
+    const normalizeHandle = (value) => normalize(value).toLowerCase();
+    const paramAliases = {
+      type: ['type', 'tejesta_type'],
+      collection: ['collection', 'tejesta_collection'],
+      size: ['size', 'tejesta_size'],
+      shape: ['shape', 'tejesta_shape'],
+    };
 
     const closeDropdowns = (except = null) => {
       filters.forEach((filter) => {
@@ -32,6 +39,34 @@
     }, {});
 
     const hasActiveFilters = (state) => Object.values(state).some((value) => value && value !== 'all');
+
+    const syncStateFromUrl = () => {
+      const params = new URLSearchParams(window.location.search);
+
+      selects.forEach((select) => {
+        const key = select.dataset.filterKey;
+        const aliases = paramAliases[key] || [key];
+        const urlValue = aliases.map((alias) => params.get(alias)).find(Boolean);
+        if (!urlValue) return;
+
+        const normalizedValue = normalizeHandle(urlValue);
+        const hasOption = Array.from(select.options).some((option) => option.value === normalizedValue);
+        if (hasOption) select.value = normalizedValue;
+      });
+    };
+
+    const writeStateToUrl = (state) => {
+      const url = new URL(window.location.href);
+
+      Object.entries(paramAliases).forEach(([key, aliases]) => {
+        aliases.forEach((alias) => url.searchParams.delete(alias));
+        if (state[key] && state[key] !== 'all') {
+          url.searchParams.set(key, state[key]);
+        }
+      });
+
+      window.history.replaceState({ tejestaFilters: true }, '', `${url.pathname}${url.search}${url.hash}`);
+    };
 
     const setCount = (count) => {
       resultCounts.forEach((node) => {
@@ -81,7 +116,7 @@
       });
     };
 
-    function applyFilters() {
+    function applyFilters({ updateUrl = true } = {}) {
       const state = getState();
       let visibleCount = 0;
 
@@ -105,6 +140,7 @@
       if (resultLabel) resultLabel.hidden = !active;
       setCount(visibleCount);
       renderTags(state);
+      if (updateUrl) writeStateToUrl(state);
     }
 
     filters.forEach((filter) => {
@@ -163,6 +199,12 @@
       if (event.key === 'Escape') closeDropdowns();
     });
 
-    applyFilters();
+    window.addEventListener('popstate', () => {
+      syncStateFromUrl();
+      applyFilters({ updateUrl: false });
+    });
+
+    syncStateFromUrl();
+    applyFilters({ updateUrl: false });
   });
 })();
