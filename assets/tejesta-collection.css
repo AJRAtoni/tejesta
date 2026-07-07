@@ -90,6 +90,10 @@
   outline-offset: 0.45rem;
 }
 
+.tejesta-filter.has-selection .tejesta-filter__trigger {
+  color: rgb(var(--color-foreground));
+}
+
 .tejesta-filter__caret {
   display: block;
   width: 0;

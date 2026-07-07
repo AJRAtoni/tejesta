@@ -47,8 +47,10 @@
       const optionButtons = filter.querySelectorAll('[data-filter-option]');
       const selectedOption = select.options[select.selectedIndex];
       const selectedLabel = selectedOption?.textContent?.trim() || 'All';
+      const hasSelection = select.value && select.value !== 'all';
 
       if (current) current.textContent = selectedLabel;
+      filter.classList.toggle('has-selection', hasSelection);
       optionButtons.forEach((button) => {
         const isActive = button.dataset.filterOption === select.value;
         button.classList.toggle('is-active', isActive);
