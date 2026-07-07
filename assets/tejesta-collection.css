@@ -33,35 +33,20 @@
   grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
   min-height: 4rem;
-  padding-bottom: 0.8rem;
+  padding-bottom: clamp(1.2rem, 0.95vw, 1.5rem);
 }
 
-.tejesta-filter::before,
-.tejesta-filter::after {
+.tejesta-filter::before {
   content: "";
   position: absolute;
   right: 0;
   left: 0;
-  pointer-events: none;
-}
-
-.tejesta-filter::before {
-  bottom: 0.25rem;
-  height: 0.1rem;
-  background: rgba(var(--color-foreground), 0.42);
-}
-
-.tejesta-filter::after {
   bottom: 0;
-  height: 0.45rem;
-  background:
-    linear-gradient(
-      90deg,
-      var(--tejesta-filter-border) 0 1.1rem,
-      transparent 1.1rem calc(100% - 1.1rem),
-      var(--tejesta-filter-border) calc(100% - 1.1rem) 100%
-    ),
-    linear-gradient(var(--tejesta-filter-border), var(--tejesta-filter-border)) center / 100% 0.18rem no-repeat;
+  display: block;
+  height: clamp(1.2rem, 0.95vw, 1.5rem);
+  aspect-ratio: 2737 / 157;
+  background: url('tejesta-filter-border.svg') center / 100% 100% no-repeat;
+  pointer-events: none;
 }
 
 .tejesta-filter__label {
