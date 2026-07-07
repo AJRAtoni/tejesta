@@ -44,7 +44,7 @@
   bottom: 0;
   display: block;
   height: clamp(1.2rem, 0.95vw, 1.5rem);
-  aspect-ratio: 2737 / 157;
+  aspect-ratio: 2668 / 157;
   background: url('tejesta-filter-border.svg') center / 100% 100% no-repeat;
   pointer-events: none;
 }
