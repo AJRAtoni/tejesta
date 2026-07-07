@@ -132,14 +132,14 @@
   z-index: 1;
   pointer-events: none;
   background-image:
-    url('tejesta-filter-dropdown-frame-hairline-top-left.png'),
-    url('tejesta-filter-dropdown-frame-hairline-top.png'),
-    url('tejesta-filter-dropdown-frame-hairline-top-right.png'),
-    url('tejesta-filter-dropdown-frame-hairline-right.png'),
-    url('tejesta-filter-dropdown-frame-hairline-bottom-right.png'),
-    url('tejesta-filter-dropdown-frame-hairline-bottom.png'),
-    url('tejesta-filter-dropdown-frame-hairline-bottom-left.png'),
-    url('tejesta-filter-dropdown-frame-hairline-left.png');
+    url('tejesta-filter-dropdown-frame-straight-top-left.png'),
+    url('tejesta-filter-dropdown-frame-straight-top.png'),
+    url('tejesta-filter-dropdown-frame-straight-top-right.png'),
+    url('tejesta-filter-dropdown-frame-straight-right.png'),
+    url('tejesta-filter-dropdown-frame-straight-bottom-right.png'),
+    url('tejesta-filter-dropdown-frame-straight-bottom.png'),
+    url('tejesta-filter-dropdown-frame-straight-bottom-left.png'),
+    url('tejesta-filter-dropdown-frame-straight-left.png');
   background-position:
     top left,
     top center,
@@ -169,14 +169,13 @@
   pointer-events: none;
   background: rgb(var(--color-background));
   clip-path: polygon(
-    var(--tejesta-dropdown-frame-corner) 0,
-    calc(100% - var(--tejesta-dropdown-frame-corner)) 0,
-    100% var(--tejesta-dropdown-frame-corner),
+    0 0,
+    100% 0,
     100% calc(100% - var(--tejesta-dropdown-frame-corner)),
     calc(100% - var(--tejesta-dropdown-frame-corner)) 100%,
     var(--tejesta-dropdown-frame-corner) 100%,
     0 calc(100% - var(--tejesta-dropdown-frame-corner)),
-    0 var(--tejesta-dropdown-frame-corner)
+    0 0
   );
 }
 
