@@ -104,19 +104,17 @@
 }
 
 .tejesta-filter__dropdown {
+  --tejesta-dropdown-frame-corner: 1.45rem;
   position: absolute;
   top: calc(100% - 0.1rem);
   right: 1.2rem;
   z-index: 30;
+  box-sizing: border-box;
   min-width: 18.5rem;
   width: max-content;
   max-width: min(28rem, 100%);
-  padding: 1.15rem 1.35rem 1.3rem;
-  border: solid transparent;
-  border-width: 0.95rem 0.95rem 1.45rem;
-  border-image-source: url('tejesta-filter-dropdown-frame.png');
-  border-image-slice: 35 35 58 35;
-  border-image-repeat: stretch;
+  padding: 2.05rem 2rem 2rem;
+  border: 0;
   background: rgb(var(--color-background));
   color: rgb(var(--color-foreground));
   opacity: 0;
@@ -124,6 +122,42 @@
   transform: translateY(-0.2rem);
   pointer-events: none;
   transition: opacity 120ms ease, visibility 120ms ease, transform 120ms ease;
+}
+
+.tejesta-filter__dropdown::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    url('tejesta-filter-dropdown-frame-top-left.png'),
+    url('tejesta-filter-dropdown-frame-top.png'),
+    url('tejesta-filter-dropdown-frame-top-right.png'),
+    url('tejesta-filter-dropdown-frame-right.png'),
+    url('tejesta-filter-dropdown-frame-bottom-right.png'),
+    url('tejesta-filter-dropdown-frame-bottom.png'),
+    url('tejesta-filter-dropdown-frame-bottom-left.png'),
+    url('tejesta-filter-dropdown-frame-left.png');
+  background-position:
+    top left,
+    top center,
+    top right,
+    right center,
+    bottom right,
+    bottom center,
+    bottom left,
+    left center;
+  background-size:
+    var(--tejesta-dropdown-frame-corner) var(--tejesta-dropdown-frame-corner),
+    calc(100% - var(--tejesta-dropdown-frame-corner) - var(--tejesta-dropdown-frame-corner)) var(--tejesta-dropdown-frame-corner),
+    var(--tejesta-dropdown-frame-corner) var(--tejesta-dropdown-frame-corner),
+    var(--tejesta-dropdown-frame-corner) calc(100% - var(--tejesta-dropdown-frame-corner) - var(--tejesta-dropdown-frame-corner)),
+    var(--tejesta-dropdown-frame-corner) var(--tejesta-dropdown-frame-corner),
+    calc(100% - var(--tejesta-dropdown-frame-corner) - var(--tejesta-dropdown-frame-corner)) var(--tejesta-dropdown-frame-corner),
+    var(--tejesta-dropdown-frame-corner) var(--tejesta-dropdown-frame-corner),
+    var(--tejesta-dropdown-frame-corner) calc(100% - var(--tejesta-dropdown-frame-corner) - var(--tejesta-dropdown-frame-corner));
+  background-repeat: no-repeat;
 }
 
 .tejesta-filter.is-open {
