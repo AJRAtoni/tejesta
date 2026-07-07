@@ -132,14 +132,14 @@
   z-index: 1;
   pointer-events: none;
   background-image:
-    url('tejesta-filter-dropdown-frame-straight-top-left.png'),
-    url('tejesta-filter-dropdown-frame-straight-top.png'),
-    url('tejesta-filter-dropdown-frame-straight-top-right.png'),
-    url('tejesta-filter-dropdown-frame-straight-right.png'),
-    url('tejesta-filter-dropdown-frame-straight-bottom-right.png'),
-    url('tejesta-filter-dropdown-frame-straight-bottom.png'),
-    url('tejesta-filter-dropdown-frame-straight-bottom-left.png'),
-    url('tejesta-filter-dropdown-frame-straight-left.png');
+    url('tejesta-filter-dropdown-frame-tight-top-left.png'),
+    url('tejesta-filter-dropdown-frame-tight-top.png'),
+    url('tejesta-filter-dropdown-frame-tight-top-right.png'),
+    url('tejesta-filter-dropdown-frame-tight-right.png'),
+    url('tejesta-filter-dropdown-frame-tight-bottom-right.png'),
+    url('tejesta-filter-dropdown-frame-tight-bottom.png'),
+    url('tejesta-filter-dropdown-frame-tight-bottom-left.png'),
+    url('tejesta-filter-dropdown-frame-tight-left.png');
   background-position:
     top left,
     top center,
