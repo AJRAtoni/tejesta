@@ -39,7 +39,7 @@
 .tejesta-filter::before {
   content: "";
   position: absolute;
-  right: 0;
+  right: -3.4rem;
   left: 0;
   bottom: 0;
   display: block;
@@ -467,6 +467,10 @@
 
   .tejesta-filter {
     margin-bottom: 1.8rem;
+  }
+
+  .tejesta-filter::before {
+    right: 0;
   }
 
   .tejesta-filter-apply {
