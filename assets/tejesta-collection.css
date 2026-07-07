@@ -104,6 +104,11 @@
 }
 
 .tejesta-filter__dropdown {
+  --tejesta-dropdown-outer-border: 0.34rem;
+  --tejesta-dropdown-inner-border: 0.16rem;
+  --tejesta-dropdown-inner-inset: 0.56rem;
+  --tejesta-dropdown-outer-corner: 1rem;
+  --tejesta-dropdown-inner-corner: 0.64rem;
   position: absolute;
   top: calc(100% - 0.1rem);
   right: 1.2rem;
@@ -130,14 +135,14 @@
 
 .tejesta-filter__dropdown::before {
   inset: 0;
-  border: 0.3rem solid rgb(var(--color-foreground));
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1.2rem), calc(100% - 1.2rem) 100%, 1.2rem 100%, 0 calc(100% - 1.2rem));
+  border: var(--tejesta-dropdown-outer-border) solid rgb(var(--color-foreground));
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--tejesta-dropdown-outer-corner)), calc(100% - var(--tejesta-dropdown-outer-corner)) 100%, var(--tejesta-dropdown-outer-corner) 100%, 0 calc(100% - var(--tejesta-dropdown-outer-corner)));
 }
 
 .tejesta-filter__dropdown::after {
-  inset: 0.55rem;
-  border: 0.14rem solid rgb(var(--color-foreground));
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 0.8rem), calc(100% - 0.8rem) 100%, 0.8rem 100%, 0 calc(100% - 0.8rem));
+  inset: var(--tejesta-dropdown-inner-inset);
+  border: var(--tejesta-dropdown-inner-border) solid rgb(var(--color-foreground));
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--tejesta-dropdown-inner-corner)), calc(100% - var(--tejesta-dropdown-inner-corner)) 100%, var(--tejesta-dropdown-inner-corner) 100%, 0 calc(100% - var(--tejesta-dropdown-inner-corner)));
 }
 
 .tejesta-filter.is-open {
