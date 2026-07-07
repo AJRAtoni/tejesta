@@ -54,7 +54,7 @@
   border-right: 0.1rem solid rgb(var(--color-foreground));
   color: rgb(var(--color-foreground));
   font-family: 'TEJESTA Jost', var(--font-body-family);
-  font-size: clamp(1.8rem, 1.52vw, 2.6rem);
+  font-size: clamp(1.45rem, 1.22vw, 2.05rem);
   font-weight: 300;
   line-height: 1;
   letter-spacing: 0;
@@ -76,7 +76,7 @@
   background: transparent;
   color: var(--tejesta-filter-muted);
   font-family: 'TEJESTA Jost', var(--font-body-family);
-  font-size: clamp(1.8rem, 1.52vw, 2.6rem);
+  font-size: clamp(1.45rem, 1.22vw, 2.05rem);
   font-weight: 300;
   line-height: 1;
   letter-spacing: 0;
@@ -200,7 +200,7 @@
   background: transparent;
   color: rgb(var(--color-foreground));
   font-family: 'TEJESTA Jost', var(--font-body-family);
-  font-size: clamp(1.8rem, 1.45vw, 2.5rem);
+  font-size: clamp(1.45rem, 1.18vw, 2rem);
   font-weight: 300;
   line-height: 1.42;
   letter-spacing: 0;
