@@ -104,11 +104,6 @@
 }
 
 .tejesta-filter__dropdown {
-  --tejesta-dropdown-outer-border: 0.34rem;
-  --tejesta-dropdown-inner-border: 0.16rem;
-  --tejesta-dropdown-inner-inset: 0.56rem;
-  --tejesta-dropdown-outer-corner: 1rem;
-  --tejesta-dropdown-inner-corner: 0.64rem;
   position: absolute;
   top: calc(100% - 0.1rem);
   right: 1.2rem;
@@ -116,7 +111,12 @@
   min-width: 18.5rem;
   width: max-content;
   max-width: min(28rem, 100%);
-  padding: 2rem 2.2rem 2.1rem;
+  padding: 1.15rem 1.35rem 1.3rem;
+  border: solid transparent;
+  border-width: 0.95rem 0.95rem 1.45rem;
+  border-image-source: url('tejesta-filter-dropdown-frame.png');
+  border-image-slice: 35 35 58 35;
+  border-image-repeat: stretch;
   background: rgb(var(--color-background));
   color: rgb(var(--color-foreground));
   opacity: 0;
@@ -124,25 +124,6 @@
   transform: translateY(-0.2rem);
   pointer-events: none;
   transition: opacity 120ms ease, visibility 120ms ease, transform 120ms ease;
-}
-
-.tejesta-filter__dropdown::before,
-.tejesta-filter__dropdown::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-}
-
-.tejesta-filter__dropdown::before {
-  inset: 0;
-  border: var(--tejesta-dropdown-outer-border) solid rgb(var(--color-foreground));
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--tejesta-dropdown-outer-corner)), calc(100% - var(--tejesta-dropdown-outer-corner)) 100%, var(--tejesta-dropdown-outer-corner) 100%, 0 calc(100% - var(--tejesta-dropdown-outer-corner)));
-}
-
-.tejesta-filter__dropdown::after {
-  inset: var(--tejesta-dropdown-inner-inset);
-  border: var(--tejesta-dropdown-inner-border) solid rgb(var(--color-foreground));
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--tejesta-dropdown-inner-corner)), calc(100% - var(--tejesta-dropdown-inner-corner)) 100%, var(--tejesta-dropdown-inner-corner) 100%, 0 calc(100% - var(--tejesta-dropdown-inner-corner)));
 }
 
 .tejesta-filter.is-open {
