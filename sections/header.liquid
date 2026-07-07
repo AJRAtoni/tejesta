@@ -78,6 +78,13 @@
   .header__icons {
     padding-right: 0;
   }
+
+  .header.page-width,
+  .header:not(.drawer-menu).page-width {
+    width: 100%;
+    padding-left: clamp(1.6rem, 2.4vw, 3.2rem);
+    padding-right: clamp(1.6rem, 2.4vw, 3.2rem);
+  }
 </style>
 
 {%- style -%}
