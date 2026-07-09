@@ -2481,6 +2481,10 @@ input[type='checkbox'] {
   display: block;
   position: relative;
   background-color: rgb(var(--color-background));
+  transition:
+    background-color 0.22s ease,
+    box-shadow 0.22s ease,
+    color 0.22s ease;
 }
 
 .header-wrapper--border-bottom {
@@ -2703,9 +2707,22 @@ input[type='checkbox'] {
 
 .header-wrapper--transparent.is-tejesta-logo-flipped,
 .header-wrapper--transparent.is-tejesta-logo-flipped.gradient {
-  background: transparent;
-  background-color: transparent;
-  box-shadow: none;
+  --tejesta-header-color: #121212 !important;
+  background: #fff;
+  background-color: #fff;
+  color: #121212;
+  box-shadow: 0 0.1rem 0 rgba(18, 18, 18, 0.08);
+}
+
+.header-wrapper--transparent.is-tejesta-logo-flipped .header,
+.header-wrapper--transparent.is-tejesta-logo-flipped .header__heading-link,
+.header-wrapper--transparent.is-tejesta-logo-flipped .header__heading-link .h2,
+.header-wrapper--transparent.is-tejesta-logo-flipped .header__menu-item,
+.header-wrapper--transparent.is-tejesta-logo-flipped .header__active-menu-item,
+.header-wrapper--transparent.is-tejesta-logo-flipped .header__icon,
+.header-wrapper--transparent.is-tejesta-logo-flipped .header__search,
+.header-wrapper--transparent.is-tejesta-logo-flipped .localization-form__select {
+  color: #121212;
 }
 
 .header-wrapper--transparent.is-tejesta-logo-flipped .tejesta-scroll-logo__wordmark {
