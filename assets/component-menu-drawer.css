@@ -171,7 +171,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 
 .menu-drawer__utility-links {
   padding: 0;
-  background-color: rgba(var(--color-foreground), 0.03);
+  background-color: transparent;
   position: relative;
 }
 
@@ -232,6 +232,138 @@ details[open].menu-opening > .menu-drawer__submenu {
 
 .menu-drawer .list-social__link {
   padding: 1.1rem 1.1rem;
+}
+
+.menu-drawer__subscribe {
+  display: block;
+  padding: 0 1rem 2.8rem;
+  color: rgb(var(--color-foreground));
+}
+
+.menu-drawer__subscribe-divider {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 2.6rem;
+}
+
+.menu-drawer__subscribe-heading {
+  margin: 0 0 0.6rem;
+  color: rgb(var(--color-foreground));
+  font-family: 'TEJESTA Jost', var(--font-body-family);
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.menu-drawer__subscribe-form {
+  margin: 0;
+}
+
+.menu-drawer__subscribe-field {
+  --tejesta-drawer-form-frame-image: url('tejesta-cta-border-subscribeform.svg');
+
+  isolation: isolate;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 3.6rem;
+  padding: 0 1rem;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  background-image: var(--tejesta-drawer-form-frame-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: rgb(var(--color-foreground));
+}
+
+.menu-drawer__subscribe-input,
+.menu-drawer__subscribe-submit {
+  min-width: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  font-family: 'TEJESTA Jost', var(--font-body-family);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
+  appearance: none;
+}
+
+.menu-drawer__subscribe-input {
+  width: 100%;
+  padding: 0;
+}
+
+.menu-drawer__subscribe-input::placeholder {
+  color: rgba(var(--color-foreground), 0.72);
+  opacity: 1;
+}
+
+.menu-drawer__subscribe-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.menu-drawer__subscribe-submit {
+  padding: 0 0 0 1rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.menu-drawer__subscribe-submit:hover,
+.menu-drawer__subscribe-nav a:hover {
+  color: rgba(var(--color-foreground), 0.68);
+}
+
+.menu-drawer__subscribe-submit:focus-visible,
+.menu-drawer__subscribe-nav a:focus-visible {
+  outline: 0.1rem solid rgb(var(--color-foreground));
+  outline-offset: 0.2rem;
+}
+
+.menu-drawer__subscribe-message {
+  display: block;
+  margin: 0.8rem 0 0;
+  color: rgb(var(--color-foreground));
+  font-size: 1.2rem;
+  line-height: 1.35;
+}
+
+.menu-drawer__subscribe-message--success {
+  font-family: var(--font-body-family);
+  font-weight: 400;
+}
+
+.menu-drawer__subscribe-nav {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 8.8rem;
+  padding-left: 0.8rem;
+}
+
+.menu-drawer__subscribe-nav a,
+.menu-drawer__subscribe-copyright {
+  color: rgb(var(--color-foreground));
+  font-family: 'TEJESTA Jost', var(--font-body-family);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.menu-drawer__subscribe-copyright {
+  margin: 2.3rem 0 0;
+  padding-left: 0.8rem;
 }
 
 @media screen and (max-width: 749px) {

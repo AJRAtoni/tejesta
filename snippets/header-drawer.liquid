@@ -287,6 +287,74 @@
                 </li>
               {%- endif -%}
             </ul>
+            <div class="menu-drawer__subscribe">
+              <img
+                class="menu-drawer__subscribe-divider"
+                src="{{ 'tejesta-line-art-divider.png' | asset_url }}"
+                width="5389"
+                height="127"
+                loading="lazy"
+                alt=""
+              >
+
+              <h2 class="menu-drawer__subscribe-heading">Stay Connected</h2>
+              {%- form 'customer', id: 'ContactDrawer', class: 'menu-drawer__subscribe-form' -%}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                <div class="menu-drawer__subscribe-field">
+                  <label class="visually-hidden" for="NewsletterDrawer--{{ section.id }}">
+                    {{ 'newsletter.label' | t }}
+                  </label>
+                  <input
+                    id="NewsletterDrawer--{{ section.id }}"
+                    type="email"
+                    name="contact[email]"
+                    class="menu-drawer__subscribe-input"
+                    value="{{ form.email }}"
+                    aria-required="true"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    {% if form.errors %}
+                      autofocus
+                      aria-invalid="true"
+                      aria-describedby="ContactDrawer-error"
+                    {% elsif form.posted_successfully? %}
+                      aria-describedby="ContactDrawer-success"
+                    {% endif %}
+                    placeholder="Email"
+                    required
+                  >
+                  <button type="submit" class="menu-drawer__subscribe-submit" name="commit">
+                    Submit
+                  </button>
+                </div>
+                {%- if form.errors -%}
+                  <small class="menu-drawer__subscribe-message form__message" id="ContactDrawer-error">
+                    {{- form.errors.translated_fields.email | capitalize }}
+                    {{ form.errors.messages.email -}}
+                  </small>
+                {%- endif -%}
+                {%- if form.posted_successfully? -%}
+                  <h3 class="menu-drawer__subscribe-message menu-drawer__subscribe-message--success" id="ContactDrawer-success" tabindex="-1" autofocus>
+                    {{- 'newsletter.success' | t }}
+                  </h3>
+                {%- endif -%}
+              {%- endform -%}
+
+              <nav class="menu-drawer__subscribe-nav" aria-label="Footer menu">
+                <a
+                  href="{{ settings.social_instagram_link | default: 'https://www.instagram.com/tejesta/' }}"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Instagram
+                </a>
+                <a href="/pages/support">FAQ + Support</a>
+                <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}">Legal and Privacy</a>
+              </nav>
+
+              <p class="menu-drawer__subscribe-copyright">&copy;Tejesta {{ 'now' | date: '%Y' }}</p>
+            </div>
           </div>
         </div>
       </div>
