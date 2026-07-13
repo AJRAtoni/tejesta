@@ -2647,7 +2647,7 @@ input[type='checkbox'] {
 }
 
 .header__heading-logo-wrapper--fallback-logo {
-  width: 15rem;
+  width: 13.5rem;
 }
 
 .header__heading-logo-wrapper--fallback-logo .header__heading-logo {
@@ -2657,7 +2657,7 @@ input[type='checkbox'] {
 }
 
 .tejesta-scroll-logo {
-  --tejesta-crest-size: 4.2rem;
+  --tejesta-crest-size: 3.78rem;
   position: relative;
   display: inline-grid;
   place-items: center;
@@ -2737,7 +2737,7 @@ input[type='checkbox'] {
 
 @media screen and (max-width: 749px) {
   .tejesta-scroll-logo {
-    --tejesta-crest-size: 3.8rem;
+    --tejesta-crest-size: 3.42rem;
   }
 }
 
