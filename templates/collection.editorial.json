@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "editorial-products": {
+      "type": "main-collection-editorial",
+      "settings": {
+        "products_per_page": 60,
+        "show_filters": true,
+        "show_description": true,
+        "description_words": 42,
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": ["editorial-products"]
+}

@@ -1,0 +1,258 @@
+{{ 'tejesta-collection.css' | asset_url | stylesheet_tag }}
+{{ 'tejesta-collection-editorial.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'tejesta-collection-filters.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'tejesta-collection-editorial.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  #TejestaCollectionEditorial-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    #TejestaCollectionEditorial-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section
+  id="TejestaCollectionEditorial-{{ section.id }}"
+  class="tejesta-editorial gradient color-{{ section.settings.color_scheme }}"
+>
+  {%- paginate collection.products by section.settings.products_per_page -%}
+    {%- if section.settings.show_filters -%}
+      <aside
+        aria-label="Collection filters"
+        class="tejesta-filters-wrapper tejesta-editorial__filters"
+        id="main-collection-filters"
+        data-id="{{ section.id }}"
+      >
+        {% render 'tejesta-collection-filters', results: collection %}
+      </aside>
+    {%- endif -%}
+
+    {%- if collection.products.size == 0 -%}
+      <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
+        <div class="title-wrapper center">
+          <h2 class="title title--primary">
+            {{ 'sections.collection_template.empty' | t }}
+          </h2>
+        </div>
+      </div>
+    {%- else -%}
+      <div
+        id="product-grid"
+        class="tejesta-editorial__products"
+        data-id="{{ section.id }}"
+      >
+        {%- for product in collection.products -%}
+          {%- liquid
+            assign selected_variant = product.selected_or_first_available_variant
+            assign selected_image = selected_variant.featured_media.preview_image
+            if selected_image == blank
+              assign selected_image = selected_variant.image
+            endif
+            if selected_image == blank
+              assign selected_image = product.featured_media.preview_image
+            endif
+
+            assign selected_colorway = selected_variant.option1 | default: selected_variant.title
+            if selected_colorway == 'Default Title'
+              assign selected_colorway = ''
+            endif
+
+            assign selected_url = product.url
+            if selected_variant
+              assign selected_url = product.url | append: '?variant=' | append: selected_variant.id
+            endif
+          -%}
+
+          <tejesta-editorial-product
+            role="article"
+            class="tejesta-editorial-product"
+            data-tejesta-filter-card
+            data-tejesta-editorial-product
+            {% render 'tejesta-product-filter-attributes', product: product, collection: collection %}
+          >
+            <div class="tejesta-editorial-product__content">
+              <h2 class="tejesta-editorial-product__title">
+                <a href="{{ selected_url }}" data-editorial-product-link>
+                  {{ product.title | escape }}
+                </a>
+              </h2>
+
+              <p
+                class="tejesta-editorial-product__colorway{% if selected_colorway == blank %} is-hidden{% endif %}"
+                data-editorial-colorway
+                aria-live="polite"
+              >
+                {{ selected_colorway | escape }}
+              </p>
+
+              {%- if section.settings.show_description and product.description != blank -%}
+                <div class="tejesta-editorial-product__description">
+                  {{ product.description | strip_html | truncatewords: section.settings.description_words }}
+                </div>
+              {%- endif -%}
+            </div>
+
+            <div class="tejesta-editorial-product__media">
+              <a
+                class="tejesta-editorial-product__image-link"
+                href="{{ selected_url }}"
+                aria-label="{{ product.title | escape }}"
+                data-editorial-product-link
+              >
+                {%- if selected_image != blank -%}
+                  {{
+                    selected_image
+                    | image_url: width: 1800
+                    | image_tag:
+                      widths: '480, 720, 960, 1200, 1500, 1800',
+                      sizes: '(min-width: 990px) 50vw, 100vw',
+                      loading: 'lazy',
+                      class: 'tejesta-editorial-product__image',
+                      alt: product.title
+                  }}
+                {%- else -%}
+                  {{ 'product-apparel-2' | placeholder_svg_tag: 'tejesta-editorial-product__placeholder' }}
+                {%- endif -%}
+              </a>
+            </div>
+
+            {%- if product.variants_count > 1 -%}
+              <div
+                class="tejesta-editorial-product__colorways"
+                aria-label="{{ product.title | escape }} colorways"
+              >
+                {%- for variant in product.variants -%}
+                  {%- liquid
+                    assign variant_image = variant.featured_media.preview_image
+                    if variant_image == blank
+                      assign variant_image = variant.image
+                    endif
+
+                    assign variant_label = variant.option1 | default: variant.title
+                    assign variant_alt = product.title | append: ' - ' | append: variant_label
+                    assign variant_label_downcase = variant_label | downcase
+
+                    if variant_image == blank
+                      for media in product.media
+                        assign media_alt_downcase = media.alt | downcase
+                        if media_alt_downcase contains variant_label_downcase
+                          assign variant_image = media.preview_image
+                          break
+                        endif
+                      endfor
+                    endif
+                  -%}
+
+                  <button
+                    type="button"
+                    class="tejesta-editorial-product__colorway-button{% if variant.id == selected_variant.id %} is-active{% endif %}{% unless variant.available %} is-unavailable{% endunless %}"
+                    data-tejesta-editorial-variant
+                    data-variant-url="{{ product.url }}?variant={{ variant.id }}"
+                    data-variant-label="{{ variant_label | escape }}"
+                    data-variant-alt="{{ variant_alt | escape }}"
+                    {% if variant_image != blank %}
+                      data-variant-image="{{ variant_image | image_url: width: 1800 }}"
+                    {% endif %}
+                    aria-label="{{ variant_alt | escape }}"
+                    aria-pressed="{% if variant.id == selected_variant.id %}true{% else %}false{% endif %}"
+                  >
+                    {%- if variant_image != blank -%}
+                      {{
+                        variant_image
+                        | image_url: width: 180
+                        | image_tag:
+                          widths: '90, 120, 180',
+                          sizes: '72px',
+                          loading: 'lazy',
+                          class: 'tejesta-editorial-product__colorway-image',
+                          alt: variant_alt
+                      }}
+                    {%- else -%}
+                      <span class="tejesta-editorial-product__colorway-fallback" aria-hidden="true"></span>
+                    {%- endif -%}
+                  </button>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+          </tejesta-editorial-product>
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+        {% render 'pagination', paginate: paginate, anchor: '' %}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endpaginate -%}
+</section>
+
+{% schema %}
+{
+  "name": "TEJESTA Editorial",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 60,
+      "step": 4,
+      "default": 60,
+      "label": "Products per page"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filters",
+      "default": true,
+      "label": "Show filters"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "default": true,
+      "label": "Show product descriptions"
+    },
+    {
+      "type": "range",
+      "id": "description_words",
+      "min": 12,
+      "max": 72,
+      "step": 3,
+      "default": 42,
+      "label": "Description length"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 48
+    }
+  ]
+}
+{% endschema %}
