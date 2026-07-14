@@ -134,10 +134,17 @@
 
         if (item.matches('[data-tejesta-editorial-product]')) {
           item.classList.toggle('tejesta-editorial-product--reverse', isVisible && visibleCount % 2 === 1);
-          item.classList.toggle('tejesta-editorial-product--first-visible', isVisible && visibleCount === 0);
         }
 
         if (isVisible) visibleCount += 1;
+      });
+
+      const visibleEditorialItems = items.filter(
+        (item) => !item.hidden && item.matches('[data-tejesta-editorial-product]'),
+      );
+
+      visibleEditorialItems.forEach((item, index) => {
+        item.classList.toggle('tejesta-editorial-product--last-visible', index === visibleEditorialItems.length - 1);
       });
 
       const active = hasActiveFilters(state);
