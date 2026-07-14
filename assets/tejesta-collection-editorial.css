@@ -20,13 +20,13 @@
   border-bottom: 1px solid rgba(var(--color-foreground), 0.72);
 }
 
-.tejesta-editorial-product:nth-child(even) {
+.tejesta-editorial-product--reverse {
   grid-template-areas:
     "content media"
     "content colorways";
 }
 
-.tejesta-editorial-product:first-child {
+.tejesta-editorial-product--first-visible {
   border-top: 1px solid rgba(var(--color-foreground), 0.72);
 }
 
@@ -169,7 +169,7 @@
   }
 
   .tejesta-editorial-product,
-  .tejesta-editorial-product:nth-child(even) {
+  .tejesta-editorial-product--reverse {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
       "content"

@@ -67,11 +67,13 @@
             if selected_variant
               assign selected_url = product.url | append: '?variant=' | append: selected_variant.id
             endif
+
+            assign editorial_position = forloop.index0 | modulo: 2
           -%}
 
           <tejesta-editorial-product
             role="article"
-            class="tejesta-editorial-product"
+            class="tejesta-editorial-product{% if editorial_position == 1 %} tejesta-editorial-product--reverse{% endif %}{% if forloop.first %} tejesta-editorial-product--first-visible{% endif %}"
             data-tejesta-filter-card
             data-tejesta-editorial-product
             {% render 'tejesta-product-filter-attributes', product: product, collection: collection %}
