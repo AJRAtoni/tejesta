@@ -2708,8 +2708,8 @@ input[type='checkbox'] {
 .header-wrapper--transparent.is-tejesta-logo-flipped,
 .header-wrapper--transparent.is-tejesta-logo-flipped.gradient {
   --tejesta-header-color: #121212 !important;
-  background: #fff;
-  background-color: #fff;
+  background: #fefcfb;
+  background-color: #fefcfb;
   color: #121212;
   box-shadow: 0 0.1rem 0 rgba(18, 18, 18, 0.08);
 }
