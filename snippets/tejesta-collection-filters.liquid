@@ -45,6 +45,9 @@
           <span class="tejesta-filter__caret" aria-hidden="true"></span>
         </button>
         <div class="tejesta-filter__dropdown" role="listbox" aria-labelledby="TejestaFilterTypeLabel">
+          <button class="tejesta-filter__option" type="button" role="option" data-filter-option="all" aria-selected="true">
+            All
+          </button>
           {%- for item in tejesta_types -%}
             <button class="tejesta-filter__option" type="button" role="option" data-filter-option="{{ item | handleize }}" aria-selected="false">
               {{ item }}
@@ -73,6 +76,9 @@
           <span class="tejesta-filter__caret" aria-hidden="true"></span>
         </button>
         <div class="tejesta-filter__dropdown" role="listbox" aria-labelledby="TejestaFilterCollectionLabel">
+          <button class="tejesta-filter__option" type="button" role="option" data-filter-option="all" aria-selected="true">
+            All
+          </button>
           {%- for item in tejesta_collections -%}
             <button class="tejesta-filter__option" type="button" role="option" data-filter-option="{{ item | handleize }}" aria-selected="false">
               {{ item }}
@@ -101,6 +107,9 @@
           <span class="tejesta-filter__caret" aria-hidden="true"></span>
         </button>
         <div class="tejesta-filter__dropdown" role="listbox" aria-labelledby="TejestaFilterSizeLabel">
+          <button class="tejesta-filter__option" type="button" role="option" data-filter-option="all" aria-selected="true">
+            All
+          </button>
           {%- for item in tejesta_sizes -%}
             <button class="tejesta-filter__option" type="button" role="option" data-filter-option="{{ item | handleize }}" aria-selected="false">
               {{ item }}
@@ -129,6 +138,9 @@
           <span class="tejesta-filter__caret" aria-hidden="true"></span>
         </button>
         <div class="tejesta-filter__dropdown" role="listbox" aria-labelledby="TejestaFilterShapeLabel">
+          <button class="tejesta-filter__option" type="button" role="option" data-filter-option="all" aria-selected="true">
+            All
+          </button>
           {%- for item in tejesta_shapes -%}
             <button class="tejesta-filter__option" type="button" role="option" data-filter-option="{{ item | handleize }}" aria-selected="false">
               {{ item }}
