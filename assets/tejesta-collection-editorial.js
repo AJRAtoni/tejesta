@@ -3,12 +3,17 @@ class TejestaEditorialProduct extends HTMLElement {
     this.addEventListener('click', this.onVariantClick);
     this.addEventListener('pointerenter', this.preloadVariantImage, true);
     this.addEventListener('focusin', this.preloadVariantImage);
+    this.randomizeColorways();
   }
 
   onVariantClick = (event) => {
     const button = event.target.closest('[data-tejesta-editorial-variant]');
     if (!button || !this.contains(button)) return;
 
+    this.activateVariant(button);
+  };
+
+  activateVariant(button) {
     this.querySelectorAll('[data-tejesta-editorial-variant]').forEach((item) => {
       const isActive = item === button;
       item.classList.toggle('is-active', isActive);
@@ -18,7 +23,25 @@ class TejestaEditorialProduct extends HTMLElement {
     this.updateImage(button);
     this.updateColorway(button);
     this.updateLinks(button);
-  };
+  }
+
+  randomizeColorways() {
+    const colorways = this.querySelector('.tejesta-editorial-product__colorways');
+    if (!colorways) return;
+
+    const variants = Array.from(colorways.querySelectorAll('[data-tejesta-editorial-variant]'));
+    if (variants.length < 2) return;
+
+    for (let index = variants.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [variants[index], variants[randomIndex]] = [variants[randomIndex], variants[index]];
+    }
+
+    variants.forEach((variant) => colorways.appendChild(variant));
+
+    const initialVariant = variants.find((variant) => variant.dataset.variantImage);
+    if (initialVariant) this.activateVariant(initialVariant);
+  }
 
   preloadVariantImage = (event) => {
     const button = event.target.closest('[data-tejesta-editorial-variant]');
