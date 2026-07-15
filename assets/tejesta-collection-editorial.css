@@ -193,6 +193,10 @@
 }
 
 @media screen and (max-width: 989px) {
+  .tejesta-editorial-product {
+    --tejesta-mobile-media-overlap: clamp(6rem, 16vw, 10rem);
+  }
+
   .tejesta-editorial__filters {
     margin-bottom: 1.5rem;
   }
@@ -219,12 +223,16 @@
 
   .tejesta-editorial-product__title {
     grid-area: title;
+    position: relative;
+    z-index: 1;
     padding: 3.8rem 1rem 0;
     font-size: clamp(4.6rem, 14vw, 7.2rem);
   }
 
   .tejesta-editorial-product__colorway {
     grid-area: colorway;
+    position: relative;
+    z-index: 1;
     margin-top: 1.5rem;
     padding: 0 1rem 2rem;
     font-size: 1.8rem;
@@ -240,6 +248,9 @@
 
   .tejesta-editorial-product__media {
     min-height: 0;
+    position: relative;
+    z-index: 0;
+    margin-top: calc(-1 * var(--tejesta-mobile-media-overlap));
     padding: 1.5rem 0 0.8rem;
   }
 
@@ -249,6 +260,8 @@
   }
 
   .tejesta-editorial-product__colorways {
+    position: relative;
+    z-index: 1;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     padding: 0.8rem 1rem 0;
   }
