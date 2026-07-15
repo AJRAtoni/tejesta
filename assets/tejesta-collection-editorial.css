@@ -186,7 +186,7 @@
   .tejesta-editorial-product__colorways {
     position: relative;
     z-index: 1;
-    margin-top: clamp(-8rem, -5vw, -5rem);
+    margin-top: clamp(-14rem, -10vw, -10rem);
   }
 }
 
