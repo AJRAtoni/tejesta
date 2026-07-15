@@ -195,6 +195,7 @@
 @media screen and (max-width: 989px) {
   .tejesta-editorial-product {
     --tejesta-mobile-media-overlap: clamp(6rem, 16vw, 10rem);
+    --tejesta-mobile-colorways-overlap: clamp(3rem, 8vw, 5rem);
   }
 
   .tejesta-editorial__filters {
@@ -262,6 +263,7 @@
   .tejesta-editorial-product__colorways {
     position: relative;
     z-index: 1;
+    margin-top: calc(-1 * var(--tejesta-mobile-colorways-overlap));
     grid-template-columns: repeat(4, minmax(0, 1fr));
     padding: 0.8rem 1rem 0;
   }
