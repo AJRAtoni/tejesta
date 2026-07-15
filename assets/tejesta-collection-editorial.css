@@ -114,10 +114,12 @@
 }
 
 .tejesta-editorial-product__colorway-button {
+  box-sizing: border-box;
   width: 100%;
   height: auto;
   aspect-ratio: 1 / 1;
   align-self: start;
+  min-height: 0;
   padding: 0.4rem;
   border: 1px solid rgba(var(--color-foreground), 0.2);
   background: rgb(var(--color-background));
