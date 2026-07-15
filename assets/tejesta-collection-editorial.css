@@ -116,7 +116,7 @@
 .tejesta-editorial-product__colorway-button {
   width: 100%;
   height: auto;
-  aspect-ratio: 1.69 / 1;
+  aspect-ratio: 1 / 1;
   padding: 0.4rem;
   border: 1px solid rgba(var(--color-foreground), 0.2);
   background: rgb(var(--color-background));
@@ -186,7 +186,7 @@
   .tejesta-editorial-product__colorways {
     position: relative;
     z-index: 1;
-    margin-top: clamp(-14rem, -10vw, -10rem);
+    margin-top: clamp(-16rem, -11vw, -12rem);
   }
 }
 
