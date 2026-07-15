@@ -31,6 +31,14 @@
 {%- endunless -%}
 {%- if card_product and card_product != empty -%}
   {%- liquid
+    assign card_variant = null
+    for variant in card_product.variants
+      if variant.inventory_management != 'shopify' or variant.inventory_quantity > 0
+        assign card_variant = variant
+        break
+      endif
+    endfor
+
     assign ratio = 1
     if card_product.featured_media and media_aspect_ratio == 'portrait'
       assign ratio = 0.8
@@ -41,10 +49,11 @@
 	      assign ratio = 1
 	    endif
 	    assign card_url = card_product.url
-	    if show_colorway_thumbnails and card_product.selected_or_first_available_variant
-	      assign card_url = card_product.url | append: '?variant=' | append: card_product.selected_or_first_available_variant.id
+	    if show_colorway_thumbnails and card_variant
+	      assign card_url = card_product.url | append: '?variant=' | append: card_variant.id
 	    endif
 	  -%}
+	  {%- if card_variant -%}
 	  <div
 	    class="card-wrapper product-card-wrapper underline-links-hover{% if show_colorway_thumbnails %} tejesta-collection-card{% endif %}"
 	    {% if show_colorway_thumbnails %}
@@ -240,7 +249,7 @@
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
                 {% liquid
-                  assign quantity_rule = card_product.selected_or_first_available_variant.quantity_rule
+                  assign quantity_rule = card_variant.quantity_rule
                   assign has_qty_rules = false
                   if quantity_rule.increment > 1 or quantity_rule.min > 1 or quantity_rule.max != null
                     assign has_qty_rules = true
@@ -263,7 +272,7 @@
                   class="global-settings-popup quantity-popover__info"
                   tabindex="-1"
                   hidden
-                  id="quantity-popover-info-{{ card_product.selected_or_first_available_variant.id }}"
+                  id="quantity-popover-info-{{ card_variant.id }}"
                 >
                   {%- if has_qty_rules -%}
                     <div class="quantity__rules caption no-js-hidden">
@@ -291,17 +300,17 @@
                   >
                     {{- 'icon-close.svg' | inline_asset_content -}}
                   </button>
-                  {%- if card_product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
+                  {%- if card_variant.quantity_price_breaks.size > 0 -%}
                     <volume-pricing class="parent-display">
                       <ul class="list-unstyled">
                         <li>
-                          <span>{{ card_product.selected_or_first_available_variant.quantity_rule.min }}+</span>
-                          {%- assign price = card_product.selected_or_first_available_variant.price
+                          <span>{{ card_variant.quantity_rule.min }}+</span>
+                          {%- assign price = card_variant.price
                             | money_with_currency
                           -%}
                           <span>{{ 'sections.quick_order_list.each' | t: money: price }}</span>
                         </li>
-                        {%- for price_break in card_product.selected_or_first_available_variant.quantity_price_breaks -%}
+                        {%- for price_break in card_variant.quantity_price_breaks -%}
                           <li>
                             <span>
                               {{- price_break.minimum_quantity -}}
@@ -325,7 +334,7 @@
           <div class="quick-add no-js-hidden">
             {%- liquid
               assign qty_rules = false
-              if card_product.selected_or_first_available_variant.quantity_rule.min > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
+              if card_variant.quantity_rule.min > 1 or card_variant.quantity_rule.max != null or card_variant.quantity_rule.increment > 1
                 assign qty_rules = true
               endif
             -%}
@@ -380,9 +389,9 @@
                   <input
                     type="hidden"
                     name="id"
-                    value="{{ card_product.selected_or_first_available_variant.id }}"
+                    value="{{ card_variant.id }}"
                     class="product-variant-id"
-                    {% if card_product.selected_or_first_available_variant.available == false %}
+                    {% if card_variant.available == false %}
                       disabled
                     {% endif %}
                   >
@@ -395,12 +404,12 @@
                     aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
                     aria-live="polite"
                     data-sold-out-message="true"
-                    {% if card_product.selected_or_first_available_variant.available == false %}
+                    {% if card_variant.available == false %}
                       disabled
                     {% endif %}
                   >
                     <span>
-                      {%- if card_product.selected_or_first_available_variant.available -%}
+                      {%- if card_variant.available -%}
                         {{ 'products.product.add_to_cart' | t }}
                       {%- else -%}
                         {{ 'products.product.sold_out' | t }}
@@ -423,12 +432,12 @@
         {% elsif quick_add == 'bulk' %}
           {% if card_product.variants_count == 1 %}
             <quick-add-bulk
-              data-min="{{ card_product.selected_or_first_available_variant.quantity_rule.min }}"
-              id="quick-add-bulk-{{ card_product.selected_or_first_available_variant.id }}-{{ section.id }}"
+              data-min="{{ card_variant.quantity_rule.min }}"
+              id="quick-add-bulk-{{ card_variant.id }}-{{ section.id }}"
               class="quick-add-bulk"
-              data-index="{{ card_product.selected_or_first_available_variant.id }}"
+              data-index="{{ card_variant.id }}"
             >
-              {% if card_product.selected_or_first_available_variant.available == false %}
+              {% if card_variant.available == false %}
                 <button
                   id="{{ product_form_id }}-submit"
                   type="submit"
@@ -444,7 +453,7 @@
                   </span>
                 </button>
               {% else %}
-                {% render 'quantity-input', variant: card_product.selected_or_first_available_variant, min: 0 %}
+                {% render 'quantity-input', variant: card_variant, min: 0 %}
               {% endif %}
             </quick-add-bulk>
           {% else %}
@@ -452,7 +461,7 @@
               {%- liquid
                 assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id
                 assign qty_rules = false
-                if card_product.selected_or_first_available_variant.quantity_rule.min > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
+                if card_variant.quantity_rule.min > 1 or card_variant.quantity_rule.max != null or card_variant.quantity_rule.increment > 1
                   assign qty_rules = true
                 endif
               -%}
@@ -599,22 +608,31 @@
         </div>
       </div>
     </div>
-    {%- if show_colorway_thumbnails and card_product.variants_count > 1 -%}
+    {%- if show_colorway_thumbnails -%}
       <tejesta-collection-variants
         class="tejesta-collection-card__variants"
         aria-label="{{ card_product.title | escape }} colorways"
       >
         {%- liquid
-          assign selected_variant = card_product.selected_or_first_available_variant
+          assign selected_variant = card_variant
           assign max_collection_icons = 6
+          assign in_stock_variant_count = 0
+          for variant in card_product.variants
+            if variant.inventory_management != 'shopify' or variant.inventory_quantity > 0
+              assign in_stock_variant_count = in_stock_variant_count | plus: 1
+            endif
+          endfor
           assign visible_variant_limit = max_collection_icons
-          if card_product.variants_count > max_collection_icons
+          if in_stock_variant_count > max_collection_icons
             assign visible_variant_limit = max_collection_icons | minus: 1
           endif
-          assign overflow_variant_count = card_product.variants_count | minus: visible_variant_limit
+          assign overflow_variant_count = in_stock_variant_count | minus: visible_variant_limit
+          assign visible_variant_index = 0
         -%}
         {%- for variant in card_product.variants -%}
-          {%- if forloop.index <= visible_variant_limit -%}
+          {%- if variant.inventory_management != 'shopify' or variant.inventory_quantity > 0 -%}
+            {%- assign visible_variant_index = visible_variant_index | plus: 1 -%}
+          {%- if visible_variant_index <= visible_variant_limit -%}
             {%- liquid
               assign variant_image = ''
               if variant.featured_media and variant.featured_media.preview_image
@@ -639,7 +657,7 @@
             -%}
             <button
               type="button"
-              class="tejesta-collection-card__variant{% if variant.id == selected_variant.id %} is-active{% endif %}{% unless variant.available %} is-unavailable{% endunless %}"
+              class="tejesta-collection-card__variant{% if variant.id == selected_variant.id %} is-active{% endif %}"
               data-tejesta-collection-variant
               data-variant-url="{{ card_product.url }}?variant={{ variant.id }}"
               {% if variant_image != blank %}
@@ -663,6 +681,7 @@
               {%- endif -%}
             </button>
           {%- endif -%}
+          {%- endif -%}
         {%- endfor -%}
         {%- if overflow_variant_count > 0 -%}
           <a
@@ -676,6 +695,7 @@
       </tejesta-collection-variants>
     {%- endif -%}
   </div>
+  {%- endif -%}
 {%- else -%}
   {%- liquid
     assign ratio = 1

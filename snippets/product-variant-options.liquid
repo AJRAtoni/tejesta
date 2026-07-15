@@ -100,6 +100,7 @@
         endfor
       endif
     -%}
+    {%- if matched_variant.inventory_management != 'shopify' or matched_variant.inventory_quantity > 0 -%}
     <input
       type="radio"
       id="{{ input_id }}"
@@ -128,8 +129,8 @@
         <span class="tejesta-product-colorway-swatches__fallback">{{ value }}</span>
       {%- endif -%}
       <span class="visually-hidden">{{ escaped_value }}</span>
-      {{ label_unavailable }}
     </label>
+    {%- endif -%}
   {%- elsif picker_type == 'swatch' -%}
     {%- capture help_text -%}
       <span class="visually-hidden">{{ escaped_value }}</span>

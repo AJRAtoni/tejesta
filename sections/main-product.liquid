@@ -1,3 +1,21 @@
+{%- liquid
+  assign first_in_stock_variant = null
+  for variant in product.variants
+    if variant.inventory_management != 'shopify' or variant.inventory_quantity > 0
+      assign first_in_stock_variant = variant
+      break
+    endif
+  endfor
+-%}
+
+{%- if first_in_stock_variant == blank -%}
+  <style>#MainProduct-{{ section.id }} { display: none; }</style>
+  <script>window.location.replace('/collections/all');</script>
+{%- elsif product.selected_or_first_available_variant.inventory_management == 'shopify' and product.selected_or_first_available_variant.inventory_quantity <= 0 -%}
+  <style>#MainProduct-{{ section.id }} { display: none; }</style>
+  <script>window.location.replace({{ product.url | append: '?variant=' | append: first_in_stock_variant.id | json }});</script>
+{%- endif -%}
+
 <product-info
   id="MainProduct-{{ section.id }}"
   class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"

@@ -153,6 +153,10 @@
                 {%- if forloop.index > 2 -%}
                   {%- assign lazy_load = true -%}
                 {%- endif -%}
+                {%- capture product_has_stock -%}
+                  {% render 'tejesta-product-has-stock', product: product %}
+                {%- endcapture -%}
+                {%- if product_has_stock == 'true' -%}
                 {%- liquid
                   assign tejesta_product_key = product.handle | append: ' ' | append: product.title | downcase
                   assign tejesta_product_type = product.type | downcase
@@ -301,6 +305,7 @@
                     section_id: section.id
                   %}
                 </li>
+                {%- endif -%}
                 {%- assign skip_card_product_styles = true -%}
               {%- endfor -%}
             </ul>

@@ -3,8 +3,19 @@
   if product == null
     assign placeholder = true
   endif
+
+  assign render_featured_product = true
+  if product != blank
+    capture product_has_stock
+      render 'tejesta-product-has-stock', product: product
+    endcapture
+    if product_has_stock != 'true'
+      assign render_featured_product = false
+    endif
+  endif
 -%}
 
+{%- if render_featured_product -%}
 <product-info
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
@@ -502,6 +513,7 @@
     <script src="{{ 'media-gallery.js' | asset_url }}" defer="defer"></script>
   {% endif %}
 </product-info>
+{%- endif -%}
 
 {% schema %}
 {

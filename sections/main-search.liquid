@@ -263,6 +263,18 @@
                     {%- assign lazy_load = true -%}
                   {%- endif -%}
 
+                  {%- liquid
+                    assign render_search_result = true
+                    if item.object_type == 'product'
+                      capture product_has_stock
+                        render 'tejesta-product-has-stock', product: item
+                      endcapture
+                      if product_has_stock != 'true'
+                        assign render_search_result = false
+                      endif
+                    endif
+                  -%}
+                  {%- if render_search_result -%}
                   <li
                     class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                     {% if settings.animations_reveal_on_scroll %}
@@ -317,6 +329,7 @@
                         </div>
                     {%- endcase -%}
                   </li>
+                  {%- endif -%}
                 {%- endfor -%}
               </ul>
               {%- if paginate.pages > 1 -%}

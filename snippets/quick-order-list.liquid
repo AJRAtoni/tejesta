@@ -74,6 +74,7 @@
 
             <tbody>
               {%- if product.has_only_default_variant -%}
+                {%- if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_quantity > 0 -%}
                 {%- render 'quick-order-list-row',
                   item: product,
                   image: product.featured_media,
@@ -83,8 +84,10 @@
                   show_sku: show_sku,
                   is_modal: is_modal
                 -%}
+                {%- endif -%}
               {%- else -%}
                 {%- for variant in product.variants -%}
+                  {%- if variant.inventory_management != 'shopify' or variant.inventory_quantity > 0 -%}
                   {%- render 'quick-order-list-row',
                     item: variant,
                     image: variant.image,
@@ -94,6 +97,7 @@
                     show_sku: show_sku,
                     is_modal: is_modal
                   -%}
+                  {%- endif -%}
                 {%- endfor -%}
               {%- endif -%}
             </tbody>

@@ -37,6 +37,10 @@
       >
         {% assign skip_card_product_styles = false %}
         {% for recommendation in recommendations.products %}
+          {%- capture product_has_stock -%}
+            {% render 'tejesta-product-has-stock', product: recommendation %}
+          {%- endcapture -%}
+          {%- if product_has_stock == 'true' -%}
           <li class="grid__item">
             {% render 'card-product',
               card_product: recommendation,
@@ -48,6 +52,7 @@
               skip_styles: skip_card_product_styles
             %}
           </li>
+          {%- endif -%}
           {%- assign skip_card_product_styles = true -%}
         {% endfor %}
       </ul>

@@ -1,0 +1,12 @@
+{%- liquid
+  assign has_stock = false
+
+  for variant in product.variants
+    if variant.inventory_management != 'shopify' or variant.inventory_quantity > 0
+      assign has_stock = true
+      break
+    endif
+  endfor
+
+  echo has_stock
+-%}

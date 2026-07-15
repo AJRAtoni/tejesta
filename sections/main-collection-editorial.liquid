@@ -49,7 +49,14 @@
       >
         {%- for product in collection.products -%}
           {%- liquid
-            assign selected_variant = product.selected_or_first_available_variant
+            assign selected_variant = null
+            for variant in product.variants
+              if variant.inventory_management != 'shopify' or variant.inventory_quantity > 0
+                assign selected_variant = variant
+                break
+              endif
+            endfor
+
             assign selected_image = selected_variant.featured_media.preview_image
             if selected_image == blank
               assign selected_image = selected_variant.image
@@ -71,6 +78,7 @@
             assign editorial_position = forloop.index0 | modulo: 2
           -%}
 
+          {%- if selected_variant -%}
           <tejesta-editorial-product
             role="article"
             class="tejesta-editorial-product{% if editorial_position == 1 %} tejesta-editorial-product--reverse{% endif %}{% if forloop.last %} tejesta-editorial-product--last-visible{% endif %}"
@@ -130,6 +138,7 @@
                 aria-label="{{ product.title | escape }} colorways"
               >
                 {%- for variant in product.variants -%}
+                  {%- if variant.inventory_management != 'shopify' or variant.inventory_quantity > 0 -%}
                   {%- liquid
                     assign variant_image = variant.featured_media.preview_image
                     if variant_image == blank
@@ -153,7 +162,7 @@
 
                   <button
                     type="button"
-                    class="tejesta-editorial-product__colorway-button{% if variant.id == selected_variant.id %} is-active{% endif %}{% unless variant.available %} is-unavailable{% endunless %}"
+                    class="tejesta-editorial-product__colorway-button{% if variant.id == selected_variant.id %} is-active{% endif %}"
                     data-tejesta-editorial-variant
                     data-variant-url="{{ product.url }}?variant={{ variant.id }}"
                     data-variant-label="{{ variant_label | escape }}"
@@ -179,6 +188,7 @@
                       <span class="tejesta-editorial-product__colorway-fallback" aria-hidden="true"></span>
                     {%- endif -%}
                   </button>
+                  {%- endif -%}
                 {%- endfor -%}
               </div>
             {%- endif -%}
@@ -194,6 +204,7 @@
               >
             </div>
           </tejesta-editorial-product>
+          {%- endif -%}
         {%- endfor -%}
       </div>
 

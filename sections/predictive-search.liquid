@@ -130,6 +130,10 @@
               aria-labelledby="predictive-search-products"
             >
               {%- for product in predictive_search.resources.products -%}
+                {%- capture product_has_stock -%}
+                  {% render 'tejesta-product-has-stock', product: product %}
+                {%- endcapture -%}
+                {%- if product_has_stock == 'true' -%}
                 <li
                   id="predictive-search-option-product-{{ forloop.index }}"
                   class="predictive-search__list-item"
@@ -164,6 +168,7 @@
                     </div>
                   </a>
                 </li>
+                {%- endif -%}
               {%- endfor -%}
             </ul>
           </div>
