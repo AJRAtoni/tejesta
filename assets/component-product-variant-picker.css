@@ -213,6 +213,28 @@ variant-selects {
   text-transform: uppercase;
 }
 
+.product__media-colorway-selector {
+  width: 100%;
+  margin-top: 2.4rem;
+}
+
+.product__media-colorway-selector .tejesta-product-colorway-swatches {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin: 0;
+}
+
+.product__media-colorway-selector .tejesta-product-colorway-swatches .form__label {
+  grid-column: 1 / -1;
+}
+
+.product__media-colorway-selector .tejesta-product-colorway-swatches input[type='radio'] + label {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.69 / 1;
+}
+
 @media screen and (max-width: 749px) {
   .tejesta-product-colorway-swatches {
     gap: 1rem;
@@ -221,5 +243,14 @@ variant-selects {
   .tejesta-product-colorway-swatches input[type='radio'] + label {
     width: 9.2rem;
     height: 5.4rem;
+  }
+
+  .product__media-colorway-selector .tejesta-product-colorway-swatches {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .product__media-colorway-selector .tejesta-product-colorway-swatches input[type='radio'] + label {
+    width: 100%;
+    height: auto;
   }
 }
