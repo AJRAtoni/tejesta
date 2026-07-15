@@ -106,24 +106,17 @@
 
 .tejesta-editorial-product__colorways {
   grid-area: colorways;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: stretch;
   gap: 0.8rem;
-  min-width: 0;
   padding: 1rem clamp(2rem, 3vw, 4.5rem) clamp(2.5rem, 3vw, 4rem);
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.tejesta-editorial-product__colorways::-webkit-scrollbar {
-  display: none;
 }
 
 .tejesta-editorial-product__colorway-button {
-  width: clamp(5.2rem, 4.4vw, 7.2rem);
-  height: clamp(4.4rem, 3.7vw, 6rem);
-  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.69 / 1;
   padding: 0.4rem;
   border: 1px solid rgba(var(--color-foreground), 0.2);
   background: rgb(var(--color-background));
@@ -231,13 +224,13 @@
   }
 
   .tejesta-editorial-product__colorways {
-    justify-content: flex-start;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     padding: 0.8rem 1rem 3.8rem;
   }
 
   .tejesta-editorial-product__colorway-button {
-    width: 6.4rem;
-    height: 5.3rem;
+    width: 100%;
+    height: auto;
   }
 
   .tejesta-editorial-product__divider {
