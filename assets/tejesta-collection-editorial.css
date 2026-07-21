@@ -50,7 +50,7 @@
   font-style: var(--font-heading-style);
   font-weight: var(--font-heading-weight);
   line-height: 0.86;
-  letter-spacing: -0.045em;
+  letter-spacing: 0;
 }
 
 .tejesta-editorial-product__title a {
