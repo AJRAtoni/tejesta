@@ -70,6 +70,8 @@
               assign selected_colorway = ''
             endif
 
+            assign collection_description = product.metafields.custom.collection_description.value | default: product.description
+
             assign selected_url = product.url
             if selected_variant
               assign selected_url = product.url | append: '?variant=' | append: selected_variant.id
@@ -101,9 +103,9 @@
                 {{ selected_colorway | escape }}
               </p>
 
-              {%- if section.settings.show_description and product.description != blank -%}
+              {%- if section.settings.show_description and collection_description != blank -%}
                 <div class="tejesta-editorial-product__description">
-                  {{ product.description | strip_html | truncatewords: section.settings.description_words }}
+                  {{ collection_description | strip_html | truncatewords: section.settings.description_words }}
                 </div>
               {%- endif -%}
             </div>
