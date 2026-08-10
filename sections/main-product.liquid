@@ -111,7 +111,7 @@
     endif
   -%}
   <div class="page-width">
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if has_variant_media %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+    <div class="product product--tejesta-pdp product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if has_variant_media %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
         {% render 'product-media-gallery',
           variant_images: variant_images,
@@ -127,6 +127,7 @@
           class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
+          <div class="tejesta-product-rule tejesta-product-rule--top" aria-hidden="true"></div>
 
           {%- for block in section.blocks -%}
             {%- case block.type -%}
@@ -262,6 +263,7 @@
                     {{ product.description }}
                   </div>
                 {%- endif -%}
+                <div class="tejesta-product-rule tejesta-product-rule--content" aria-hidden="true"></div>
               {%- when 'sku' -%}
                 <p
                   class="product__sku{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
@@ -548,7 +550,8 @@
                   product: product,
                   product_form_id: product_form_id,
                   section_id: section.id,
-                  show_pickup_availability: true
+                  show_pickup_availability: true,
+                  tejesta_frame_button: true
                 -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
@@ -741,6 +744,7 @@
                 {% render 'icon-with-text', block: block %}
             {%- endcase -%}
           {%- endfor -%}
+          <div class="tejesta-product-rule tejesta-product-rule--bottom" aria-hidden="true"></div>
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
             {{ 'products.product.view_full_details' | t }}
             {{- 'icon-arrow.svg' | inline_asset_content -}}
