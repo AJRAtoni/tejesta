@@ -1483,39 +1483,12 @@ a.product__text {
 }
 
 /* TEJESTA 2026 PDP - first pass based on the client product-page reference. */
-.product--tejesta-pdp .product__info-container {
-  --tejesta-pdp-rule-color: rgb(var(--color-foreground));
-}
-
 .product--tejesta-pdp .tejesta-product-rule {
-  position: relative;
   display: block;
   width: 100%;
   height: 0.6rem;
   margin: 0;
-  color: var(--tejesta-pdp-rule-color);
-  background:
-    linear-gradient(currentColor, currentColor) center top 0.1rem / calc(100% - 1.2rem) 0.1rem no-repeat,
-    linear-gradient(currentColor, currentColor) center top 0.35rem / calc(100% - 1.2rem) 0.1rem no-repeat;
-}
-
-.product--tejesta-pdp .tejesta-product-rule::before,
-.product--tejesta-pdp .tejesta-product-rule::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  width: 0.6rem;
-  height: 0.6rem;
-  border: 0.1rem solid currentColor;
-  background: rgb(var(--color-background));
-}
-
-.product--tejesta-pdp .tejesta-product-rule::before {
-  left: 0;
-}
-
-.product--tejesta-pdp .tejesta-product-rule::after {
-  right: 0;
+  background: transparent url('tejesta-product-separator.svg') center / 100% 100% no-repeat;
 }
 
 .product--tejesta-pdp .tejesta-product-rule--top {
