@@ -50,13 +50,10 @@
         {%- for product in collection.products -%}
           {%- liquid
             assign selected_variant = null
-            assign available_variant_count = 0
             for variant in product.variants
               if variant.inventory_management != 'shopify' or variant.inventory_quantity > 0
-                assign available_variant_count = available_variant_count | plus: 1
-                if selected_variant == null
-                  assign selected_variant = variant
-                endif
+                assign selected_variant = variant
+                break
               endif
             endfor
 
@@ -139,7 +136,7 @@
 
             {%- if product.variants_count > 1 -%}
               <div
-                class="tejesta-editorial-product__colorways{% if available_variant_count == 4 %} tejesta-editorial-product__colorways--four{% endif %}"
+                class="tejesta-editorial-product__colorways"
                 aria-label="{{ product.title | escape }} colorways"
               >
                 {%- for variant in product.variants -%}
