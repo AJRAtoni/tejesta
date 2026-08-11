@@ -182,13 +182,13 @@
     overflow: hidden;
   }
 
-  .tejesta-editorial-product__colorways {
+  .tejesta-editorial-product__colorways--single-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .tejesta-editorial-product__colorway-button {
+  .tejesta-editorial-product__colorways--single-row .tejesta-editorial-product__colorway-button {
     flex: 0 0 calc((100% - 4rem) / 6);
     width: calc((100% - 4rem) / 6);
   }
