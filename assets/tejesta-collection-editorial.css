@@ -182,6 +182,10 @@
     overflow: hidden;
   }
 
+  .tejesta-editorial-product__colorways--four > :first-child {
+    grid-column-start: 2;
+  }
+
   .tejesta-editorial-product__image-link {
     transform: translateY(clamp(-5rem, -3vw, -3rem));
   }
