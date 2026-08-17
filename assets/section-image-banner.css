@@ -498,6 +498,10 @@
   width: min(35rem, 100%);
 }
 
+.banner__heading-logo--vaquero {
+  width: min(28rem, 100%);
+}
+
 .banner__box .banner__heading + * {
   margin-top: 0.5rem;
 }
@@ -611,6 +615,10 @@
     width: min(33rem, 100%);
   }
 
+  .banner--homepage-image-banner.banner--desktop-transparent .banner__heading-logo--vaquero {
+    filter: none;
+  }
+
   .banner--homepage-image-banner.banner--desktop-transparent .banner__box > * + .banner__buttons {
     margin-top: 1.8rem;
   }
@@ -644,6 +652,10 @@
 
   .banner--homepage-image-banner .banner__heading-logo--artesania {
     width: min(28rem, 90vw);
+  }
+
+  .banner--homepage-image-banner .banner__heading-logo--vaquero {
+    width: min(25rem, 80vw);
   }
 
   .banner--homepage-image-banner.banner--mobile-bottom .button--tejesta-frame-light {

@@ -143,6 +143,16 @@
                 alt="{{ block.settings.heading | strip_html | escape }}"
                 {{ block.shopify_attributes }}
               >
+            {%- elsif block.settings.heading_logo_asset == 'vaquero' -%}
+              <img
+                class="banner__heading-logo banner__heading-logo--vaquero"
+                src="{{ 'tejesta-vaquero-logo-white.png' | asset_url }}"
+                width="1633"
+                height="595"
+                loading="lazy"
+                alt="{{ block.settings.heading | strip_html | escape }}"
+                {{ block.shopify_attributes }}
+              >
             {%- else -%}
               <h2
                 class="banner__heading inline-richtext {{ block.settings.heading_size }}"
@@ -425,6 +435,10 @@
             {
               "value": "artesania",
               "label": "Artesania"
+            },
+            {
+              "value": "vaquero",
+              "label": "Vaquero"
             }
           ],
           "default": "none"
