@@ -254,7 +254,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop Now",
-            "button_link_1": "/collections/all?collection=artesania",
+            "button_link_1": "https://tejesta2026.myshopify.com/collections/all?collection=vaquero",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
