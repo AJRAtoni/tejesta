@@ -43,18 +43,23 @@
         {%- endif -%}
 
         <div class="tejesta-contact__field tejesta-contact__field--name">
-          <label for="TejestaContactForm-name">{{ section.settings.name_label | escape }}</label>
+          <label class="visually-hidden" for="TejestaContactForm-name">
+            {{- section.settings.name_label | escape -}}
+          </label>
           <input
             id="TejestaContactForm-name"
             type="text"
             name="contact[{{ 'templates.contact.form.name' | t }}]"
             autocomplete="name"
+            placeholder="{{ section.settings.name_label | escape }}"
             value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
           >
         </div>
 
         <div class="tejesta-contact__field">
-          <label for="TejestaContactForm-email">{{ section.settings.email_label | escape }}</label>
+          <label class="visually-hidden" for="TejestaContactForm-email">
+            {{- section.settings.email_label | escape -}}
+          </label>
           <input
             id="TejestaContactForm-email"
             type="email"
@@ -62,6 +67,7 @@
             autocomplete="email"
             spellcheck="false"
             autocapitalize="off"
+            placeholder="{{ section.settings.email_label | escape }}"
             value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
             aria-required="true"
             required
@@ -120,13 +126,13 @@
     {
       "type": "text",
       "id": "name_label",
-      "label": "Name field label",
+      "label": "Name placeholder",
       "default": "Name"
     },
     {
       "type": "text",
       "id": "email_label",
-      "label": "Email field label",
+      "label": "Email placeholder",
       "default": "Email"
     },
     {

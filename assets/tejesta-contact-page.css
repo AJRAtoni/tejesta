@@ -119,9 +119,17 @@
 }
 
 .tejesta-contact__field input {
-  height: 1rem;
-  padding: 0;
+  height: 3.3rem;
+  padding: 0 0 0.8rem;
   border-bottom: 0.1rem solid currentColor;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.tejesta-contact__field input::placeholder {
+  color: currentColor;
+  opacity: 1;
 }
 
 .tejesta-contact__field textarea {
@@ -246,6 +254,7 @@
 
   .tejesta-contact__field input {
     height: 3rem;
+    font-size: 1.8rem;
   }
 
   .tejesta-contact__field textarea {
