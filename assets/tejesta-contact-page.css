@@ -1,0 +1,258 @@
+.tejesta-contact {
+  color: rgb(var(--color-foreground));
+  background: rgb(var(--color-background));
+}
+
+.tejesta-contact__inner {
+  display: grid;
+  grid-template-columns: minmax(30rem, 27.5%) 0.8rem minmax(0, 1fr);
+  width: 100%;
+  max-width: 144rem;
+  min-height: var(--tejesta-contact-min-height, 90rem);
+  margin: 0 auto;
+  padding: 5.2rem 0 4rem;
+}
+
+.tejesta-contact__intro {
+  align-self: start;
+  padding: 4.2rem clamp(3.2rem, 5vw, 7.4rem) 4rem;
+}
+
+.tejesta-contact__heading {
+  margin: 0 0 1.8rem;
+  color: currentColor;
+  font-family: var(--font-heading-family);
+  font-size: clamp(3.4rem, 3vw, 4.2rem);
+  font-style: var(--font-heading-style);
+  font-weight: var(--font-heading-weight);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.tejesta-contact__intro-text {
+  max-width: 23rem;
+  color: currentColor;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 1.48;
+}
+
+.tejesta-contact__intro-text.rte p {
+  margin: 0;
+}
+
+.tejesta-contact__divider {
+  position: relative;
+  align-self: stretch;
+  width: 0.8rem;
+  min-height: 100%;
+  color: currentColor;
+}
+
+.tejesta-contact__divider span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0.1rem;
+  background: currentColor;
+  box-shadow: 0.4rem 0 0 currentColor, 0.7rem 0 0 currentColor;
+}
+
+.tejesta-contact__divider::before,
+.tejesta-contact__divider::after {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  width: 0.8rem;
+  height: 0.8rem;
+  background: currentColor;
+  content: '';
+}
+
+.tejesta-contact__divider::before {
+  top: 0.8rem;
+}
+
+.tejesta-contact__divider::after {
+  bottom: 0.8rem;
+}
+
+.tejesta-contact__form-panel {
+  align-self: start;
+  padding: 8.6rem clamp(4.8rem, 7.2vw, 10.4rem) 6rem;
+}
+
+.tejesta-contact__form {
+  width: 100%;
+  max-width: 57rem;
+}
+
+.tejesta-contact__field {
+  margin: 0 0 4.3rem;
+}
+
+.tejesta-contact__field--name {
+  margin-bottom: 5.4rem;
+}
+
+.tejesta-contact__field label {
+  display: block;
+  margin: 0;
+  color: currentColor;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.tejesta-contact__field input,
+.tejesta-contact__field textarea {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: currentColor;
+  font: inherit;
+  letter-spacing: 0;
+}
+
+.tejesta-contact__field input {
+  height: 1rem;
+  padding: 0;
+  border-bottom: 0.1rem solid currentColor;
+}
+
+.tejesta-contact__field textarea {
+  min-height: 31.3rem;
+  margin-top: 2.4rem;
+  padding: 1.6rem;
+  border: 0.1rem solid currentColor;
+  resize: vertical;
+}
+
+.tejesta-contact__field input:focus,
+.tejesta-contact__field textarea:focus {
+  outline: 0.1rem solid currentColor;
+  outline-offset: 0.4rem;
+}
+
+.tejesta-contact__field-error {
+  display: block;
+  margin-top: 0.8rem;
+  color: currentColor;
+  font-size: 1.2rem;
+}
+
+.tejesta-contact__field--message {
+  margin-bottom: 0;
+}
+
+.tejesta-contact__status {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin: 0 0 3rem;
+  font-size: 1.4rem;
+}
+
+.tejesta-contact__status .svg-wrapper {
+  flex: 0 0 auto;
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.tejesta-contact__status p {
+  margin: 0;
+}
+
+.tejesta-contact__button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2.5rem;
+}
+
+.tejesta-contact__button .button--tejesta-frame {
+  --tejesta-frame-button-width: 18.8rem;
+  --tejesta-frame-button-height: 4rem;
+  --tejesta-frame-button-font-size: 1.4rem;
+}
+
+@media screen and (max-width: 989px) {
+  .tejesta-contact__inner {
+    display: block;
+    min-height: 0;
+    padding: 3.2rem 0 6.4rem;
+  }
+
+  .tejesta-contact__intro {
+    padding: 3.2rem 2rem 4rem;
+  }
+
+  .tejesta-contact__heading {
+    font-size: clamp(3.2rem, 9vw, 4rem);
+  }
+
+  .tejesta-contact__intro-text {
+    max-width: 34rem;
+    font-size: 1.8rem;
+  }
+
+  .tejesta-contact__divider {
+    width: calc(100% - 4rem);
+    height: 0.8rem;
+    min-height: 0.8rem;
+    margin: 0 2rem;
+  }
+
+  .tejesta-contact__divider span {
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 0.1rem;
+    box-shadow: 0 0.4rem 0 currentColor, 0 0.7rem 0 currentColor;
+  }
+
+  .tejesta-contact__divider::before,
+  .tejesta-contact__divider::after {
+    top: 0;
+    bottom: auto;
+  }
+
+  .tejesta-contact__divider::before {
+    left: 0;
+  }
+
+  .tejesta-contact__divider::after {
+    right: 0;
+    left: auto;
+  }
+
+  .tejesta-contact__form-panel {
+    padding: 4.8rem 2rem 0;
+  }
+
+  .tejesta-contact__form {
+    max-width: none;
+  }
+
+  .tejesta-contact__field {
+    margin-bottom: 3.8rem;
+  }
+
+  .tejesta-contact__field label {
+    font-size: 1.8rem;
+  }
+
+  .tejesta-contact__field input {
+    height: 3rem;
+  }
+
+  .tejesta-contact__field textarea {
+    min-height: 22rem;
+  }
+
+  .tejesta-contact__field--message {
+    margin-bottom: 0;
+  }
+}
