@@ -140,14 +140,10 @@
   resize: vertical;
 }
 
-.tejesta-contact__field input:focus {
+.tejesta-contact__field input:focus,
+.tejesta-contact__field textarea:focus {
   outline: 0;
   box-shadow: none;
-}
-
-.tejesta-contact__field textarea:focus {
-  outline: 0.1rem solid currentColor;
-  outline-offset: 0.4rem;
 }
 
 .tejesta-contact__field-error {
