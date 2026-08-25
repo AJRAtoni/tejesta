@@ -543,6 +543,7 @@
 }
 
 .tejesta-footer__list a,
+.tejesta-footer__legal-list a,
 .tejesta-footer__instagram {
   color: rgb(var(--color-foreground));
   text-decoration: none;
@@ -558,6 +559,7 @@
 }
 
 .tejesta-footer__list a:hover,
+.tejesta-footer__legal-list a:hover,
 .tejesta-footer__instagram:hover {
   color: rgba(var(--color-foreground), 0.68);
 }
@@ -623,6 +625,7 @@
 }
 
 .tejesta-footer__submit:focus-visible,
+.tejesta-footer__legal-list a:focus-visible,
 .tejesta-footer__instagram:focus-visible {
   outline: 0.1rem solid rgb(var(--color-foreground));
   outline-offset: 0.2rem;
@@ -657,9 +660,26 @@
 }
 
 .tejesta-footer__bottom {
-  display: none;
+  display: flex;
   justify-content: flex-end;
   margin-top: 5rem;
+}
+
+.tejesta-footer__legal-list {
+  display: flex;
+  gap: 1.8rem;
+  margin: 0;
+  padding: 0;
+}
+
+.tejesta-footer__legal-list a {
+  display: inline-block;
+  padding: 0.3rem 0;
+  font-family: 'TEJESTA Jost', var(--font-body-family);
+  font-size: 1.4rem;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 1.4;
 }
 
 .tejesta-footer__instagram {

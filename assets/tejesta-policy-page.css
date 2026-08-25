@@ -1,0 +1,250 @@
+.tejesta-policy {
+  color: rgb(var(--color-foreground));
+  background: rgb(var(--color-background));
+}
+
+.tejesta-policy__inner {
+  display: grid;
+  grid-template-columns: minmax(28rem, 27.5%) 0.8rem minmax(0, 1fr);
+  width: 100%;
+  max-width: 144rem;
+  margin: 0 auto;
+  padding: 5.2rem 0 8rem;
+}
+
+.tejesta-policy__header {
+  align-self: start;
+  padding: 4.2rem clamp(3.2rem, 5vw, 7.4rem) 4rem;
+}
+
+.tejesta-policy__title {
+  margin: 0;
+  color: currentColor;
+  font-family: 'TEJESTA Louize Display', var(--font-heading-family);
+  font-size: clamp(3.4rem, 3vw, 4.4rem);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.tejesta-policy__updated {
+  margin: 1.6rem 0 0;
+  font-family: 'TEJESTA Jost', var(--font-body-family);
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+
+.tejesta-policy__divider {
+  position: relative;
+  align-self: stretch;
+  width: 0.8rem;
+  min-height: 100%;
+  color: currentColor;
+}
+
+.tejesta-policy__divider span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0.1rem;
+  background: currentColor;
+  box-shadow: 0.4rem 0 0 currentColor, 0.7rem 0 0 currentColor;
+}
+
+.tejesta-policy__divider::before,
+.tejesta-policy__divider::after {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  width: 0.8rem;
+  height: 0.8rem;
+  background: currentColor;
+  content: '';
+}
+
+.tejesta-policy__divider::before {
+  top: 0.8rem;
+}
+
+.tejesta-policy__divider::after {
+  bottom: 0.8rem;
+}
+
+.tejesta-policy__content {
+  width: 100%;
+  max-width: 94rem;
+  padding: 4.2rem clamp(4.8rem, 7.2vw, 10.4rem) 2rem;
+  font-family: 'TEJESTA Jost', var(--font-body-family);
+  font-size: 1.7rem;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 1.65;
+}
+
+.tejesta-policy__content > :first-child {
+  margin-top: 0;
+}
+
+.tejesta-policy__content h2,
+.tejesta-policy__content h3 {
+  max-width: 78rem;
+  color: currentColor;
+  font-family: 'TEJESTA Louize Display', var(--font-heading-family);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.tejesta-policy__content h2 {
+  margin: 4.6rem 0 1.5rem;
+  font-size: clamp(2.8rem, 2.3vw, 3.4rem);
+  line-height: 1.08;
+}
+
+.tejesta-policy__content h3 {
+  margin: 3.4rem 0 1.3rem;
+  font-size: clamp(2.3rem, 1.8vw, 2.8rem);
+  line-height: 1.12;
+}
+
+.tejesta-policy__content h4 {
+  max-width: 78rem;
+  margin: 2.8rem 0 1rem;
+  color: currentColor;
+  font-family: 'TEJESTA Jost', var(--font-body-family);
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+
+.tejesta-policy__content p,
+.tejesta-policy__content ul,
+.tejesta-policy__content address {
+  max-width: 78rem;
+}
+
+.tejesta-policy__content p {
+  margin: 0 0 1.8rem;
+}
+
+.tejesta-policy__content ul {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0 0 2.2rem;
+  padding-left: 2.4rem;
+}
+
+.tejesta-policy__content li {
+  padding-left: 0.4rem;
+}
+
+.tejesta-policy__content strong {
+  font-weight: 500;
+}
+
+.tejesta-policy__content a {
+  color: currentColor;
+  text-decoration: underline;
+  text-decoration-thickness: 0.1rem;
+  text-underline-offset: 0.25rem;
+}
+
+.tejesta-policy__content a:hover {
+  color: rgba(var(--color-foreground), 0.68);
+}
+
+.tejesta-policy__content a:focus-visible {
+  outline: 0.1rem solid currentColor;
+  outline-offset: 0.3rem;
+}
+
+.tejesta-policy__address {
+  margin: 0 0 1.8rem;
+  font-style: normal;
+}
+
+.tejesta-policy__address p {
+  margin-bottom: 0.35rem;
+}
+
+@media screen and (max-width: 989px) {
+  .tejesta-policy__inner {
+    display: block;
+    padding: 3.2rem 0 6.4rem;
+  }
+
+  .tejesta-policy__header {
+    padding: 3.2rem 2rem 4rem;
+  }
+
+  .tejesta-policy__title {
+    max-width: 34rem;
+    font-size: clamp(3.2rem, 9vw, 4rem);
+  }
+
+  .tejesta-policy__updated {
+    font-size: 1.3rem;
+  }
+
+  .tejesta-policy__divider {
+    width: calc(100% - 4rem);
+    height: 0.8rem;
+    min-height: 0.8rem;
+    margin: 0 2rem;
+  }
+
+  .tejesta-policy__divider span {
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 0.1rem;
+    box-shadow: 0 0.4rem 0 currentColor, 0 0.7rem 0 currentColor;
+  }
+
+  .tejesta-policy__divider::before,
+  .tejesta-policy__divider::after {
+    top: 0;
+    bottom: auto;
+  }
+
+  .tejesta-policy__divider::before {
+    left: 0;
+  }
+
+  .tejesta-policy__divider::after {
+    right: 0;
+    left: auto;
+  }
+
+  .tejesta-policy__content {
+    max-width: none;
+    padding: 4.8rem 2rem 0;
+    font-size: 1.6rem;
+    line-height: 1.62;
+  }
+
+  .tejesta-policy__content h2 {
+    margin-top: 4rem;
+  }
+
+  .tejesta-policy__content h3 {
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .tejesta-policy__header,
+  .tejesta-policy__content {
+    padding-right: 1.6rem;
+    padding-left: 1.6rem;
+  }
+
+  .tejesta-policy__divider {
+    width: calc(100% - 3.2rem);
+    margin-right: 1.6rem;
+    margin-left: 1.6rem;
+  }
+}

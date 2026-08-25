@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-policy-tejesta",
+      "settings": {
+        "policy_type": "shipping_returns",
+        "color_scheme": "scheme-1"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

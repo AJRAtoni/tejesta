@@ -39,7 +39,9 @@
         <ul class="tejesta-footer__list list-unstyled">
           <li><a href="/pages/support">FAQ + Support</a></li>
           <li><a href="/pages/store-locator">Store Locator</a></li>
-          <li><a href="/pages/support">Shipping + Returns</a></li>
+          <li>
+            <a href="{{ pages['shipping-returns'].url | default: '/pages/shipping-returns' }}">Shipping + Returns</a>
+          </li>
           <li><a href="https://wholesale.tejesta.com/">Wholesale</a></li>
           <li><a href="/pages/contact">Contact Us</a></li>
         </ul>
@@ -91,15 +93,16 @@
         {%- endform -%}
 
         <div class="tejesta-footer__bottom">
-          <a
-            class="tejesta-footer__instagram"
-            href="{{ settings.social_instagram_link | default: 'https://www.instagram.com/tejesta/' }}"
-            aria-label="{{ 'general.social.links.instagram' | t }}"
-            target="_blank"
-            rel="noopener"
-          >
-            {{- 'icon-instagram.svg' | inline_asset_content -}}
-          </a>
+          <nav class="tejesta-footer__legal" aria-label="Legal">
+            <ul class="tejesta-footer__legal-list list-unstyled">
+              <li>
+                <a href="{{ pages['privacy-policy'].url | default: '/pages/privacy-policy' }}">Privacy</a>
+              </li>
+              <li>
+                <a href="{{ pages['terms-of-use'].url | default: '/pages/terms-of-use' }}">Terms</a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>

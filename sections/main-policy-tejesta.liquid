@@ -1,0 +1,88 @@
+{{ 'tejesta-policy-page.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  case section.settings.policy_type
+    when 'privacy'
+      assign policy_title = 'Privacy Policy'
+      assign policy_updated = 'August 2026'
+    when 'terms'
+      assign policy_title = 'Terms of Use'
+      assign policy_updated = 'August 2026'
+    when 'shipping_returns'
+      assign policy_title = 'Shipping and Return Policy'
+      assign policy_updated = ''
+  endcase
+-%}
+
+<section class="tejesta-policy color-{{ section.settings.color_scheme }} gradient">
+  <div class="tejesta-policy__inner">
+    <header class="tejesta-policy__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      <h1 id="TejestaPolicyTitle-{{ section.id }}" class="tejesta-policy__title">{{ policy_title | escape }}</h1>
+      {%- if policy_updated != blank -%}
+        <p class="tejesta-policy__updated">Last updated: {{ policy_updated | escape }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="tejesta-policy__divider" aria-hidden="true">
+      <span></span>
+    </div>
+
+    <article
+      class="tejesta-policy__content{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      aria-labelledby="TejestaPolicyTitle-{{ section.id }}"
+    >
+      {%- case section.settings.policy_type -%}
+        {%- when 'privacy' -%}
+          {%- render 'tejesta-policy-privacy' -%}
+        {%- when 'terms' -%}
+          {%- render 'tejesta-policy-terms' -%}
+        {%- when 'shipping_returns' -%}
+          {%- render 'tejesta-policy-shipping-returns' -%}
+      {%- endcase -%}
+    </article>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "TEJESTA policy page",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "policy_type",
+      "label": "Policy",
+      "options": [
+        {
+          "value": "privacy",
+          "label": "Privacy Policy"
+        },
+        {
+          "value": "terms",
+          "label": "Terms of Use"
+        },
+        {
+          "value": "shipping_returns",
+          "label": "Shipping and Return Policy"
+        }
+      ],
+      "default": "privacy"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "TEJESTA policy page"
+    }
+  ]
+}
+{% endschema %}
