@@ -172,6 +172,13 @@
   margin-bottom: 0.35rem;
 }
 
+@media screen and (min-width: 990px) {
+  .tejesta-policy__header {
+    position: sticky;
+    top: calc(var(--header-height, 7.6rem) + 2rem);
+  }
+}
+
 @media screen and (max-width: 989px) {
   .tejesta-policy__inner {
     display: block;
