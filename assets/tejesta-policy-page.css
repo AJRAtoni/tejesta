@@ -5,7 +5,7 @@
 
 .tejesta-policy__inner {
   display: grid;
-  grid-template-columns: minmax(28rem, 27.5%) 0.8rem minmax(0, 1fr);
+  grid-template-columns: minmax(28rem, 27.5%) minmax(0, 1fr);
   width: 100%;
   max-width: 144rem;
   margin: 0 auto;
@@ -39,6 +39,7 @@
 }
 
 .tejesta-policy__divider {
+  display: none;
   position: relative;
   align-self: stretch;
   width: 0.8rem;
