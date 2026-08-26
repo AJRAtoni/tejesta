@@ -1657,6 +1657,7 @@ a.product__text {
 
 .product--tejesta-pdp .tejesta-product-details__colors {
   min-height: 100%;
+  align-content: start;
   padding-left: 4.2rem;
   border-left: 0.1rem solid rgba(var(--color-foreground), 0.72);
 }
