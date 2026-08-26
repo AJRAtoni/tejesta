@@ -1722,6 +1722,19 @@ a.product__text {
   }
 }
 
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .product--tejesta-pdp .tejesta-product-details {
+    grid-template-columns: 1fr;
+    row-gap: 1.8rem;
+  }
+
+  .product--tejesta-pdp .tejesta-product-details__colors {
+    padding: 1.8rem 0 0;
+    border-top: 0.1rem solid rgba(var(--color-foreground), 0.72);
+    border-left: 0;
+  }
+}
+
 @media screen and (forced-colors: active) {
   .recipient-fields > hr {
     border-top: 0.1rem solid rgb(var(--color-background));
