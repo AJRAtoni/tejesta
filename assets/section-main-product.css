@@ -1628,6 +1628,38 @@ a.product__text {
   letter-spacing: 0;
 }
 
+.product--tejesta-pdp .tejesta-product-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr);
+  column-gap: 4.2rem;
+  padding-top: 1.1rem;
+}
+
+.product--tejesta-pdp .tejesta-product-details dl {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 2.2rem;
+  row-gap: 0.35rem;
+  margin: 0;
+}
+
+.product--tejesta-pdp .tejesta-product-details dt,
+.product--tejesta-pdp .tejesta-product-details dd {
+  margin: 0;
+  font-size: 1.55rem;
+  line-height: 1.45;
+}
+
+.product--tejesta-pdp .tejesta-product-details dt {
+  font-weight: 600;
+}
+
+.product--tejesta-pdp .tejesta-product-details__colors {
+  min-height: 100%;
+  padding-left: 4.2rem;
+  border-left: 0.1rem solid rgba(var(--color-foreground), 0.72);
+}
+
 @media screen and (min-width: 990px) {
   .product--tejesta-pdp.product--large:not(.product--no-media) .product__info-wrapper {
     width: 34%;
@@ -1675,6 +1707,17 @@ a.product__text {
 
   .product--tejesta-pdp .product-form__submit.button--tejesta-frame {
     --tejesta-frame-button-height: 5.6rem;
+  }
+
+  .product--tejesta-pdp .tejesta-product-details {
+    grid-template-columns: 1fr;
+    row-gap: 1.8rem;
+  }
+
+  .product--tejesta-pdp .tejesta-product-details__colors {
+    padding: 1.8rem 0 0;
+    border-top: 0.1rem solid rgba(var(--color-foreground), 0.72);
+    border-left: 0;
   }
 }
 
