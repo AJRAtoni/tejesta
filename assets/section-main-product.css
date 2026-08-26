@@ -1579,13 +1579,14 @@ a.product__text {
 .product--tejesta-pdp .product__accordion.accordion {
   margin: 0;
   border-top: 0;
-  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.72);
+  border-bottom: 0;
 }
 
 .product--tejesta-pdp .product__accordion summary {
   align-items: center;
   min-height: 5.4rem;
   padding: 1.4rem 0;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.72);
 }
 
 .product--tejesta-pdp .product__accordion .summary__title .svg-wrapper,
