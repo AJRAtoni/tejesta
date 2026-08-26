@@ -44,12 +44,9 @@
           "settings": {}
         },
         "details_tab": {
-          "type": "collapsible_tab",
+          "type": "tejesta_variant_details",
           "settings": {
-            "heading": "Details",
-            "icon": "none",
-            "content": "",
-            "page": ""
+            "heading": "Details"
           }
         },
         "care_tab": {
