@@ -1552,13 +1552,17 @@ a.product__text {
 
 .product--tejesta-pdp .product-form__submit.button--tejesta-frame {
   --tejesta-frame-button-width: 100%;
-  --tejesta-frame-button-height: 6rem;
+  --tejesta-frame-button-height: 4.8rem;
   --tejesta-frame-button-padding: 0 3rem;
   --tejesta-frame-button-font-size: 1.5rem;
+  --tejesta-frame-button-image: none;
 
   width: 100%;
   max-width: none;
   margin: 0;
+  /* Keep the mockup's corner geometry and line weights at every button width. */
+  border: 8px solid transparent;
+  border-image: url('tejesta-product-button-frame.svg') 8 / 8px / 0 stretch;
 }
 
 .product--tejesta-pdp .product__description {
@@ -1606,19 +1610,17 @@ a.product__text {
 .product--tejesta-pdp .product__accordion summary::after {
   content: '';
   flex: 0 0 auto;
-  width: 0.45rem;
-  height: 0.45rem;
-  margin: 0 0.65rem 0 1rem;
-  background: currentColor;
-  box-shadow: 0.58rem 0 currentColor, 0 0.58rem currentColor, 0.58rem 0.58rem currentColor;
+  width: 1.04rem;
+  height: 1.04rem;
+  margin: 0 0 0 1rem;
+  background-color: rgb(var(--color-foreground));
+  -webkit-mask: url('tejesta-product-expand.svg') center / contain no-repeat;
+  mask: url('tejesta-product-expand.svg') center / contain no-repeat;
 }
 
 .product--tejesta-pdp .product__accordion details[open] > summary::after {
-  width: 1.05rem;
-  height: 0.35rem;
-  margin-right: 0.1rem;
-  background: currentColor;
-  box-shadow: 0 0.55rem currentColor;
+  -webkit-mask-image: url('tejesta-product-collapse.svg');
+  mask-image: url('tejesta-product-collapse.svg');
 }
 
 .product--tejesta-pdp .product__accordion .accordion__content {
@@ -1705,10 +1707,6 @@ a.product__text {
     width: calc(25% - 0.75rem);
     min-width: 7rem;
     height: 5.4rem;
-  }
-
-  .product--tejesta-pdp .product-form__submit.button--tejesta-frame {
-    --tejesta-frame-button-height: 5.6rem;
   }
 
   .product--tejesta-pdp .tejesta-product-details {

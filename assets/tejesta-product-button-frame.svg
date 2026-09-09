@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="411.434" height="47.603" viewBox="0 0 411.434 47.603">
+  <!-- Paths from the client product-page PDF; used as a nine-slice border. -->
+  <path d="M6.124 .5H405.31L410.934 5.891V41.712L405.31 47.103H6.124L.5 41.712V5.891Z" fill="none" stroke="#000" stroke-width="1" stroke-linejoin="miter"/>
+  <path d="M6.825 2.525H404.601L408.823 6.566V41.038L404.601 45.078H6.825L2.603 41.038V6.566Z" fill="none" stroke="#000" stroke-width=".5" stroke-linejoin="miter"/>
+</svg>
