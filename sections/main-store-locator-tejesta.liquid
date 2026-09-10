@@ -1,0 +1,39 @@
+{{ 'tejesta-store-locator.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'tejesta-store-locator.js' | asset_url }}" defer="defer"></script>
+
+<section class="tejesta-locator" aria-labelledby="LocatorHeading-{{ section.id }}">
+  <h1 id="LocatorHeading-{{ section.id }}" class="tejesta-locator__heading">{{ section.settings.heading | escape }}</h1>
+  <tejesta-store-locator
+    data-placeholder="{{ section.settings.search_placeholder | escape }}"
+    {% if section.settings.branded_markers %}data-marker-url="{{ 'tejesta-locator-marker.svg' | asset_url }}"{% endif %}
+  >
+    {% if section.settings.widget_tag != blank %}
+      <stockist-store-locator data-stockist-widget-tag="{{ section.settings.widget_tag | strip | escape }}">
+        <p class="tejesta-locator__loading" role="status">Loading store locator…</p>
+      </stockist-store-locator>
+      <p class="tejesta-locator__error" role="alert" hidden>
+        The store locator could not load. <a href="">Reload this page to try again.</a>
+      </p>
+      <noscript><p>Please enable JavaScript to search for a retailer.</p></noscript>
+    {% elsif request.design_mode %}
+      <p>Add your Stockist widget tag in this section’s settings.</p>
+    {% endif %}
+  </tejesta-store-locator>
+</section>
+
+{% schema %}
+{
+  "name": "TEJESTA store locator",
+  "tag": "section",
+  "class": "section",
+  "limit": 1,
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Find a Retailer" },
+    { "type": "text", "id": "widget_tag", "label": "Stockist widget tag", "default": "u9382", "info": "Use the tag from Stockist’s embed code. This layout is designed for the existing v1 locator with CSS isolation disabled." },
+    { "type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "Type a postcode or address..." },
+    { "type": "checkbox", "id": "branded_markers", "label": "Use TEJESTA map symbols", "default": true, "info": "Replaces standard Stockist pins on the existing Leaflet map in this theme only." }
+  ],
+  "presets": [{ "name": "TEJESTA store locator" }]
+}
+{% endschema %}

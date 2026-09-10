@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-store-locator-tejesta",
+      "settings": {
+        "heading": "Find a Retailer",
+        "widget_tag": "u9382",
+        "search_placeholder": "Type a postcode or address...",
+        "branded_markers": true
+      }
+    }
+  },
+  "order": ["main"]
+}
