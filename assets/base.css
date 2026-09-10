@@ -58,8 +58,8 @@
   --alpha-button-border: 1;
   --alpha-link: 0.85;
   --alpha-badge-border: 0.1;
-  --tejesta-frame-button-image-dark: url('tejesta-cta-border-button.svg');
-  --tejesta-frame-button-image-light: url('tejesta-cta-border-button-light.svg');
+  --tejesta-frame-button-image-dark: url('tejesta-control-frame.svg');
+  --tejesta-frame-button-image-light: url('tejesta-control-frame-light.svg');
   --focused-base-outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   --focused-base-outline-offset: 0.3rem;
   --focused-base-box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
@@ -1391,7 +1391,7 @@ button.shopify-payment-button__button--unbranded {
   border: 0;
   border-radius: 0;
   background-color: transparent;
-  background-image: var(--tejesta-frame-button-image);
+  background-image: none;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -1407,8 +1407,33 @@ button.shopify-payment-button__button--unbranded {
   cursor: pointer;
 }
 
-.button--tejesta-frame::before {
-  content: none;
+/* Shared Shop Now frame: fixed corners and line weights at every control width. */
+.button--tejesta-frame,
+.tejesta-footer__field,
+.menu-drawer__subscribe-field,
+.tejesta-locator #stockist-widget .stockist-query-entry {
+  position: relative;
+  --tejesta-control-frame-image: var(--tejesta-frame-button-image-dark);
+}
+
+.button--tejesta-frame {
+  --tejesta-control-frame-image: var(--tejesta-frame-button-image);
+}
+
+.button--tejesta-frame::before,
+.tejesta-footer__field::before,
+.menu-drawer__subscribe-field::before,
+.tejesta-locator #stockist-widget .stockist-query-entry::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  border: 12px solid transparent;
+  border-image: var(--tejesta-control-frame-image) 12 / 12px / 0 stretch;
+  border-radius: 0;
+  box-shadow: none;
+  pointer-events: none;
 }
 
 .button--tejesta-frame::after {
@@ -1418,7 +1443,7 @@ button.shopify-payment-button__button--unbranded {
 .button--tejesta-frame:not([disabled]):hover,
 .button--tejesta-frame[aria-disabled='true'] {
   background-color: transparent;
-  background-image: var(--tejesta-frame-button-image);
+  background-image: none;
 }
 
 .button--tejesta-frame--light,

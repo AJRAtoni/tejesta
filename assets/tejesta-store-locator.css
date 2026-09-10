@@ -58,15 +58,15 @@ tejesta-store-locator, stockist-store-locator { display: block; }
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 44px;
+  min-height: 43px;
   padding: 3px 9px;
-  background: url('tejesta-cta-border-button.svg') center / 100% 100% no-repeat;
+  background: transparent;
 }
 .tejesta-locator #stockist-widget .stockist-query-entry .stockist-search-field {
   display: block;
   flex: 1;
   width: 100%;
-  height: 38px;
+  height: 37px;
   padding: 0 4px;
   border: 0;
   border-radius: 0;
@@ -93,7 +93,7 @@ tejesta-store-locator, stockist-store-locator { display: block; }
   display: block;
   width: 28px;
   min-width: 28px;
-  height: 38px;
+  height: 37px;
   padding: 0;
   margin: 0;
   color: #333;

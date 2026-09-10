@@ -232,7 +232,6 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .menu-drawer__subscribe-field {
-  --tejesta-drawer-form-frame-image: url('tejesta-cta-border-subscribeform.svg');
 
   isolation: isolate;
   position: relative;
@@ -241,12 +240,12 @@ details[open].menu-opening > .menu-drawer__submenu {
   align-items: center;
   box-sizing: border-box;
   width: 100%;
-  min-height: 3.6rem;
+  min-height: 4.3rem;
   padding: 0 1rem;
   border: 0;
   border-radius: 0;
   background-color: transparent;
-  background-image: var(--tejesta-drawer-form-frame-image);
+  background-image: none;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
