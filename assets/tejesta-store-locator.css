@@ -47,6 +47,12 @@ tejesta-store-locator, stockist-store-locator { display: block; }
   height: auto;
   margin: 0;
 }
+/* Stockist injects an inline minimum map height from the legacy account.
+   Keep Leaflet's actual viewport inside the section, including on mobile. */
+.tejesta-locator #stockist-widget .stockist-map .stockist-map-inner {
+  min-height: 0 !important;
+  height: 100%;
+}
 .tejesta-locator #stockist-widget .stockist-search-form { margin: 0 0 52px; flex-shrink: 0; }
 .tejesta-locator #stockist-widget .stockist-query-entry {
   display: flex;
