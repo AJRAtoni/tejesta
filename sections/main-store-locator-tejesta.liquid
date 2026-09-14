@@ -5,7 +5,6 @@
   <h1 id="LocatorHeading-{{ section.id }}" class="tejesta-locator__heading">{{ section.settings.heading | escape }}</h1>
   <tejesta-store-locator
     data-placeholder="{{ section.settings.search_placeholder | escape }}"
-    {% if section.settings.branded_markers %}data-marker-url="{{ 'tejesta-locator-marker.svg' | asset_url }}"{% endif %}
   >
     {% if section.settings.widget_tag != blank %}
       <stockist-store-locator data-stockist-widget-tag="{{ section.settings.widget_tag | strip | escape }}">
@@ -31,8 +30,7 @@
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Find a Retailer" },
     { "type": "text", "id": "widget_tag", "label": "Stockist widget tag", "default": "u9382", "info": "Use the tag from Stockist’s embed code. This layout is designed for the existing v1 locator with CSS isolation disabled." },
-    { "type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "Type a postcode or address..." },
-    { "type": "checkbox", "id": "branded_markers", "label": "Use TEJESTA map symbols", "default": true, "info": "Replaces standard Stockist pins on the existing Leaflet map in this theme only." }
+    { "type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "Type a postcode or address..." }
   ],
   "presets": [{ "name": "TEJESTA store locator" }]
 }

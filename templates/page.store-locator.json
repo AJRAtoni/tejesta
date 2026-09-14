@@ -5,10 +5,21 @@
       "settings": {
         "heading": "Find a Retailer",
         "widget_tag": "u9382",
-        "search_placeholder": "Type a postcode or address...",
-        "branded_markers": true
+        "search_placeholder": "Type a postcode or address..."
+      }
+    },
+    "footer_divider": {
+      "type": "tejesta-line-art-divider",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "divider_width": 90,
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "footer_divider"
+  ]
 }

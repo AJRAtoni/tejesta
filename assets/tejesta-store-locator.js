@@ -41,11 +41,6 @@ if (!customElements.get('tejesta-store-locator')) {
       // Retain Stockist’s native button, keyboard search and event listeners.
       const button = this.querySelector('.stockist-search-button button');
       if (button) button.setAttribute('aria-label', 'Search for a retailer');
-      if (!this.dataset.markerUrl) return;
-      this.querySelectorAll('img.leaflet-marker-icon[src^="https://pins.stockist.co/pin-"]').forEach((marker) => {
-        marker.src = this.dataset.markerUrl;
-        marker.classList.add('tejesta-locator__marker');
-      });
     }
   });
 }
