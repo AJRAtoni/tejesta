@@ -295,7 +295,22 @@
                   </details>
                 </div>
               {%- when 'tejesta_variant_details' -%}
-                <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
+                {%- liquid
+                  assign detail_eye = current_variant.metafields.custom.eye.value
+                  assign detail_bridge = current_variant.metafields.custom.bridge.value
+                  assign detail_temple = current_variant.metafields.custom.temple.value
+                  assign detail_frame_color = current_variant.metafields.custom.frame_color.value
+                  assign detail_lens_color = current_variant.metafields.custom.lens_color.value
+                  assign has_variant_details = false
+                  if detail_eye != blank or detail_bridge != blank or detail_temple != blank or detail_frame_color != blank or detail_lens_color != blank
+                    assign has_variant_details = true
+                  endif
+                -%}
+                <div
+                  id="TejestaVariantDetails-{{ section.id }}"
+                  class="product__accordion accordion quick-add-hidden{% unless has_variant_details %} hidden{% endunless %}"
+                  {{ block.shopify_attributes }}
+                >
                   <details id="Details-{{ block.id }}-{{ section.id }}">
                     <summary>
                       <div class="summary__title">
@@ -308,20 +323,34 @@
                       class="accordion__content tejesta-product-details"
                       id="ProductAccordion-{{ block.id }}-{{ section.id }}"
                     >
-                      <dl class="tejesta-product-details__measurements">
-                        <dt>Eye:</dt>
-                        <dd>XX</dd>
-                        <dt>Bridge:</dt>
-                        <dd>XX</dd>
-                        <dt>Temple:</dt>
-                        <dd>XX</dd>
-                      </dl>
-                      <dl class="tejesta-product-details__colors">
-                        <dt>Frame Color:</dt>
-                        <dd>XX</dd>
-                        <dt>Lens Color:</dt>
-                        <dd>XX</dd>
-                      </dl>
+                      {%- if detail_eye != blank or detail_bridge != blank or detail_temple != blank -%}
+                        <dl class="tejesta-product-details__measurements">
+                          {%- if detail_eye != blank -%}
+                            <dt>Eye:</dt>
+                            <dd>{{ detail_eye | escape }}</dd>
+                          {%- endif -%}
+                          {%- if detail_bridge != blank -%}
+                            <dt>Bridge:</dt>
+                            <dd>{{ detail_bridge | escape }}</dd>
+                          {%- endif -%}
+                          {%- if detail_temple != blank -%}
+                            <dt>Temple:</dt>
+                            <dd>{{ detail_temple | escape }}</dd>
+                          {%- endif -%}
+                        </dl>
+                      {%- endif -%}
+                      {%- if detail_frame_color != blank or detail_lens_color != blank -%}
+                        <dl class="tejesta-product-details__colors">
+                          {%- if detail_frame_color != blank -%}
+                            <dt>Frame Color:</dt>
+                            <dd>{{ detail_frame_color | escape }}</dd>
+                          {%- endif -%}
+                          {%- if detail_lens_color != blank -%}
+                            <dt>Lens Color:</dt>
+                            <dd>{{ detail_lens_color | escape }}</dd>
+                          {%- endif -%}
+                        </dl>
+                      {%- endif -%}
                     </div>
                   </details>
                 </div>
