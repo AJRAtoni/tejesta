@@ -176,6 +176,7 @@ if (!customElements.get('product-info')) {
           }
 
           this.updateProductTitle(variant);
+          this.updateVariantDetails(html);
           this.updateMedia(html, variant?.featured_media?.id);
 
           const updateSourceFromDestination = (id, shouldHide = (source) => false) => {
@@ -210,6 +211,19 @@ if (!customElements.get('product-info')) {
             },
           });
         };
+      }
+
+      updateVariantDetails(html) {
+        const destination = this.querySelector(`#TejestaVariantDetails-${this.dataset.section}`);
+        if (!destination) return;
+
+        const source = html?.getElementById(`TejestaVariantDetails-${this.sectionId}`);
+        const sourceContent = source?.querySelector('.tejesta-product-details');
+        const destinationContent = destination.querySelector('.tejesta-product-details');
+
+        // Keep the existing accordion and its open state when the colorway changes.
+        if (destinationContent) destinationContent.innerHTML = sourceContent?.innerHTML ?? '';
+        destination.classList.toggle('hidden', !sourceContent || source.classList.contains('hidden'));
       }
 
       updateProductTitle(variant) {
@@ -247,6 +261,7 @@ if (!customElements.get('product-info')) {
       }
 
       setUnavailable() {
+        this.updateVariantDetails();
         this.productForm?.toggleSubmitButton(true, window.variantStrings.unavailable);
 
         const selectors = ['price', 'Inventory', 'Sku', 'Price-Per-Item', 'Volume-Note', 'Volume', 'Quantity-Rules']
