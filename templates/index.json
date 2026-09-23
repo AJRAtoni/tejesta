@@ -149,7 +149,6 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/OPTICAL_COLLECTION_PHOTO.webp",
         "section_width": "full_width",
         "image_overlay_opacity": 0,
         "image_height": "large",
@@ -209,7 +208,6 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/ARTESANIA_COLLECTION_PHOTO.webp",
         "section_width": "full_width",
         "image_overlay_opacity": 0,
         "image_height": "large",
@@ -269,7 +267,6 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/TEJESTA_VAQUERO_BANNER_HOME_PAGE.webp",
         "section_width": "full_width",
         "image_overlay_opacity": 0,
         "image_height": "large",
